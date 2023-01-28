@@ -230,5 +230,9 @@
         height: 24px;
         stroke: var(--body-text-color);
         stroke-width: 1.33;
+
+        &:hover {
+            stroke-width: 2;
+        }
     }
 }

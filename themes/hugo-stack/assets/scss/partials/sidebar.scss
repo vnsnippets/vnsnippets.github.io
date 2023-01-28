@@ -119,6 +119,10 @@
             font-size: var(--emoji-font-size);
             background-color: var(--card-background);
             box-shadow: var(--shadow-l2);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     }
 
@@ -156,11 +160,13 @@
         color: var(--accent-color);
         font-weight: 300;
 
-        .icon-tabler-moon, .text-moon {
+        .icon-tabler-moon,
+        .text-moon {
             display: none;
         }
 
-        .icon-tabler-sun, .text-sun {
+        .icon-tabler-sun,
+        .text-sun {
             display: unset;
         }
     }
@@ -174,7 +180,8 @@
     cursor: pointer;
     gap: var(--theme-switch-icon-separation);
 
-    .icon-tabler-sun, .text-sun {
+    .icon-tabler-sun,
+    .text-sun {
         display: none;
     }
 
