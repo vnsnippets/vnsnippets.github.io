@@ -1,9 +1,8 @@
 ---
 title: "About"
-description: Hugo, the world's fastest framework for building websites
+description: A little bit about me, a little bit about technology and a lot about having fun 👨‍💻
 aliases:
-  - about-us
-  - about-hugo
+  - about
   - contact
   
 date: 2023-01-29T00:28:10+04:00
