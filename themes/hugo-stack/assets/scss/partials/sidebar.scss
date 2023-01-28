@@ -173,9 +173,6 @@
     align-items: center;
     cursor: pointer;
     gap: var(--theme-switch-icon-separation);
-    border: 1px solid var(--body-text-color);
-    border-radius: 10px;
-    padding: 10px;
 
     .icon-tabler-sun, .text-sun {
         display: none;
