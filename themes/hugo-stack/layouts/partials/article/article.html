@@ -2,7 +2,9 @@
     {{ if not .Params.youtube}}
         {{ partial "article/components/header" . }}
     {{ else }}
-        {{ partialCached "article/components/details" . .RelPermalink }}
+        <header class="article-header">        
+            {{ partialCached "article/components/details" . .RelPermalink }}
+        </header>
     {{ end }}
 
     {{ partial "article/components/content" . }}
