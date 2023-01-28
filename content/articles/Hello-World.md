@@ -1,18 +1,26 @@
 ---
+author: "Vidush H. Namah"
 title: "Hello World"
 date: 2023-01-28T23:09:14+04:00
-image: https://images.unsplash.com/photo-1661961112835-ca6f5811d2af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80
----
 
----
-__Advertisement :)__
+image: "https://images.unsplash.com/photo-1661961112835-ca6f5811d2af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80"
+description: "Sample article showcasing basic Markdown syntax and formatting for HTML elements."
 
-- __[pica](https://nodeca.github.io/pica/demo/)__ - high quality and fast image
-  resize in browser.
-- __[babelfish](https://github.com/nodeca/babelfish/)__ - developer friendly
-  i18n with plurals support and easy syntax.
+series: ["Themes Guide"]
 
-You will like those projects!
+categories: [
+    "themes",
+    "syntax",
+]
+
+aliases: ["migrate-from-jekyl"]
+
+tags: [
+    "markdown",
+    "css",
+    "html",
+    "themes",
+]
 
 ---
 
