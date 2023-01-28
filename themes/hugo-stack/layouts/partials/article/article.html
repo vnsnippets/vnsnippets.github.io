@@ -1,5 +1,11 @@
 <article class="{{ if .Params.image }}has-image {{ end }}main-article">
-    {{ partial "article/components/header" . }}
+    {{ if not .Params.youtube}}
+        {{ partial "article/components/header" . }}
+    {{ else }}
+        <header class="article-header">        
+            {{ partialCached "article/components/details" . .RelPermalink }}
+        </header>
+    {{ end }}
 
     {{ partial "article/components/content" . }}
 
