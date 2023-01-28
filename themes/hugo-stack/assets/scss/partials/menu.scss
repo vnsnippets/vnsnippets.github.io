@@ -200,6 +200,13 @@
                 font-weight: bold;
             }
         }
+
+        &:hover {
+            a {
+                color: var(--accent-color);
+                font-weight: bold;
+            }
+        }
     }
 
     .menu-bottom-section {
