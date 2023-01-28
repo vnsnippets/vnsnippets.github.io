@@ -177,6 +177,11 @@
     .icon-tabler-sun, .text-sun {
         display: none;
     }
+
+    &:hover {
+        color: var(--accent-color);
+        font-weight: bold;
+    }
 }
 
 #i18n-switch {
