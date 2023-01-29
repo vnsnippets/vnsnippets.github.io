@@ -26,7 +26,7 @@ params:
         - articles
     featuredImageField: image
     rssFullContent: true
-    favicon: https://avatars.githubusercontent.com/u/16542151?s=120&v=4
+    favicon: img/favicon.png
 
     footer:
         since:
