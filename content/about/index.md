@@ -9,7 +9,7 @@ date: 2023-01-29T00:28:10+04:00
 
 menu:
     main: 
-        weight: -90
+        weight: -70
         params:
             icon: user
 ---

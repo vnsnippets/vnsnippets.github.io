@@ -14,7 +14,7 @@ links:
     image: ts-logo-128.jpg
 menu:
     main: 
-        weight: -50
+        weight: -60
         params:
             icon: link
 
