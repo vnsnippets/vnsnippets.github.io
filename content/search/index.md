@@ -10,7 +10,7 @@ outputs:
     
 menu:
     main:
-        weight: -60
+        weight: -80
         params: 
             icon: search
 ---
