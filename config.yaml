@@ -13,7 +13,7 @@ languages:
         weight: 1
 
 # disqusShortname = [insert disqus shortname]
-# googleAnalytics = [insert google analytics]
+googleAnalytics: G-9GH0B9YN7M
 # DefaultContentLanguage: en
 # hasCJKLanguage: false
 
