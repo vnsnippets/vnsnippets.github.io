@@ -1,6 +1,6 @@
 ---
 title: "About"
-description: A little bit about me, a little bit about technology and a lot about having fun 👨‍💻
+description: A little bit of me, a little bit of technology and a lot of fun 👨‍💻
 aliases:
   - about
   - contact
@@ -14,26 +14,27 @@ menu:
             icon: user
 ---
 
-![gif-animation](https://github.com/vnsnippets/vnsnippets/blob/master/assets/cover-dark-portrait.gif?raw=true)
+![Animated Introduction](images/cover-dark-portrait.gif)
 
-> ✏️ **THE BEST TECHNIQUES ARE PASSED ON BY THE SURVIVORS**
+> ✏️ **THE BEST TECHNIQUES ARE PASSED ON BY THE SURVIVORS**  
 
-### 🔥 Skills Unlocked
-![C-Sharp][csharp] ![TypeScript][ts] ![NodeJS][nodejs] ![HTML5][html5] ![CSS3][css3] ![JavaScript][js] ![Python][python] <br/>
-![.NET Standard][.net] ![.NET Core][.net-core] ![ReactJs][react] ![NextJs][nextjs] ![VueJs][vue] ![NuxtJs][nuxtjs] ![ExpressJs][express] ![Django][django] <br/>
-![React Native][react-native] ![Xamarin Forms][xamarin] ![UWP][uwp] <br/>
-![Bootstrap][bootstrap] ![Tailwind CSS][tailwind] <br/>
-![Microsoft Azure][azure] ![Firebase][firebase] ![SQL Server][sqlserver] ![MongoDB][mongodb] <br/>
+#### 🔥 SKILLS UNLOCKED
+![C-Sharp][csharp] ![TypeScript][ts] ![NodeJS][nodejs] ![HTML5][html5] ![CSS3][css3] ![JavaScript][js] ![Python][python]  
+![.NET Standard][.net] ![.NET Core][.net-core]  
+![ReactJs][react] ![NextJs][nextjs] ![VueJs][vue] ![NuxtJs][nuxtjs] ![ExpressJs][express] ![Django][django]  
+![React Native][react-native] ![Xamarin Forms][xamarin] ![UWP][uwp]  
+![Bootstrap][bootstrap] ![Tailwind CSS][tailwind]  
+![Microsoft Azure][azure] ![Firebase][firebase] ![SQL Server][sqlserver] ![MongoDB][mongodb]  
 ![GIT][git] ![Github][github] ![Azure DevOps][azuredevops] ![bitbucket][Bitbucket]
 
 
-### ⚔ Weapons of Choice
-![Microsoft Windows][windows] ![Ubuntu][ubuntu] <br/>
-![Visual Studio][visualstudio] ![Visual Studio Code][vscode] <br/>
-![AdobeXD][adobexd] ![Canva][canva]
+#### 🗡️ WEAPONS OF CHOICE
+![Microsoft Windows][windows] ![Ubuntu][ubuntu]  
+![Visual Studio][visualstudio] ![Visual Studio Code][vscode]  
+![AdobeXD][adobexd] ![Figma][figma] ![Canva][canva]
 
 
-### 📚 Scrolls of Wisdom
+#### 📚 SCROLLS OF WISDOM
 ![Markdown][md] ![Gitbook][gitbook]
 
 
@@ -114,6 +115,8 @@ menu:
 [adobexd]: https://img.shields.io/badge/-Adobe%20XD-%231d2229?style=for-the-badge&logo=adobe-xd
 
 [canva]: https://img.shields.io/badge/-Canva-%231d2229?style=for-the-badge&logo=canva
+
+[figma]: https://img.shields.io/badge/-FIGMA-%231d2229?style=for-the-badge&logo=figma
 
 <!-- Documentation -->
 [md]: https://img.shields.io/badge/-Markdown-%231d2229?style=for-the-badge&logo=markdown
