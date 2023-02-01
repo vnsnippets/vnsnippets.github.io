@@ -30,7 +30,7 @@ params:
 
     footer:
         since:
-        customText: Code for fun, your income is just the cherry on top ✏️
+        customText: ✏️ The best techniques are passed on by the survivors
 
     dateFormat:
         published: Jan 02, 2006
