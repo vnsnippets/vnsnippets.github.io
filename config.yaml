@@ -201,6 +201,12 @@ menu:
           params:
               icon: brand-linkedin
 
+        - identifier: instagram
+          name: Instagram
+          url: https://instagram.com/vnsnippets
+          params:
+              icon: brand-instagram
+
 related:
     includeNewer: true
     threshold: 60
