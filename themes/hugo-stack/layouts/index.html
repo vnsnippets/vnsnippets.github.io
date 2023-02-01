@@ -4,11 +4,20 @@
     {{ $filtered := ($pages | intersect $notHidden) }}
     {{ $pag := .Paginate ($filtered) }}
 
+    {{ if gt $pages 0}}
     <section class="article-list">
         {{ range $index, $element := $pag.Pages }}
             {{ partial "article-list/default" . }}
         {{ end }}
     </section>
+    {{ else }}
+        {{ $errorMessages := .Site.Params.errors.contentListEmpty }}
+        <h3 class="article-subtitle">
+        {{ range $index, $text := $errorMessages}}
+            <span>{{ . }}</span><br/>
+        {{ end }}
+        </h3>
+    {{ end }}
 
     {{- partial "pagination.html" . -}}
     {{- partial "footer/footer" . -}}
