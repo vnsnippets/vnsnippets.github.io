@@ -224,6 +224,14 @@
         text-align: center;
 
         figcaption {
+            position: absolute;
+            bottom: 15px;
+            right: 4px;
+
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: var(--body-background);
+
             font-size: 1.4rem;
             color: var(--card-text-color-secondary);
         }
