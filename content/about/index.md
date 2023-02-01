@@ -14,7 +14,7 @@ menu:
             icon: user
 ---
 
-![Animated Introduction](images/cover-dark-portrait.gif)
+![Animated Introduction](https://github.com/vnsnippets/vnsnippets/raw/master/assets/cover-dark-portrait.gif)
 
 > ✏️ **THE BEST TECHNIQUES ARE PASSED ON BY THE SURVIVORS**  
 
