@@ -333,14 +333,14 @@ public class BMIViewModel : INotifyPropertyChanged
 }
 {{< /highlight >}}
 
-### It's a wrap (or a taco)
+## It's a wrap (or a taco)
 Give the application a spin.
 
 This was an introduction to MVVM and how you can easily set it up to decouple your logic from your front-end.
 There is more to it, but for now, grab a taco and congratulate yourself for a job well done.
 
 
-## Credits
+### Credits
 Cover Image: Photo by [Nathan Da Silva](https://unsplash.com/@silvawebdesigns?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/FO7kUmBYVi0?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
   
 
