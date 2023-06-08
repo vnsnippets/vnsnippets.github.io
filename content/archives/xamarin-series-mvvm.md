@@ -2,7 +2,7 @@
 author: "Vidush H. Namah"
 title: "Xamarin Series: MVVM"
 date: 2016-06-24T00:00:00+00:00
-draft: true
+draft: false
 
 description: "This article covers the essentials of MVVM in a Xamarin.Forms project covering the basics of separating your UI code from your business logic and how to connect them through binding."
 
