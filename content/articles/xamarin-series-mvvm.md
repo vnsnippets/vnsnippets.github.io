@@ -6,7 +6,7 @@ draft: false
 
 description: "This article covers the essentials of MVVM in a Xamarin.Forms project covering the basics of separating your UI code from your business logic and how to connect them through binding."
 
-image: "https://images.unsplash.com/photo-1485988412941-77a35537dae4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fGJsb2d8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+image: "https://github.com/vnsnippets/vnsnippets.github.io/raw/master/assets/img/20230608-Laptop-Mobile.jpg"
 
 series: ["Xamarin Series"]
 categories: [
@@ -157,4 +157,9 @@ Give your application a spin, and pray.
 This was an introduction to MVVM and how you can easily set it up to decouple your logic from your front-end.
 
 There is more to it, and there will be blog posts to continue the series - but for today, grab a taco and congratulate yourself for a job well done.
+
+
+### Credits
+Cover Image: Photo by <a href="https://unsplash.com/@silvawebdesigns?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Nathan Da Silva</a> on <a href="https://unsplash.com/photos/FO7kUmBYVi0?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  
 
