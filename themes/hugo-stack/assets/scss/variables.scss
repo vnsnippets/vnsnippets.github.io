@@ -110,7 +110,7 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
 :root {
     --blockquote-border-size: 5px;
     --blockquote-background-color: rgb(248 248 248);
-    --blockquote-border-color: #EDC84C;
+    --blockquote-border-color: #545454;
 
     --heading-border-size: 4px;
 
@@ -136,6 +136,7 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
 
         // --blockquote-background-color: rgb(75 75 75);
         --blockquote-background-color: #2E303A;
+        --blockquote-border-color: #EDC84C;
     }
 }
 
