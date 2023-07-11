@@ -216,7 +216,7 @@
     h5,
     h6 {
         margin-inline-start: calc((var(--card-padding)) * -1);
-        padding-inline-start: calc(var(--card-padding) - var(--heading-border-size));
+        padding-inline-start: var(--card-padding);
         // border-inline-start: var(--heading-border-size) solid var(--accent-color);
     }
     
@@ -224,8 +224,8 @@
     h2 {
         &::after {
             content: '';
-            width: 20px;
-            background-color: var(--card-text-color-main);
+            width: 30px;
+            background-color: var(--card-header-underline);
             height: 4px;
             margin: 8px 2px 0;
             display: block;
@@ -252,9 +252,11 @@
     blockquote {
         position: relative;
         margin: 1.5em 0;
-        border-inline-start: var(--blockquote-border-size) solid var(--card-separator-color);
+        // border-inline-start: var(--blockquote-border-size) solid var(--blockquote-border-color);
         padding: 5px calc(var(--card-padding) - var(--blockquote-border-size));
         background-color: var(--blockquote-background-color);
+        
+        color: var(--blockquote-border-color);
 
         .cite {
             display: block;
