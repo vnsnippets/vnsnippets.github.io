@@ -44,9 +44,10 @@ params:
             enabled: true
             local: true
             src: img/headshot.png
-
+    toc: false
     article:
         math: false
+        toc: false
         readingTime: true
         license:
             enabled: false
