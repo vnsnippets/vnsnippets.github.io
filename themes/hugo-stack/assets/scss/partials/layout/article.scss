@@ -217,7 +217,19 @@
     h6 {
         margin-inline-start: calc((var(--card-padding)) * -1);
         padding-inline-start: calc(var(--card-padding) - var(--heading-border-size));
-        border-inline-start: var(--heading-border-size) solid var(--accent-color);
+        // border-inline-start: var(--heading-border-size) solid var(--accent-color);
+    }
+    
+    h1, 
+    h2 {
+        &::after {
+            content: '';
+            width: 20px;
+            background-color: var(--card-text-color-main);
+            height: 4px;
+            margin: 8px 2px 0;
+            display: block;
+        }
     }
 
     figure {
@@ -241,7 +253,7 @@
         position: relative;
         margin: 1.5em 0;
         border-inline-start: var(--blockquote-border-size) solid var(--card-separator-color);
-        padding: 15px calc(var(--card-padding) - var(--blockquote-border-size));
+        padding: 5px calc(var(--card-padding) - var(--blockquote-border-size));
         background-color: var(--blockquote-background-color);
 
         .cite {
