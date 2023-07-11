@@ -44,7 +44,7 @@ params:
             enabled: true
             local: true
             src: img/headshot.png
-    toc: false
+
     article:
         math: false
         toc: false
@@ -141,9 +141,6 @@ params:
             - type: tag-cloud
               params:
                   limit: 10
-        
-        page:
-            - type: toc
 
     opengraph:
         twitter:
