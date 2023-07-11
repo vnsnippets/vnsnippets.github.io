@@ -139,6 +139,7 @@
     box-shadow: var(--shadow-l1);
     display: none;
     margin: 0 calc(var(--container-padding) * -1);
+    text-transform: uppercase;
 
     padding: 30px 30px;
     @include respond(xl) {
