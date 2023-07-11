@@ -39,7 +39,7 @@ params:
     sidebar:
         compact: false
         emoji: 👨‍💻
-        subtitle: Sit back, relax - grab some tea 🫖 and enjoy a good read 📖
+        subtitle: It is now 02:11, and I should probably go to sleep 😴
         avatar:
             enabled: true
             local: true
@@ -186,11 +186,11 @@ menu:
           params:
               icon: brand-github
 
-        - identifier: twitter
-          name: Twitter
-          url: https://twitter.com/vhnamah
-          params:
-              icon: brand-twitter
+        # - identifier: twitter
+        #   name: Twitter
+        #   url: https://twitter.com/vhnamah
+        #   params:
+        #       icon: brand-twitter
 
         - identifier: linkedin
           name: LinkedIn
