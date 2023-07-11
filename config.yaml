@@ -222,10 +222,10 @@ markup:
         renderer:
             ## Set to true if you have HTML content inside Markdown
             unsafe: false
-    tableOfContents:
-        endLevel: 4
-        ordered: true
-        startLevel: 3
+    # tableOfContents:
+    #     endLevel: 4
+    #     ordered: true
+    #     startLevel: 3
     highlight:
         noClasses: false
         codeFences: true
