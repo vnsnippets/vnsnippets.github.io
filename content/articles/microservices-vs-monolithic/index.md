@@ -1,27 +1,18 @@
 ---
-author: "Vidush H. Namah"
-title: "Microservices vs Monolithic Architecture"
-date: 2023-08-19T00:00:00+00:00
+author: Vidush H. Namah
+title: Microservices vs Monolithic Architecture
+
+date: 2023-08-19
 draft: false
 
-description: "A summary of my thoughts around microservices and monolithic architectures following the Monthly MSCC Meetup of August 2023."
+description: A summary of my thoughts around microservices and monolithic architectures following the Monthly MSCC Meetup of August 2023.
 
-image: "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80"
+series: Architecture
 
-series: ["Community"]
-categories: [
-    "MSCC Monthly Meetup"
-]
-
-tags: [
-    "microservices",
-    "monolithic",
-    "architecture",
-    "mscc",
-    "meetup"
-]
-
-aliases: ["mscc-monthly-microservices-vs-monolithic"]
+tags:
+    - microservices
+    - architecture
+    - mscc meetup
 ---
 
 This is an opinionated blog post regarding my personal views and how I approach the question of "Should I use a microservice-based or monolithic architecture?"

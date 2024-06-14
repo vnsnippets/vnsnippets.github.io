@@ -1,0 +1,3 @@
+[submodule "themes/lithium"]
+	path = themes/lithium
+	url = https://github.com/orion-next/lithium.git

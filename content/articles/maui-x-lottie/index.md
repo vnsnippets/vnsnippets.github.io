@@ -1,35 +1,23 @@
 ---
-author: "Vidush H. Namah"
-title: "Lottie Animations in .NET MAUI"
-date: 2024-01-20T10:00:00+04:00
+author: Vidush H. Namah
+title: Lottie Animations in .NET MAUI
+
+date: 2024-01-20
 draft: false
 
-description: "Tutorial on how to use Lottie Animations in a .NET MAUI Project (Topic of MSCC Meetup 2024/01)"
+description: Tutorial on how to use Lottie Animations in a .NET MAUI Project (Topic of MSCC Meetup 2024/01)
 
-image: "https://images.unsplash.com/photo-1628494391268-c9935bc384d5?q=80&w=1915&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+series: Development
 
-series: ["Community"]
-categories: [
-    "MSCC Monthly Meetup"
-]
-
-tags: [
-    "animations",
-    "mobile development",
-    ".net",
-    "maui",
-    "mscc",
-    "meetup"
-]
-
-aliases: ["mscc-monthly-maui-x-lottie"]
+tags:
+    - MSCC Meetup
 ---
 Source Code: https://github.com/vnsnippets/samples/tree/MEETUP-2024-01-MAUI-Lottie
 
 ## Animations in .NET MAUI
 As part of the Developers' Conference 2023 (MU), I presented how to use .NET MAUI and the Animations feature to create some interesting animated components.
 
-{{< figure src="animation-sample.gif" width="1200" alt="Lottie Animation Sample" class="rounded" >}}
+{{< figure src="animation-sample.gif" width="100%" alt="Lottie Animation Sample" class="rounded" >}}
 
 Custom animations are great, especially when dealing with user interactions - but in some situations, it can be interesting to simply have an animated image (think GIF) in the application.
 
@@ -64,11 +52,11 @@ So now we can provide a Lottie file to SkiaSharp, which will draw images and ani
 This project is a simple one, aiming to add Lottie animations to a page in a .NET MAUI application.
 
 ### Ingredients
-| Requirement | Type | Reference | Version |
-|-|-|-|-|
-|.NET 7.0+ | Framework | https://dotnet.microsoft.com/en-us/download/dotnet/7.0 | 7.0.100 |
-|.NET MAUI | SDK | https://dotnet.microsoft.com/en-us/apps/maui | - |
-| SkiaSharp.Extended.UI.MAUI | NuGet Package | https://mono.github.io/SkiaSharp.Extended/index.html | 2.0.0-preview.86 |
+| Requirement | Reference | Version |
+|-|-|-|
+|.NET 7.0+ | https://dotnet.microsoft.com/en-us/download/dotnet/7.0 | 7.0.100 |
+|.NET MAUI | https://dotnet.microsoft.com/en-us/apps/maui | - |
+| SkiaSharp.Extended.UI.MAUI | https://mono.github.io/SkiaSharp.Extended/index.html | 2.0.0-preview.86 |
 
 ### Instructions
 > Make sure you installed the `SkiaSharp.Extended.UI.MAUI` NuGet package to your application
