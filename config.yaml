@@ -43,6 +43,7 @@ params:
       name: Home
       url: /
       icon: home.svg
+      target: self
 
     - id: github
       name: GitHub
