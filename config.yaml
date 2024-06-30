@@ -18,7 +18,7 @@ params:
     description: "With a blend of creativity and precision, I craft digital solutions that bridge the gap between imagination and reality. Away from my screens, photography is my escape — a way to freeze time, evoke emotions, and tell stories."
     keywords: [ "Blog", "Technology", "Photography" ]
     # image: "/images/meta-image.png"
-    avatar: "/images/avatar.png"
+    avatar: "avatar.png"
     author: "Vidush H. Namah"
 
   directory:
