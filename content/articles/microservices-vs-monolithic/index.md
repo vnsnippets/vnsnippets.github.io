@@ -83,9 +83,9 @@ Of course, as you proceed, you will encounter challenges and the problems will m
 
 The best architecture decisions are the ones that do not have to be made - the problem makes it clear on its own.
 
-> Si tou dimunn dn maryaz pou manz tou les sept cari, **met tou dans ene sel bol**.   
+> Si tou dimunn dan maryaz pou manz tou les sept cari, **met tou dan ene sel bol**.   
 >
-> Si ena pou manz gros pois, ena pa lai chouchou, ena pas lai kuccha - **plito separe li dan sept bol**
+> Si ena pou manz gros pois, ena pa lai chouchou, ena pa lai kuccha - **plito separe li dan sept bol**
 
 ## And it's a cheesy wrap.
 That concludes my thoughts on the subject.   
