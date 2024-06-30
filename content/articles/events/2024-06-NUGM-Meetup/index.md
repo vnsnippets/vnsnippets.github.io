@@ -6,6 +6,8 @@ draft: false
 
 description: Retrospective on .NET User Group (Mauritius) community meetup of June 2024 about .NET 9 and the evolution of .NET.
 
+image: featured-image.jpg
+
 series: Community
 ---
 {{< cta href="https://www.meetup.com/net-user-group-mauritius/events/301752332/" label="VIEW EVENT ON MEETUP" >}}
