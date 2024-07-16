@@ -19,15 +19,17 @@ PARAMS:
   Avatar: avatar.png
   Author: "Vidush H. Namah"
 
-  Directory:
-    Blog: "articles"
+  Directory: "articles"
   
   Articles:
     Dateformat: "2006.01.02"
 
-  Themes:
+  Theme:
     Toggle: true
     Default: dark
+    Coloured:
+      Social: false
+      Preview: true
   
   Footer:
     Since: 2014
