@@ -9,13 +9,6 @@ date: 2023-01-29T00:28:10+04:00
 
 widgets:
    author: true
-
-menu:
-   main:
-      weight: -10
-      name: About
-      params:
-         icon: info.svg
 ---
 
 {{< figure src="https://github.com/vnsnippets/vnsnippets/raw/master/assets/cover-dark-portrait.gif" width="100%" alt="Cover Animation" class="rounded" >}}
