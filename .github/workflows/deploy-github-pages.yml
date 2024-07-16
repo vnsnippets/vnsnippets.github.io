@@ -4,8 +4,7 @@ name: Deploy Hugo site to Github Pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    tags:
-      - PUBLISH/**
+    branches: ["master"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
