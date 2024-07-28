@@ -28,7 +28,7 @@ PARAMS:
     Toggle: true
     Default: dark
     Coloured:
-      Social: true
+      Social: false
       Preview: true
   
   Footer:
