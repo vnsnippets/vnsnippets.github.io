@@ -11,8 +11,8 @@ Paginate: 12
 googleAnalytics: G-TQV8DS0Z53
 
 PERMALINKS:
-  Post: /a/:slug/
   Page: /:slug/
+  Post: /a/:slugorfilename/
 
 PARAMS:
   Image: meta.jpg
@@ -28,7 +28,7 @@ PARAMS:
     Toggle: true
     Default: dark
     Coloured:
-      Social: false
+      Social: true
       Preview: true
   
   Footer:
@@ -90,4 +90,7 @@ LANGUAGES:
       Translations:
         FooterMessage: Vidush H. Namah
         DefaultArticlesMessage: NO CONTENT AVAILABLE
-        RelatedContentHeader: Related Content
+        RelatedContentHeader: "Related Articles"
+        ThemeLabel:
+          Light: LIGHT MODE (BETA)
+          Dark: DARK MODE

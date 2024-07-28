@@ -1,13 +1,17 @@
 ---
 author: Vidush H. Namah
-title: .NET MAUI MVVM
+title: Xamarin Forms MVVM
+slug: xamarin-mvvm
+
 date: 2016-06-24
 draft: false
 
-description: Introduction to the MVVM Pattern in Xamarin covering the project structure, data binding and changes to property values.
+description: "Introduction to the MVVM Pattern in Xamarin covering the project structure, data binding and changes to property values."
 
 series: Development
 ---
+_Update: This is applicable for .NET MAUI as well._
+
 This tutorial requires a basic knowledge of C# and Xamarin. Some practice in UI design using XAML and Xamarin Forms is also recommended.
 
 ## MVVM: Model-View-ViewModel
