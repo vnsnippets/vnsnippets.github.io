@@ -1,7 +1,7 @@
 ---
 author: Vidush H. Namah
 title: 2017/08 MSCC Meetup - AI and Data Science
-slug: 2017-08-MSCC-Meetup
+slug: mscc-meetup-august
 
 date: 2017-08-02
 draft: false

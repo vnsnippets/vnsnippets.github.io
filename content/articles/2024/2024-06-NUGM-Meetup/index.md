@@ -1,7 +1,7 @@
 ---
 author: Vidush H. Namah
 title: 2024/06 NUGM Meetup - .NET Evolutions
-slug: nugm-june-meetup
+slug: nugm-meetup-june
 
 date: 2024-06-28
 draft: false
