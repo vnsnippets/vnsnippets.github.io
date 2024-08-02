@@ -33,6 +33,8 @@ PARAMS:
   
   Footer:
     Since: 2014
+    Report:
+      Bugs: https://github.com/vnsnippets/vnsnippets.github.io/issues/new
 
 RELATED:
   IncludeNewer: true
