@@ -1,3 +1,4 @@
 [submodule "themes/lithium"]
 	path = themes/lithium
-	url = https://github.com/orion-next/lithium.git
+	url = https://github.com/orion-next/hugo-themes.git
+	branch = themes/lithium
