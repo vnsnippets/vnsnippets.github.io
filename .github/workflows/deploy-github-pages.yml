@@ -41,6 +41,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
+          ssh-key: ${{ secrets.ORION_NEXT_HUGO_THEME_KEY }}
           submodules: recursive
       - name: Setup Pages
         id: pages
