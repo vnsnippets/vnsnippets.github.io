@@ -43,6 +43,7 @@ jobs:
         with:
           ssh-key: ${{ secrets.ORION_NEXT_HUGO_THEME_KEY }}
           submodules: recursive
+          persist-credentials: true
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v3
