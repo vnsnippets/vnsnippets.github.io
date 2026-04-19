@@ -32,10 +32,10 @@ This project requires a bit of preparation before we start "pushing pixels" in o
 
 | Requirement | Details | Reference |
 | ------ | ------ | ------ |
-| USB Drive | 8GB or higher | |
-| Free Space | ~129GB (Unallocated) | |
-| Rufus | ISO Flashing Utility | |
-| Arch Linux ISO | Latest Release | |
+| USB Drive | 8GB or higher | - |
+| Free Space | ~129GB (Unallocated) | - |
+| Rufus | ISO Flashing Utility | https://rufus.ie/en/ |
+| Arch Linux ISO | Latest Release | https://archlinux.org/download/ |
 | Patience | Highly Recommended | - |
 
 #### Phase 1: Prepping the Kitchen (Windows)
