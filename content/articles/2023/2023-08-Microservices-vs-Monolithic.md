@@ -1,14 +1,14 @@
 ---
 author: Vidush H. Namah
 title: Microservices vs Monolithic Architecture
-slug: microservices-vs-monolithic-architecture
+slugorcontentbasename: microservices-vs-monolithic-architecture
 
 date: 2023-08-19
 draft: false
 
 description: A summary of my thoughts around microservices and monolithic architectures following the Monthly MSCC Meetup of August 2023.
 
-series: Architecture
+categories: Architecture
 
 tags:
     - microservices

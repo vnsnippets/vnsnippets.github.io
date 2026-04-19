@@ -8,7 +8,7 @@ draft: false
 
 description: "Introduction to the MVVM Pattern in Xamarin covering the project structure, data binding and changes to property values."
 
-series: Development
+category: Development
 ---
 _Update: This is applicable for .NET MAUI as well._
 
@@ -331,5 +331,3 @@ There is more to it, but for now, grab a taco and congratulate yourself for a jo
 
 ## Credits
 Cover Image: Photo by [Nathan Da Silva](https://unsplash.com/@silvawebdesigns?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/FO7kUmBYVi0?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
-  
-

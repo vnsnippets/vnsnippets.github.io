@@ -1,14 +1,14 @@
 ---
 author: Vidush H. Namah
 title: Lottie Animations in .NET MAUI
-slug: lottie-animations-net-maui
+slugorcontentbasename: lottie-animations-net-maui
 
 date: 2024-01-20
 draft: false
 
 description: Tutorial on how to use Lottie Animations in a .NET MAUI Project (Topic of MSCC Meetup 2024/01)
 
-series: Development
+categories: Development
 
 tags:
     - MSCC Meetup

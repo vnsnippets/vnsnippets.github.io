@@ -10,7 +10,7 @@ description: The Developers Conference 2024 (Mauritius) just ended. It was three
 
 image: IMG2482-1920x.webp
 
-series: Community
+category: Community
 ---
 The Developers Conference 2024 in Mauritius, hosted by the Mauritius Software Craftsmanship Community (MSCC), was a resounding success - drawing a diverse group of professionals from the tech industry. It was held at the Caudan Arts Centre from July 18th to 20th, showcasing a rich agenda filled with insightful presentations, technical demonstrations, workshops, and panel discussions.
 

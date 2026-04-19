@@ -1,14 +1,14 @@
 ---
 author: Vidush H. Namah
 title: Alternatives to Fluent Assertions
-slug: alternatives-to-fluent-assertions
+slugorcontentbasename: alternatives-to-fluent-assertions
 
 date: 2025-01-20
 draft: false
 
 description: Fluent Assertions (by Xceed Software Inc.) now requires a paid license for commercial use. Let's explore some popular alternatives.
 
-series: Development
+categories: Development
 ---
 
 Fluent Assertions is a popular library for writing assertions in .NET unit tests. They have recently been acquired by Xceed Software Inc. who have brought forward changes to their license.

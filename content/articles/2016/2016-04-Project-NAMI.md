@@ -1,14 +1,14 @@
 ---
 author: Vidush H. Namah
 title: WordPress with SQL Server
-slug: wordpress-with-sql-server
+slugorcontentbasename: wordpress-with-sql-server
 
 date: 2016-04-06
 draft: false
 
 description: "Project Nami is an adaptation of WordPress to allow support for SQL Server and Microsoft Azure on a near-native level."
 
-series: Development
+categories: Development
 ---
 _Update 2024: There have been significant changes to Project Nami and this blog post may not be relevant/accurate anymore._
 

@@ -1,7 +1,7 @@
 ---
 author: Vidush H. Namah
 title: 2024/06 NUGM Meetup - .NET Evolutions
-slug: nugm-meetup-june
+slugorcontentbasename: nugm-meetup-june
 
 date: 2024-06-28
 draft: false
@@ -10,7 +10,7 @@ description: Retrospective on .NET User Group (Mauritius) community meetup of Ju
 
 image: featured-image.jpg
 
-series: Community
+categories: Community
 ---
 {{< cta href="https://www.meetup.com/net-user-group-mauritius/events/301752332/" label="VIEW EVENT ON MEETUP" >}}
 

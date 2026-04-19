@@ -8,7 +8,7 @@ description : A sample blog post to serve as a template for adding youtube video
 
 youtube: X2huNCHDwMQ
 
-series: Sample
+categories: Sample
 ---
 {{< youtube NzlTuDX7veY >}}
 

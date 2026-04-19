@@ -12,7 +12,7 @@ googleAnalytics: G-TQV8DS0Z53
 
 PERMALINKS:
   Page: /:slug/
-  Post: /a/:slugorfilename/
+  Articles: /:year/:month/:slug
 
 PARAMS:
   Image: meta.jpg
