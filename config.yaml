@@ -12,7 +12,7 @@ googleAnalytics: G-TQV8DS0Z53
 
 PERMALINKS:
   Page: /:slug/
-  Post: /a/:slugorfilename/
+  Articles: /:year/:month/:slug
 
 PARAMS:
   Image: meta.jpg
@@ -43,6 +43,8 @@ RELATED:
   Indices:
     - Name: series
       Weight: 100
+    - Name: category
+      Weight: 100
 
 Markup:
   # Code previews settings
@@ -59,6 +61,7 @@ Youtube:
 
 TAXONOMIES:
   Series: series
+  Category: category
 
 LANGUAGES:
   EN:
@@ -67,10 +70,6 @@ LANGUAGES:
       - Name: Home
         URL: /
         Weight: 10
-
-      - Name: Gallery
-        URL: /gallery
-        Weight: 20
 
       - Name: About
         URL: /about
