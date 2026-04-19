@@ -1,6 +1,6 @@
 #### SIMPLICITY IS THE ULTIMATE SOPHISTICATION
 
-![Sample Screenshot](./.images/featured.png)
+![Sample Screenshot](./assets/featured.png)
 
 🌟 Welcome to the behind-the-scenes of my blog at https://vnsnippets.github.io
 

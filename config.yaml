@@ -43,6 +43,8 @@ RELATED:
   Indices:
     - Name: series
       Weight: 100
+    - Name: category
+      Weight: 100
 
 Markup:
   # Code previews settings
@@ -59,7 +61,7 @@ Youtube:
 
 TAXONOMIES:
   Series: series
-  Categories: category
+  Category: category
 
 LANGUAGES:
   EN:
