@@ -18,10 +18,11 @@ tags:
 
 #### The Existential Crisis of Choice
 
+Got bored of Windows? Time to create my own customized OS environment.
 
-As I’ve mentioned in previous meetups, everyone eventually wants to jump to the latest tech. For me, that meant finally setting up a clean, high-performance dual-boot environment on my Ryzen 7 Pro laptop. The goal? Keep Windows 11 for the "corporate" side of life and Arch Linux for that sweet, minimalist Hyprland workflow.
+Setting this up can feel like a bit of an existential crisis if you aren't prepared. But don't worry—I've spent the last couple of days iron-ing out the kinks so you don't have to. The installation is actually the easy part - what comes next is an absolute rabbit-hole.
 
-Setting this up can feel like a bit of an existential crisis if you aren't prepared. But don't worry—I've spent the last 24 hours (starting April 18th!) iron-ing out the kinks so you don't have to. **To put it simply, we’re going to use the `archinstall` script, but with a manual partitioning "hack" to keep everything safe.**
+**To put it simply, we’re going to use the `archinstall` script, but with a manual partitioning "hack" to keep everything safe.**
 
 #### Let's Get Cooking
 
@@ -202,4 +203,4 @@ You now have a system that boots into a gorgeous Hyprland environment (albeit it
 
 If you want to join the next .NET User Group or Arch discussion, reach out on LinkedIn.
 
-Happy Coding 👨‍💻
+Oh, and I use Arch by the way 👨‍💻
