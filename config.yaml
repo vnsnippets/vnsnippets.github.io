@@ -71,10 +71,6 @@ LANGUAGES:
         URL: /
         Weight: 10
 
-      - Name: Gallery
-        URL: /gallery
-        Weight: 20
-
       - Name: About
         URL: /about
         Weight: 30
