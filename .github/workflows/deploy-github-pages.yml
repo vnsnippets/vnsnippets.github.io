@@ -41,7 +41,7 @@ jobs:
           repository: orion-next/hugo-themes
           ref: themes/lithium
           path: themes/lithium
-          ssh-key: ${{ secrets.ORION_NEXT_HUGO_THEME_KEY }}
+          token: ${{ secrets.ORION_NEXT_HUGO_THEME_KEY }}
           persist-credentials: true
           submodules: recursive
 
