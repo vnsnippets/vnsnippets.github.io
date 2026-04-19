@@ -1,7 +1,7 @@
 ---
 author: Vidush H. Namah
 title: Alternatives to Fluent Assertions
-slugorcontentbasename: alternatives-to-fluent-assertions
+slug: alternatives-to-fluent-assertions
 
 date: 2025-01-20
 draft: false

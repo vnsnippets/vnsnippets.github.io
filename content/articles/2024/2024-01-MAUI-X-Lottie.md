@@ -1,7 +1,7 @@
 ---
 author: Vidush H. Namah
 title: Lottie Animations in .NET MAUI
-slugorcontentbasename: lottie-animations-net-maui
+slug: lottie-animations-net-maui
 
 date: 2024-01-20
 draft: false

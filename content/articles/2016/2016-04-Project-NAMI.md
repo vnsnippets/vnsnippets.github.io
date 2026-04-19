@@ -1,7 +1,7 @@
 ---
 author: Vidush H. Namah
 title: WordPress with SQL Server
-slugorcontentbasename: wordpress-with-sql-server
+slug: wordpress-with-sql-server
 
 date: 2016-04-06
 draft: false
