@@ -8,7 +8,7 @@ draft: false
 
 description: "Project Nami is an adaptation of WordPress to allow support for SQL Server and Microsoft Azure on a near-native level."
 
-categories: Development
+category: Development
 ---
 _Update 2024: There have been significant changes to Project Nami and this blog post may not be relevant/accurate anymore._
 

@@ -10,7 +10,7 @@ description: Retrospective on .NET User Group (Mauritius) community meetup of Ju
 
 image: featured-image.jpg
 
-categories: Community
+category: Community
 ---
 {{< cta href="https://www.meetup.com/net-user-group-mauritius/events/301752332/" label="VIEW EVENT ON MEETUP" >}}
 

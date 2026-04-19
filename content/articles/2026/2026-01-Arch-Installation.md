@@ -1,13 +1,13 @@
 ---
 
 author: Vidush H. Namah
-title: The Safest Path to Dual-Booting Arch Linux and Windows 11
-slugorcontentbasename: dual-boot-arch-windows-guide
+title: Dual Boot Arch and Windows
+slugorcontentbasename: dual-boot-arch-and-windows
 date: 2026-04-19
 draft: false
-description: A detailed technical walkthrough of my journey (starting April 18th) to achieve a stable dual-boot setup using the Arch install script and some manual finesse.
-categories: Linux
-category: "Arch Linux: Cooking Rice"
+description: (Series) Cooking Rice\nWalk through my journey in shifting to Arch Linux and all challenges faced when ricing.
+category: Linux
+series: "Arch Linux: Cooking Rice"
 tags: 
 - Arch Linux
 - Windows 11

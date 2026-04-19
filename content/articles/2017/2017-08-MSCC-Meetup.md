@@ -8,7 +8,7 @@ draft: false
 
 description: Last Saturday, the MSCC held their monthly meetup themed on AI + Analytics – an event in which I had the pleasure of participating.
 
-categories: Community
+category: Community
 ---
 
 Facebook was having some pretty interesting AI developments with their FAIR team this week. As it turns out, we have our own little headline in the AI field here in Mauritius, albeit not as big as one potentially turning to the dark side. This month, one of our very own Microsoft Azure MVPs – Chervine Bhiwoo – took up the task to plan the monthly meetup. We had a nice audience of around 50 people which is always a very welcome crowd.
