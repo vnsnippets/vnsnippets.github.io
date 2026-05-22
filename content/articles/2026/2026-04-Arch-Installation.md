@@ -10,6 +10,8 @@ category: Linux
 series: "Arch Linux: Cooking Rice"
 tags: 
 - Arch Linux
+- CachyOS
+- Hyprland
 - Windows 11
 - Open Source
 - Tutorial
@@ -20,7 +22,9 @@ tags:
 
 Got bored of Windows? Time to create my own customized OS environment.
 
-Setting this up can feel like a bit of an existential crisis if you aren't prepared. But don't worry—I've spent the last couple of days iron-ing out the kinks so you don't have to. The installation is actually the easy part - what comes next is an absolute rabbit-hole.
+Setting this up can feel like a bit of an existential crisis if you aren't prepared. But don't worry—I've spent the last couple of days ironing out the kinks so you don't have to.
+
+The installation is actually the easy part - what comes next is an absolute rabbit-hole.
 
 **To put it simply, we’re going to use the `archinstall` script, but with a manual partitioning "hack" to keep everything safe.**
 
