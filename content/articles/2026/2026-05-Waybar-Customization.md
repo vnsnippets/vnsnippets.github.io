@@ -65,11 +65,8 @@ Our setup splits the top bar into three functional target zones: Left (Time), Ce
         "custom/power"
     ],
 
-    ...
-
     // Each of the modules are then further configured
     // below with their own parameters
-    ...
 }
 ```
 
