@@ -17,8 +17,6 @@ tags:
 - Tutorial
 ---
 
-#### .NET Development on Linux
-
 While I am ricing my CachyOS, I do still need to work - and that primarily consists of .NET Development. This article covers everything I had to install to get up and running.
 
 > The list is not exhaustive and may need to be updated from time to time.
