@@ -1,0 +1,74 @@
+---
+author: Vidush H. Namah
+title: .NET Development on Linux
+slug: dotnet-development-on-linux
+date: 2026-05-24
+draft: false
+description: Guide on setting up Linux (CachyOS) for .NET Web Development including packages required/recommended.
+category: Linux
+series: "Arch Linux: Cooking Rice"
+tags: 
+- Arch Linux
+- CachyOS
+- Hyprland
+- Development
+- .NET
+- Open Source
+- Tutorial
+---
+
+#### .NET Development on Linux
+
+While I am ricing my CachyOS, I do still need to work - and that primarily consists of .NET Development. This article covers everything I had to install to get up and running.
+
+> The list is not exhaustive and may need to be updated from time to time.
+
+##### IDE
+| Application | Details | Reference |
+| ------ | ------ | ------ |
+| Visual Studio Code | Community managed binary in AUR | https://aur.archlinux.org/packages/visual-studio-code-bin |
+| VS Codium | Alternative to Visual Studio Code stripped of Microsoft data collection | https://aur.archlinux.org/packages/vscodium |
+
+Personally, I use **Visual Studio Code** with the **C# Dev Kit** extension.   
+You could also go for **JetBrains Rider**, but I have not used that - so I won't comment on it.
+
+##### Packages
+| Packages | Details | Reference |
+| ------ | ------ | ------ |
+| dotnet-sdk | Compiles source code, runs commands, and builds your projects | https://archlinux.org/packages/extra/x86_64/dotnet-sdk/ |
+| aspnet-runtime | Provides libraries to run and host web applications locally | https://archlinux.org/packages/extra/x86_64/aspnet-runtime/ |
+| dotnet-targeting-pack | Reference assemblies required to compile console and desktop applications | https://archlinux.org/packages/extra/x86_64/dotnet-targeting-pack/ |
+| aspnet-targeting-pack | Reference assemblies required to compile web and API projects | https://archlinux.org/packages/extra/x86_64/aspnet-targeting-pack/ |
+| netstandard-targeting-pack | Compilation of cross-platform libraries targeting .NET Standard specifications | archlinux.org/packages/extra/x86_64/netstandard-targeting-pack/ |
+
+Here is a handy single line install command for the required ones:
+```bash
+sudo pacman -S dotnet-sdk aspnet-runtime dotnet-targeting-pack aspnet-targeting-pack netstandard-targeting-pack
+```
+
+Entity Framework Core CLI could also be handy if you plan on building web applications or use databases:
+```bash
+dotnet tool install --global dotnet-ef
+```
+
+Finally, Microsoft SQL Server can be a pain to run natively on Arch Linux, so using Docker might help:
+```bash
+sudo pacman -S docker docker-compose
+sudo systemctl enable --now docker
+```
+
+#### Anything else?
+You need to update your `PATH` environment variable for your terminal to recognize some of those .NET tools.
+
+You can do so via you `~/.bashrc` or `~/.zshrc` scripts, but since I am on Hyprland, I went with my Hyprland Configurations:
+```conf
+env = DOTNET_ROOT, /usr/bin/dotnet
+env = PATH, $PATH:/usr/bin/dotnet:/usr/bin/dotnet/tools
+```
+
+Run the following command if you are not sure where your binaries are:
+```bash
+which dotnet
+```
+
+And that's a wrap ✌️
