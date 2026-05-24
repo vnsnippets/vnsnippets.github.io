@@ -49,12 +49,13 @@ RELATED:
 Markup:
   # Code previews settings
   Highlight:
-    NoClasses: true
+    # NoClasses: true
     CodeFences: true
     GuessSyntax: true
     TabWidth: 4
     LineNoStart: 1
     LineNos: true
+    Style: "dracula"
 
 Youtube:
   PrivacyEnhanced: true

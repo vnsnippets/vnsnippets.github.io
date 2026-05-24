@@ -23,7 +23,7 @@ While I am ricing my CachyOS, I do still need to work - and that primarily consi
 
 ##### IDE
 | Application | Details | Reference |
-| ------ | ------ | ------ |
+| :------ | :------ | :------ |
 | Visual Studio Code | Community managed binary in AUR | https://aur.archlinux.org/packages/visual-studio-code-bin |
 | VS Codium | Alternative to Visual Studio Code stripped of Microsoft data collection | https://aur.archlinux.org/packages/vscodium |
 
@@ -32,12 +32,12 @@ You could also go for **JetBrains Rider**, but I have not used that - so I won't
 
 ##### Packages
 | Packages | Details | Reference |
-| ------ | ------ | ------ |
+| :------ | :------ | :------ |
 | dotnet-sdk | Compiles source code, runs commands, and builds your projects | https://archlinux.org/packages/extra/x86_64/dotnet-sdk/ |
 | aspnet-runtime | Provides libraries to run and host web applications locally | https://archlinux.org/packages/extra/x86_64/aspnet-runtime/ |
 | dotnet-targeting-pack | Reference assemblies required to compile console and desktop applications | https://archlinux.org/packages/extra/x86_64/dotnet-targeting-pack/ |
 | aspnet-targeting-pack | Reference assemblies required to compile web and API projects | https://archlinux.org/packages/extra/x86_64/aspnet-targeting-pack/ |
-| netstandard-targeting-pack | Compilation of cross-platform libraries targeting .NET Standard specifications | archlinux.org/packages/extra/x86_64/netstandard-targeting-pack/ |
+| netstandard-targeting-pack | Compilation of cross-platform libraries targeting .NET Standard specifications | https://archlinux.org/packages/extra/x86_64/netstandard-targeting-pack/ |
 
 Here is a handy single line install command for the required ones:
 ```bash
