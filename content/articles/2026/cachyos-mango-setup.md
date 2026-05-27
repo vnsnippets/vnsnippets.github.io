@@ -257,6 +257,13 @@ Styling GRUB
 Styling SDDM
 Setting up essentials (Kitty, ZSH, etc.)
 
+I plan to use my existing configurations from GitHub, but I keep my repositories in my dedicated Storage partition. By default, it can happen that Linux says "Only ROOT can clone stuff to the partition".
+Solved by saying "No, I also have rights!"
+
+```bash
+sudo chown -R $USER:$USER /mnt/storage
+```
+
 
 
 
