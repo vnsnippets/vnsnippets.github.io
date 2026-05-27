@@ -115,10 +115,10 @@ awesome-terminal-fonts
 noto-fonts-emoji
 cantarell-fonts
 noto-fonts
-ttf-bitstream-vera
-ttf-dejavu
+~ttf-bitstream-vera~ -> Will just fallback to Noto
+~ttf-dejavu~ -> Will just fallback to Noto
 ttf-liberation
-ttf-opensans
+~ttf-opensans~ -> Will fallback to Noto
 ttf-meslo-nerd
 noto-fonts-cjk
 
