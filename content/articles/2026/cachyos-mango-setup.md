@@ -252,6 +252,10 @@ sudo systemctl start sddm
 Starting SDDM means we leave the beautiful black TTY screen for more graphics.
 Now the ricing can begin.
 
+### Next Steps
+Styling GRUB
+Styling SDDM
+Setting up essentials (Kitty, ZSH, etc.)
 
 
 
