@@ -1,0 +1,222 @@
+---
+author: Vidush H. Namah
+title: CachyOS and MangoWM
+slug: cachyos-and-mangowm
+date: 2026-05-24
+draft: true
+description: Guide to installing CachyOS with MangoWM, covering challenges faced and how to tackle weird CachyOS opinions
+category: Linux
+series: "Arch Linux: Cooking Rice"
+tags: 
+- Arch Linux
+- CachyOS
+- Mango
+- Open Source
+- Tutorial
+---
+
+After a month of playing around and ricing, my Arch Linux with Hyprland setup is now production ready. It works great and I am able to do clean work on it to actually earn my living. So like any normal person, it's time to scrap it completely and go for something else.
+
+### Installing CachyOS
+Wiki explains it well - no need to repeat myself here.   
+Installer choices:
+- GRUB as Bootloader
+- Partitions:
+  - 128GiB BTRFS for OS (Mount: /)
+  - 825GiB BTRFS for Storage (Mount: /mnt/storage)
+  - Everything else (~890MiB FAT32) for Boot (Mount: /boot/efi, Flag: boot)
+
+BTRFS Risk.  
+BTRFS creates snapshots which takes space - and 128GiB could fill up fast.   
+Once booted, immediately edit /etc/snapper/configs/root to limit snapshot retention (3-5 daily instead of 10+).
+
+Desktop: No Desktop.  
+Why not `MangoWM`? Because CachyOS decided it's a good idea to provide that with DMS (Dank Material Shell) bundled. And I don't want DMS.
+
+Planned Requirements
+- Shell: ZSH
+- Editor: Micro
+- Internet: Network Manager + Built-in WPA Supplicant
+
+Package Selection
+
+CachyOS Packages
+cachyos-hello
+cachyos-kernel-manager
+cachyos-packageinstaller
+cachyos-settings
+cachyos-micro-settings -> Kept because I will use Micro
+cachyos-wallpapers
+
+CachyOS Shell Configuration
+~cachyos-fish-config~ -> Removed because I don't fish
+~cachyos-zsh-config~ -> Removed: It comes with Powerline-whatever-10K - I will install what I need myself
+
+Base Development and Common Packages
+*dnsmasq* -> Copilot says only needed if I will confire Local DNS caching
+*dnsutils* -> Debugging (dig, nslookup)
+ethtool
+~iwd~ -> Removed because I don't want Network Manager to conflict with different backends
+~modemmanager~ -> Removed: Meant for cellular network - And I don't have that (and don't plan to use that).
+networkmanager
+networkmanager-openvpn
+nss-mdns
+~usb_modeswitch~ -> Removed: Flips USB dongles from "storage" to "modem" - but I don't plan to use cellular dongles.
+~wpa_supplicant~ -> Removed because Network Manager comes bundled with WPA Supplicant, and I don't want conflicts
+wireless-regdb
+~xl2tpd~ -> Legacy Layer 2 Tunneling Protocol - I have Network Manager Open VPN
+
+Firewall
+ufw
+ufw-extras
+
+Bluetooth
+bluez
+bluez-hid2hci
+bluez-libs
+bluez-utils
+bluez-obex
+
+Package Management
+pacman-contrib
+pkgfile
+rebuild-detector
+reflector
+paru
+shelly
+
+Desktop Integration
+accountsservice
+bash-completion
+ffmpegthumbnailer
+gst-libav
+gst-plugin-pipewire
+gst-plugins-bad
+gst-plugins-ugly
+libdvdcss
+libgsf
+libopenraw
+plocate
+poppler-glib
+vlc-plugins-all
+xdg-user-dirs
+xdg-utils
+
+File System
+efitools
+nfs-utils
+~nilfs-utils~ -> Removed because I don't have NILFS2 file systems (but maybe good to keep for removable devices?)
+smartmontools
+unrar
+unzip
+
+Fonts
+awesome-terminal-fonts
+noto-fonts-emoji
+cantarell-fonts
+noto-fonts
+ttf-bitstream-vera
+ttf-dejavu
+ttf-liberation
+ttf-opensans
+ttf-meslo-nerd
+noto-fonts-cjk
+
+Audio
+alsa-firmware
+alsa-plugins
+alsa-utils
+pavucontrol
+pipewire-pulse
+wireplumber
+pipewire-alsa
+
+Hardware
+dmidecode
+~dmraid~ -> Removed: Used for discovering old legacy "Fake RAID" arrays, and I don't have a RAID array here.
+hdparm
+hwdetect
+linux-firmware
+lsscsi
+mesa-utils
+mtools
+sg3_utils
+sof-firmware
+
+Power
+~cpupower~ -> Removed: Power Profiles is good enough for me, I don't need to tweak CPU manually
+power-profiles-daemon
+upwoer
+
+Applications
+~alacritty~ -> Removed: I will use Kitty
+btop
+duf
+~fsarchiver~ -> Backup tool - Not needed - I am using BTRFS with Snapshots
+git
+~glances~ -> Monitoring on steroids - I don't need, I'm good with BTOP
+hwinfo
+meld
+~nano-syntax-highlighting~ -> Removed because I use Micro
+fastfetch
+pv
+python-defusedxml
+python-packaging
+rsync
+wget
+ripgrep
+micro
+~nano~ -> Removed: I use Micro
+~vim~ -> Removed: Screw all the VIM worshippers
+openssh
+
+Firefox And Language Packs
+firefox
+firefox-i18n-$LOCALE
+
+Stuff I need to install later
+zsh + utilities
+sddm
+kitty
+
+Because I am rebelling against the CachyOS Mango DMS package, the following (which are bundled) must be installed separately:
+
+As part of mangowmdms-shell
+mangowm (or mangowc)
+quickshell (maybe I won't do it this time?)
+dms-core (or dms-shell) -> The infamous DMS which replaces:
+- Waybar
+- Mako/Dunst
+- Fuzzel/Rofi/Wofi
+- Swaylock/Hyprlock
+- Polkit Agents
+
+grim, slurp
+nautilus
+cliphist (alternative: wl-clipboard)
+qt6ct (maybe not needed)
+nwg-look
+adw-gtk3-theme
+~cachyos-alacritty-config~ (don't need)
+gnome-keyring
+xdg-desktop-portal-gnome
+xdg-desktop-portal-gtk
+xwayland-satellite -> Pulls xorg-xwayland (need investigation)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
