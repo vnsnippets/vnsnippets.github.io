@@ -203,11 +203,54 @@ xdg-desktop-portal-gnome
 xdg-desktop-portal-gtk
 xwayland-satellite -> Pulls xorg-xwayland (need investigation)
 
+### Post-Installation
+```bash
+nmcli device wifi list
+nmcli device wifi connect "Your-SSID" --ask
 
+sudo pacman -Sy
+sudo pacman -Syyu
 
+sudo pacman -Syu sddm mangowm wl-clipboard xorg-xwayland xdg-desktop-portal-wlr xdg-desktop-portal-gtk kitty zsh zsh-history-substring-search zsh-syntax-highlighting
 
+# Ensure Mango Configurations exist
+mkdir ~/.config/mango
 
+# Move default Mango configurations to a safer location
+sudo mv /etc/mango/config.conf ~/.config/mango/config.conf
 
+# If no default file exists in /etc/mango
+mango --print-default-config > ~/.config/mango/config.conf
+
+# Check the file and take note of your terminal launch keybind
+# Most problems can be solved if you at least have a terminal
+micro ~/.config/mango/config.conf
+
+# The default most likely is Alt+Return opens Foot
+# I don't have Foot, I have kitty
+# So I updated mine to bind=Alt,Return,spawn,kitty
+
+# Ensure SDDM can detect Mango
+# We expect a mango.desktop file here
+ls /usr/share/wayland-sessions
+
+# If not, we create one
+sudo micro /usr/share/wayland-sessions/mango.desktop
+
+# [Desktop Entry]
+# Name=Mango
+# Comment=Lightweight Wayland Compositor
+# Exec=mango
+# Type=Application
+# DesktopNames=Mango
+
+# Enable and start SDDM
+sudo systemctl enable sddm
+sudo systemctl start sddm
+```
+
+Starting SDDM means we leave the beautiful black TTY screen for more graphics.
+Now the ricing can begin.
 
 
 
