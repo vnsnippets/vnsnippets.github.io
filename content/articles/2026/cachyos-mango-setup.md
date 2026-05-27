@@ -263,14 +263,28 @@ Solved by saying "No, I also have rights!"
 ```bash
 sudo chown -R $USER:$USER /mnt/storage
 ```
+Cloned arch basmati repository
+Also profit of the occasion to setup git stuff:
+git config --global user.name "Your-Name"
+git config --global user.email "Your-Email"
+ssh-keygen -t ed25519 -C "your-github-email@example.com"
+I like my files to say what they are for, so I saved it to ~/.ssh/gh_ed25519
+That means I need to setup a config to declare when should that key be used
+micro ~/.ssh/config
+Host github.com
+    IdentityFile ~/.ssh/gh_ed25519
 
+```bash
+ssh -T git@github.com
+```
+The authenticity of host 'github.com (20.87.245.0)' can't be established.
+ED25519 key fingerprint is: <something-that-I-probably-should-not-share>
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+```bash
+yes
+```
+Warning: Permanently added 'github.com' (ED25519) to the list of known hosts.
+Hi <your-github-username>! You've successfully authenticated, but GitHub does not provide shell access.
 
-
-
-
-
-
-
-
-
-
+And you are good to go.
