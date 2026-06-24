@@ -36,7 +36,7 @@ sudo chmod 4755 /opt/antigravity/chrome-sandbox
 ## Step 3: Symlink to Your System PATH
 To make sure you can type antigravity-ide in any terminal window to fire up the editor, create a symbolic link into /usr/local/bin/.
 
-sudo ln -s /opt/antigravity/antigravity /usr/local/bin/antigravity-ide
+sudo ln -s /opt/antigravity/antigravity-ide /usr/local/bin/antigravity-ide
 
 ## Step 4: Create a Desktop App Launcher
 To launch the IDE directly from your CachyOS application menu or application dock without keeping a terminal open, create a standard Freedesktop .desktop file. [1, 3] 
@@ -55,6 +55,7 @@ Terminal=false
 Categories=Development;IDE;TextEditor;
 MimeType=text/plain;inode/directory;
 StartupNotify=true
+
 
 (Note: If the bundled application icon filename differs in your tarball version, verify the path inside /opt/antigravity/resources/app/resources/linux/ and update the Icon= field accordingly).
 ## Step 5: Apply the CachyOS Loop Workaround
