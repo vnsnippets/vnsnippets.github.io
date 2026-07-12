@@ -1,0 +1,46 @@
+---
+import type { ArticleFrontmatter } from "../types";
+import { SiteSettings, ToShortDate } from "../utilities";
+
+type Props = ArticleFrontmatter & {
+    Path: string;
+};
+
+const Article = Astro.props;
+---
+
+<a
+    href={Article.Path}
+    class="relative rounded-md hover:rounded-xl overflow-hidden border border-brand-bg-light/75 bg-brand-bg-light/20 hover:bg-brand-bg-light/10 transition-all duration-200 ease-in-out group"
+>
+    {Article.Cover && (
+        <div class="absolute inset-0">
+            <img src={Article.Cover} alt=`Cover image for ${Article.Title}` class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-linear-to-b from-black/90 via-black/80 to-black/90 opacity-90 group-hover:opacity-100 transition-opacity duration-400 ease-in-out" />
+        </div>
+    )}
+
+    <div class="relative size-full grid grid-rows-[auto_auto_auto_1fr] gap-4 p-6">        
+        <p class="uppercase text-brand-text-dark/75 font-semibold text-base">
+            {Article.Series ?? SiteSettings.Articles.DefaultSeries}
+        </p>
+        <div class="grid gap-2">
+            <p class="text-base text-brand-text-light">{Article.Title}</p>
+            <p class=`text-base text-brand-text-dark ${Article.Cover ? "opacity-0 transform translate-y-4 overflow-hidden group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 ease-in" : "opacity-100"}`>{Article.Caption}</p>
+        </div>
+        {
+            Article.Tags && (
+                <div class="flex gap-2 flex-wrap overflow-x-auto text-brand-text text-sm">
+                    {Article.Tags.slice(0, 4).map((e) => (
+                        <p class="flex bg-brand-bg-light/50 justify-center items-center rounded-lg px-2 py-1 shrink-0">
+                            {e}
+                        </p>
+                    ))}
+                </div>
+            )
+        }
+        <div class="flex justify-between items-end gap-2 text-brand-text-dark/75">
+            <p class="text-base">{ToShortDate(Article.Published)}</p>
+        </div>
+    </div>
+</a>

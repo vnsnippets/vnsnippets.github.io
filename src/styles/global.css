@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Lustria&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import "tailwindcss";
+
+@theme {
+    --font-sans: "Nunito", Arial, Helvetica, sans-serif;
+    --font-serif: 'Lustria', Georgia, 'Times New Roman', Times, serif;
+
+    /* Brand kit */
+    --color-brand-bg: #1D1F25;
+    --color-brand-bg-light: #333746;
+    --color-brand-bg-dark: #14161a;
+
+    --color-brand-text-light: #d7d8df;
+    --color-brand-text: #C3C6CF;
+    --color-brand-text-dark: #9A9FAE;
+
+    /* Socials */
+    --color-whatsapp: #25D366;
+    --color-facebook: #1877F2;
+    --color-instagram: #E1306C;
+    --color-linkedin: #0077B5;
+    --color-twitter: #1DA1F2;
+    --color-tiktok: #FE2858;
+    --color-youtube: #FF0436;
+    --color-github: #101010;
+}
+
+@source inline("hover:bg-whatsapp hover:bg-facebook hover:bg-instagram hover:bg-linkedin hover:bg-twitter hover:bg-tiktok hover:bg-youtube hover:bg-github");
+
+@layer base {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: var(--font-serif);
+    }
+
+    a,
+    button {
+        transition: all 200ms ease-out;
+    }
+
+    html,
+    body {
+        /* Enables scrolling */
+        overflow: auto;
+        /* Hides scrollbar for Firefox */
+        scrollbar-width: none;
+        /* Hides scrollbar for IE and older Edge */
+        -ms-overflow-style: none;
+        scroll-behavior: smooth;
+        min-width: 100vw;
+        min-height: 100vh;
+    }
+
+    /* Hides scrollbar for Chrome, Safari, and newer Edge (WebKit) */
+    html::-webkit-scrollbar,
+    body::-webkit-scrollbar {
+        display: none;
+    }
+
+    body {
+        background: var(--color-brand-bg);
+        color: var(--color-brand-text);
+        font-family: var(--font-sans);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        position: relative;
+        text-wrap: pretty;
+    }
+}
+
+/* @plugin "@tailwindcss/typography";
+
+@utility markdown-custom {
+
+} */

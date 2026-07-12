@@ -1,0 +1,50 @@
+---
+import type { ComponentProps } from "astro/types";
+
+import HeadPartial from "Partials:/HeadPartial.astro";
+import BaseLayout from "Views:/BaseLayout.astro";
+import Icon from "Partials:/Icon.astro";
+import { SiteSettings } from "../utilities";
+
+type Props = ComponentProps<typeof HeadPartial>
+const Properties = Astro.props;
+
+const SocialLinkClass = (key: string) => "flex justify-center items-center p-2 leading-none rounded-md h-full bg-brand-bg-light/50 text-brand-text-light text-base hover:bg-" + key;
+---
+<BaseLayout {...Properties}>
+    <main class="container px-4 pb-12">
+        <header class="grid gap-6 py-12">
+            <slot name="pre-navigation" />
+
+            <nav class="mx-auto grid gap-8">
+                {SiteSettings.Socials.length > 0 && (  
+                    <ul class="flex gap-2 justify-center">
+                        {SiteSettings.Socials.map((e) => (
+                            <li>
+                                <a class={SocialLinkClass(e.Icon)} href={e.Hyperlink} target="_blank">
+                                    {e.Icon ? (<Icon class="size-6" name={e.Icon} />) : (<span class="uppercase px-1.5">{e.Label}</span>)}
+                                </a>
+                            </li>
+                        ))}
+
+                    </ul>
+                )}
+
+                {SiteSettings.Links.length > 0 && (  
+                    <ul class="flex gap-2 justify-center">
+                        {SiteSettings.Links.map((e) => (
+                            <li>
+                                <a class="relative flex flex-col items-center pb-2 text-brand-text-dark hover:text-brand-text-light transition-all duration-200 group" href={e.Hyperlink}>
+                                    <span class="uppercase px-1.5">{e.Label}</span>
+                                    <span class="absolute bottom-0 h-0.5 w-0 bg-brand-text-light rounded-full group-hover:w-[40%] transition-all duration-200"></span>
+                                </a>
+                            </li>
+                        ))}
+
+                    </ul>
+                )}
+            </nav>
+        </header>
+        <slot />
+    </main>
+</BaseLayout>

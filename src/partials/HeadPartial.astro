@@ -1,0 +1,66 @@
+---
+import type { PageMetadata } from "../types";
+import { SiteSettings } from "../utilities";
+
+type Props = PageMetadata;
+const Properties = Astro.props;
+
+const robotsContent = Properties.Hidden ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
+---
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+  <meta name="generator" content={Astro.generator} />
+
+  <title>{Properties.Title}</title>
+  <link rel="canonical" href={Astro.url.href} />
+
+  <meta name="description" content={Properties.Description} />
+  {Properties.Keywords && (
+    <meta name="keywords" content={Properties.Keywords.join(", ")}>
+    <meta name="robots" content={robotsContent} />
+  )}
+
+  {SiteSettings.Fonts.map((url) => (
+    <link rel="preconnect" href={url} crossorigin={url.includes("gstatic") ? "" : undefined} />
+  ))}
+
+  <meta property="og:site_name" content={SiteSettings.SiteName} />
+  <meta property="og:type" content={Properties.OpenGraph?.Type ?? "website"} />
+  <meta property="og:title" content={Properties.Title} />
+  <meta property="og:description" content={Properties.Description} />
+  <meta property="og:url" content={Astro.url.href} />
+  <meta property="og:image" content={new URL(Properties.OpenGraph?.Image?.Source ?? SiteSettings.DefaultImage.Source, Astro.url)} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content={Properties.OpenGraph?.Image?.Caption ?? SiteSettings.DefaultImage.Caption} />
+  <meta property="og:locale" content={SiteSettings.locale} />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={Properties.Title} />
+  <meta name="twitter:description" content={Properties.Description} />
+  <meta name="twitter:image" content={new URL(Properties.OpenGraph?.Image?.Source ?? SiteSettings.DefaultImage.Source, Astro.url)} />
+  <meta name="twitter:creator" content={SiteSettings.TwitterHandle} />
+
+  <link rel="icon" href="/favicon.ico" sizes="32x32" />
+ {/* <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <meta name="theme-color" content={SiteSettings.ThemeColor} /> */}
+
+  {Properties.Schema ? (
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(Properties.Schema)} />
+  ) : (
+    <script is:inline type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": Properties.Title,
+      "description": Properties.Description,
+      "url": Astro.url.href
+    })} />
+  )}
+
+  <slot />
+</head>
