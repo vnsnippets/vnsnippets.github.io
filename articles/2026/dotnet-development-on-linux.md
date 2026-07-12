@@ -1,6 +1,4 @@
 ---
-layout: Views:/ArticleLayout.astro
-
 Author: Vidush H. Namah
 Title: .NET Development on Linux
 Caption: Guide on setting up Linux (CachyOS) for .NET Web Development including packages required/recommended.

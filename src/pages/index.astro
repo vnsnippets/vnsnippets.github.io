@@ -2,70 +2,22 @@
 import ArticlePreview from "Partials:/ArticlePreview.astro";
 import NavigationLayout from "Views:/NavigationLayout.astro";
 
-import { ArticlesByPublishedDate, GetPageProperties } from "../utilities";
-import type { ArticleFrontmatter } from "../types";
-import type { MarkdownLayoutProps } from "astro";
-import { undefined } from "astro:schema";
+import { GetPageProperties } from "../utilities";
+import type { CollectionTypes } from "../types";
+import { getCollection } from "astro:content";
 
 const DEVMODE = import.meta.env.DEV;
 
-type PageContentType = {
-    Header: {
-        Name: string,
-        Description: string
-    }
-}
+const PageProperties = GetPageProperties(Astro.url.pathname);
 
-const PageProperties = GetPageProperties<PageContentType>(Astro.url.pathname);
-
-type ArticlesByDraftStatus = {
-    Drafts: MarkdownLayoutProps<ArticleFrontmatter>[];
-    Live: MarkdownLayoutProps<ArticleFrontmatter>[];
-};
-
-const Articles = ArticlesByPublishedDate
-    .sort((a, b) => b.Date.getTime() - a.Date.getTime())
-    .reduce<ArticlesByDraftStatus>(
-        (result, e) => {
-            if (e.Article.frontmatter.Draft) result.Drafts.push(e.Article);
-            else result.Live.push(e.Article);
-
-            return result;
-        },
-        { Drafts: [], Live: [] }
-    );
-
-type MarkdownArticle = MarkdownLayoutProps<ArticleFrontmatter>;
 ---
 
-<NavigationLayout {...PageProperties.Metadata}>
+<NavigationLayout {...PageProperties.Metadata} Title={PageProperties.Metadata.Title}>
     <div class="grid gap-2 max-w-xl mx-auto text-center mt-12" slot="pre-navigation">
-        <h1 class="text-xl">{PageProperties.Header.Name}</h1>
-        <p class="text-base text-brand-text-dark">{PageProperties.Header.Description}</p>
+        <h1 class="text-xl">{PageProperties.Metadata.Title}</h1>
+        <p class="text-base text-brand-text-dark">{PageProperties.Metadata.Description}</p>
     </div>
-
-    <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
-        {
-            Articles.Live.map((e: MarkdownArticle) => {
-                if (!e.url) return null;
-                return <ArticlePreview Path={e.url} {...e.frontmatter} />;
-            })
-        }
+    <div class="text-lg text-center">
+        <h1>This page is under construction, but you can visit the Blog meanwhile.</h1>
     </div>
-
-    {
-        DEVMODE && Articles.Drafts.length > 0 && (
-            <div class="mt-12 pt-12 border-t-2 border-brand-text/10">
-                <p class="text-brand-text-dark mb-4">DRAFTS (DEVELOPMENT MODE ONLY)</p>
-                <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
-                    {Articles.Drafts.map((e: MarkdownArticle) => {
-                        if (!e.url) return null;
-                        return (
-                            <ArticlePreview Path={e.url} {...e.frontmatter} />
-                        );
-                    })}
-                </div>
-            </div>
-        )
-    }
 </NavigationLayout>

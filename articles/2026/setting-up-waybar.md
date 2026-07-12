@@ -1,6 +1,4 @@
 ---
-layout: Views:/ArticleLayout.astro
-
 Author: Vidush H. Namah
 Title: Setting up Waybar
 Caption: Demystifying Waybar styling and layout configuration on CachyOS, featuring modular styles and CSS color injection.

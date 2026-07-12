@@ -1,6 +1,4 @@
 ---
-layout: Views:/ArticleLayout.astro
-
 Author: Vidush H. Namah
 Title: WordPress with SQL Server
 

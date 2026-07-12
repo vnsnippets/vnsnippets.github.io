@@ -1,6 +1,4 @@
 ---
-layout: Views:/ArticleLayout.astro
-
 Author: Vidush H. Namah
 Title: Dual Boot Arch and Windows
 Caption: Walk through my journey in shifting to Arch Linux and cooking some rice - starting with dual booting Arch and Windows.

@@ -1,6 +1,4 @@
 ---
-layout: Views:/ArticleLayout.astro
-
 Author: Vidush H. Namah
 Title: 2016/03 MSCC Meetup - .NET Core 1.0
 

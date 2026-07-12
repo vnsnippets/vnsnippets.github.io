@@ -1,0 +1,55 @@
+---
+import ArticlePreview from "Partials:/ArticlePreview.astro";
+import NavigationLayout from "Views:/NavigationLayout.astro";
+
+import { GetPageProperties } from "../../utilities";
+import type { CollectionTypes } from "../../types";
+import { getCollection } from "astro:content";
+
+const DEVMODE = import.meta.env.DEV;
+
+const PageProperties = GetPageProperties(Astro.url.pathname);
+
+type ReducedListType = {
+    drafts: CollectionTypes.Article[]
+    published: CollectionTypes.Article[]
+}
+
+const posts = await getCollection("Articles", ({ data }) => {
+  return import.meta.env.PROD ? data.Draft !== true : true;
+});
+
+const articles = posts
+    .sort((a, b) => b.data.Published.getTime() - a.data.Published.getTime())
+    .reduce<ReducedListType>((result, e) => {
+        if (e.data.Draft) result.drafts.push(e);
+        else result.published.push(e);
+        return result;
+    }, { drafts: [], published: [] });
+---
+
+<NavigationLayout {...PageProperties.Metadata} Title={PageProperties.Metadata.Title}>
+    <div class="grid gap-2 max-w-xl mx-auto text-center mt-12" slot="pre-navigation">
+        <h1 class="text-xl">{PageProperties.Metadata.Title}</h1>
+        <p class="text-base text-brand-text-dark">{PageProperties.Metadata.Description}</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
+        {
+            articles.published.map((e: CollectionTypes.Article) => {
+                return <ArticlePreview {...e} />;
+            })
+        }
+    </div>
+
+    {DEVMODE && articles.drafts.length > 0 && (
+        <div class="mt-12 pt-12 border-t-2 border-brand-text/10">
+            <p class="text-brand-text-dark mb-4">DRAFTS (DEVELOPMENT MODE ONLY)</p>
+            <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
+                {articles.drafts.map((e: CollectionTypes.Article) => {
+                    return <ArticlePreview {...e} />;
+                })}
+            </div>
+        </div>
+    )}
+</NavigationLayout>

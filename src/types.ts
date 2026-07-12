@@ -41,3 +41,7 @@ export type ArticleFrontmatter = {
 // export type ArticleWithURL = CollectionEntry<'Articles'> & {
 //     url: string;
 // };
+
+export namespace CollectionTypes {
+    export type Article = CollectionEntry<"Articles">
+}

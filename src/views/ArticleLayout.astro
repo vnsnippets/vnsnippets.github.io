@@ -1,41 +1,40 @@
 ---
+// src/layouts/ArticleLayout.astro
 import "Styles:/markdown.hugo.css"
-
-import type { ArticleFrontmatter } from "../types";
 import NavigationLayout from "./NavigationLayout.astro";
-import type { MarkdownLayoutProps } from "astro";
 import { SiteSettings, ToShortDate } from "../utilities";
+import type { CollectionTypes } from "../types";
 
-type Props = MarkdownLayoutProps<ArticleFrontmatter>;
+type Props = CollectionTypes.Article;
 
-const Frontmatter = Astro.props.frontmatter
+const { data } = Astro.props;
 
-const CoverImage = {
-    Source: Frontmatter.Cover ?? SiteSettings.DefaultImage.Source,
-    Caption: `Featured image for article titled ${Frontmatter.Title}`
-}
+const CoverImage = data.Cover ? {
+    Source: data.Cover,
+    Caption: `Featured image for article titled ${data.Title}`
+} : undefined;
 ---
 
 <NavigationLayout
-    Title=`${Frontmatter.Title}`
-    Description={Frontmatter.Caption}
+    Title={data.Title}
+    Description={data.Caption}
     OpenGraph={{
         Type: "article",
         Image: CoverImage
-    }},
-    Keywords={Frontmatter.Tags}
+    }}
+    Keywords={data.Tags}
 >
     <article class="max-w-5xl mx-auto">
         <section class="grid gap-4 mb-8">
             <div class="flex justify-between items-end gap-2 text-brand-text-dark">
                 <p class="text-base">
-                    {ToShortDate(Frontmatter.Published)}
+                    {ToShortDate(data.Published)}
                 </p>
             </div>
             {
-                Frontmatter.Tags && (
+                data.Tags && (
                     <div class="flex gap-2 flex-wrap overflow-x-auto text-brand-text text-sm">
-                        {Frontmatter.Tags.slice(0, 4).map((e) => (
+                        {data.Tags.slice(0, 4).map((e) => (
                             <p class="flex bg-brand-bg-light/50 justify-center items-center rounded-lg px-2 py-1 shrink-0">
                                 {e}
                             </p>
@@ -45,15 +44,15 @@ const CoverImage = {
             }
 
             <p class="uppercase text-brand-text-dark font-semibold text-base mt-4">
-                {Frontmatter.Series ?? SiteSettings.Articles.DefaultSeries}
+                {data.Series ?? SiteSettings.Articles.DefaultSeries}
             </p>
 
             <div class="grid gap-2">
-                <h1 class="text-2xl text-brand-text-light font-semibold">{Frontmatter.Title}</h1>
-                <p class="text-lg text-brand-text">{Frontmatter.Caption}</p>
+                <h1 class="text-2xl text-brand-text-light font-semibold">{data.Title}</h1>
+                <p class="text-lg text-brand-text">{data.Caption}</p>
             </div>
 
-            {Frontmatter.Cover && (
+            {CoverImage && (
                 <div class="rounded-lg border border-brand-bg-light/75 shadow-lg overflow-hidden">
                     <img src={CoverImage.Source} alt={CoverImage.Caption} />
                 </div>

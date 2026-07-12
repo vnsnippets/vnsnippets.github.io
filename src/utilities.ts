@@ -1,7 +1,6 @@
 import Site from "Assets:/site.json";
 import type { ArticleFrontmatter, PageMetadata } from "./types";
 import type { MarkdownLayoutProps } from "astro";
-import { getCollection } from "astro:content";
 
 export const SiteSettings = Site;
 
@@ -23,7 +22,6 @@ export const ArticlesByPublishedDate = ArticlesGlobs
         }
     })
 
-export const ToShortDate = (e: any) => {
-    const date = new Date(e);
-    return date.toISOString().split('T')[0]
+export const ToShortDate = (e: Date) => {
+    return e.toISOString().split('T')[0]
 }
