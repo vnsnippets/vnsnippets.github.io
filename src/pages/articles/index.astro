@@ -2,7 +2,7 @@
 import ArticlePreview from "Partials:/ArticlePreview.astro";
 import NavigationLayout from "Views:/NavigationLayout.astro";
 
-import { GetPageProperties } from "../../utilities";
+import { FilterDraftsOnProduction, GetPageProperties } from "../../utilities";
 import type { CollectionTypes } from "../../types";
 import { getCollection } from "astro:content";
 
@@ -15,11 +15,9 @@ type ReducedListType = {
     published: CollectionTypes.Article[]
 }
 
-const posts = await getCollection("Articles", ({ data }) => {
-  return import.meta.env.PROD ? data.Draft !== true : true;
-});
+const articles = await getCollection("Articles", FilterDraftsOnProduction);
 
-const articles = posts
+const groupedArticles = articles
     .sort((a, b) => b.data.Published.getTime() - a.data.Published.getTime())
     .reduce<ReducedListType>((result, e) => {
         if (e.data.Draft) result.drafts.push(e);
@@ -37,17 +35,17 @@ const articles = posts
 
     <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
         {
-            articles.published.map((e: CollectionTypes.Article) => {
+            groupedArticles.published.map((e: CollectionTypes.Article) => {
                 return <ArticlePreview {...e} />;
             })
         }
     </div>
 
-    {DEVMODE && articles.drafts.length > 0 && (
+    {DEVMODE && groupedArticles.drafts.length > 0 && (
         <div class="mt-12 pt-12">
             <p class="text-mocha-text mb-4">DRAFTS (DEVELOPMENT MODE ONLY)</p>
             <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
-                {articles.drafts.map((e: CollectionTypes.Article) => {
+                {groupedArticles.drafts.map((e: CollectionTypes.Article) => {
                     return <ArticlePreview {...e} />;
                 })}
             </div>

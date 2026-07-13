@@ -5,6 +5,7 @@ import HeadPartial from "Partials:/HeadPartial.astro";
 import BaseLayout from "Views:/BaseLayout.astro";
 import Icon from "Partials:/Icon.astro";
 import { SiteSettings } from "../utilities";
+import NavigationLinkPartial from "Partials:/NavigationLinkPartial.astro";
 
 type Props = ComponentProps<typeof HeadPartial>
 const Properties = Astro.props;
@@ -12,7 +13,7 @@ const Properties = Astro.props;
 const SocialLinkClass = (key: string) => "flex justify-center items-center p-2 leading-none rounded-md h-full bg-mocha-surface text-mocha-text text-base hover:bg-" + key;
 ---
 <BaseLayout {...Properties}>
-    <main class="container px-4 pb-12">
+    <main class="container px-4">
         <header class="grid gap-6 py-12">
             <slot name="pre-navigation" />
 
@@ -33,12 +34,7 @@ const SocialLinkClass = (key: string) => "flex justify-center items-center p-2 l
                 {SiteSettings.Links.length > 0 && (  
                     <ul class="flex gap-2 justify-center">
                         {SiteSettings.Links.map((e) => (
-                            <li>
-                                <a class="relative flex flex-col items-center pb-2 text-mocha-subtext hover:text-mocha-text font-semibold transition-all duration-200 group" href={e.Hyperlink}>
-                                    <span class="uppercase px-1.5">{e.Label}</span>
-                                    <span class="absolute bottom-0 h-0.5 w-0 bg-mocha-text rounded-full group-hover:w-[40%] transition-all duration-200"></span>
-                                </a>
-                            </li>
+                            <li><NavigationLinkPartial Hyperlink={e.Hyperlink} Label={e.Label} /></li>
                         ))}
 
                     </ul>
@@ -46,5 +42,8 @@ const SocialLinkClass = (key: string) => "flex justify-center items-center p-2 l
             </nav>
         </header>
         <slot />
+        <footer class="py-10 flex justify-center gap-2">
+            <NavigationLinkPartial Hyperlink={SiteSettings.Footer.Report.Hyperlink} Label={SiteSettings.Footer.Report.Label} />
+        </footer>
     </main>
 </BaseLayout>

@@ -1,17 +1,17 @@
 ---
 // src/pages/articles/[year]/[slug].astro
 import { getCollection, render } from "astro:content";
-import ArticleLayout from "Views:/ArticleLayout.astro"; // Verify relative path
+import ArticleLayout from "Views:/ArticleLayout.astro";
+import { FilterDraftsOnProduction } from "../../../utilities";
 
 export async function getStaticPaths() {
-    const articles = await getCollection("Articles");
+    // Filter out drafts during production builds so their URLs are never compiled
+    const articles = await getCollection("Articles", FilterDraftsOnProduction);
     
     return articles.map(entry => {
-        // entry.id looks like: "2026/dotnet-development-on-linux.md"
-        // Let"s extract the year and the file name cleanly
-        const pathParts = entry.id.split("/"); // ["2026", "dotnet-development-on-linux.md"]
+        const pathParts = entry.id.split("/"); 
         const year = pathParts[0];
-        const slug = pathParts[1].replace(/\.[^/.]+$/, ""); // "dotnet-development-on-linux"
+        const slug = pathParts[1].replace(/\.[^/.]+$/, ""); 
 
         return {
             params: { year, slug },

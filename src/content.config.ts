@@ -16,7 +16,7 @@ const Articles = defineCollection({
         Caption: z.string(),
         Published: z.coerce.date(),
         Series: z.string().optional(),
-        Tags: z.array(z.string()).optional(),
+        Tags: z.array(z.string()),
         Cover: z.string().optional(),
         Draft: z.coerce.boolean().optional(),
     }),

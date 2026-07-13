@@ -9,18 +9,9 @@ export const GetPageProperties = <T extends Record<string, any>>(path: string) =
     return pages[path];
 };
 
-const ArticlesGlobs = Object.values(
-    import.meta.glob("/src/pages/articles/*/*.md", { eager: true })
-) as MarkdownLayoutProps<ArticleFrontmatter>[];
-
-export const ArticlesByPublishedDate = ArticlesGlobs
-    .filter((e) => e.frontmatter)
-    .map((e) => {
-        return {
-            Date: new Date(e.frontmatter.Published),
-            Article: e
-        }
-    })
+export const FilterDraftsOnProduction = ({ data }: { data: { Draft?: boolean } }) => {
+    return import.meta.env.PROD ? data.Draft !== true : true;
+};
 
 export const ToShortDate = (e: Date) => {
     return e.toISOString().split('T')[0]

@@ -65,5 +65,11 @@
                 "Description": "With a blend of creativity and precision, I craft digital solutions that bridge the gap between imagination and reality. Away from my screens, photography is my escape — a way to freeze time, evoke emotions, and tell stories."
             }
         }
+    },
+    "Footer": {
+        "Report": {
+            "Label": "Report a bug",
+            "Hyperlink": "https://github.com/vnsnippets/vnsnippets.github.io/issues/new"
+        }
     }
 }
