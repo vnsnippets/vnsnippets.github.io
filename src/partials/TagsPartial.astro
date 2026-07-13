@@ -3,7 +3,7 @@ type Props = {
     Tags: string[], Styles?: string
 }
 const { Tags, Styles } = Astro.props
-const TagStyles = Styles ?? "bg-mocha-overlay text-mocha-caption";
+const TagStyles = Styles ?? "bg-mocha-overlay/60 text-mocha-caption";
 ---
 <div class="flex gap-2 flex-wrap overflow-x-auto">
     {Tags.slice(0, 4).map((e) => (
