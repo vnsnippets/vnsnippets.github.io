@@ -3,7 +3,7 @@ import type { CollectionEntry } from "astro:content";
 export type PageMetadata = {
     // Core SEO
     Title: string;
-    Description: string;
+    Description?: string;
 
     // Open Graph & Socials
     OpenGraph?: {

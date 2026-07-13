@@ -18,3 +18,5 @@ export const FilterDraftsOnProduction = ({ data }: { data: { Draft?: boolean } }
 export const ToShortDate = (e: Date) => {
     return e.toISOString().split('T')[0]
 }
+
+export const Slugify = (e: string) => e.trim().toLowerCase().replace(/\s+/g, "-");

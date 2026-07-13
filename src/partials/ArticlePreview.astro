@@ -31,7 +31,7 @@ const COVER_CAPTION_STYLE = "relative text-mocha-caption opacity-0 translate-y-5
         <p class={data.Cover ? COVER_CAPTION_STYLE : DEFAULT_CAPTION_STYLE}>{data.Caption}</p>
 
         <div class="relative flex flex-col flex-1 justify-end gap-4 mt-2">
-            <TagsPartialAstroComponent Tags={data.Tags} Styles={data.Cover ? "bg-mocha-surface text-mocha-text border border-mocha-overlay" : undefined} />
+            <TagsPartialAstroComponent Tags={data.Tags} />
             <div class="flex justify-between items-end gap-2 text-mocha-subtext">
                 <p>{ToShortDate(data.Published)}</p>
             </div>

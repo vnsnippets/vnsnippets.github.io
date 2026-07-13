@@ -51,7 +51,8 @@
     
     "Articles": {
         "DefaultSeries": "Article",
-        "RelatedLabel": "Recently posted articles"
+        "RelatedLabel": "Recently posted articles",
+        "TagPageTitle": "Articles"
     },
     "Pages": {
         "/": {
