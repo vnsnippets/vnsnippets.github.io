@@ -69,7 +69,7 @@
             }
 
             50% {
-                opacity: 1;
+                opacity: 0.8;
                 /* Adds a subtle luminous halo to the larger dots */
                 filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.8));
             }
@@ -98,25 +98,25 @@
     <!-- Background Stars -->
     <g id="stars">
         <!-- Star Group 1 (Fast Blink) -->
-        <circle class="star blink-fast" cx="150" cy="120" r="4" fill="#FFFFFF" />
-        <circle class="star blink-fast" cx="450" cy="220" r="3" fill="#FFFFFF" />
-        <circle class="star blink-fast" cx="820" cy="180" r="2" fill="#FFFFFF" />
-        <circle class="star blink-fast" cx="980" cy="310" r="2" fill="#FFFFFF" />
-        <circle class="star blink-fast" cx="290" cy="400" r="2" fill="#FFFFFF" />
+        <circle class="star blink-fast" cx="150" cy="120" r="10" fill="#FFFFFF" />
+        <circle class="star blink-fast" cx="450" cy="220" r="6" fill="#FFFFFF" />
+        <circle class="star blink-fast" cx="820" cy="180" r="4" fill="#FFFFFF" />
+        <circle class="star blink-fast" cx="980" cy="310" r="4" fill="#FFFFFF" />
+        <circle class="star blink-fast" cx="290" cy="400" r="8" fill="#FFFFFF" />
 
         <!-- Star Group 2 (Medium Blink) -->
-        <circle class="star blink-med" cx="70" cy="280" r="2" fill="#FFFFFF" />
-        <circle class="star blink-med" cx="380" cy="90" r="3" fill="#FFFFFF" />
-        <circle class="star blink-med" cx="620" cy="140" r="4" fill="#FFFFFF" />
-        <circle class="star blink-med" cx="740" cy="380" r="2" fill="#FFFFFF" />
-        <circle class="star blink-med" cx="1050" cy="190" r="3" fill="#FFFFFF" />
+        <circle class="star blink-med" cx="70" cy="280" r="4" fill="#FFFFFF" />
+        <circle class="star blink-med" cx="380" cy="90" r="6" fill="#FFFFFF" />
+        <circle class="star blink-med" cx="620" cy="140" r="10" fill="#FFFFFF" />
+        <circle class="star blink-med" cx="740" cy="380" r="4" fill="#FFFFFF" />
+        <circle class="star blink-med" cx="1050" cy="190" r="6" fill="#FFFFFF" />
 
         <!-- Star Group 3 (Slow Fade/Glow) -->
-        <circle class="star blink-slow" cx="220" cy="70" r="2" fill="#FFFFFF" />
-        <circle class="star blink-slow" cx="530" cy="320" r="3" fill="#FFFFFF" />
-        <circle class="star blink-slow" cx="900" cy="100" r="2" fill="#FFFFFF" />
-        <circle class="star blink-slow" cx="110" cy="490" r="3" fill="#FFFFFF" />
-        <circle class="star blink-slow" cx="1000" cy="400" r="4" fill="#FFFFFF" />
+        <circle class="star blink-slow" cx="220" cy="70" r="4" fill="#FFFFFF" />
+        <circle class="star blink-slow" cx="530" cy="320" r="6" fill="#FFFFFF" />
+        <circle class="star blink-slow" cx="900" cy="100" r="4" fill="#FFFFFF" />
+        <circle class="star blink-slow" cx="110" cy="490" r="4" fill="#FFFFFF" />
+        <circle class="star blink-slow" cx="1000" cy="400" r="8" fill="#FFFFFF" />
     </g>
     <g id="moon">
         <!-- Moon Path -->

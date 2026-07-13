@@ -1,12 +1,13 @@
 ---
 type Props = {
-    Tags: string[]
+    Tags: string[], Styles?: string
 }
-const { Tags } = Astro.props
+const { Tags, Styles } = Astro.props
+const TagStyles = Styles ?? "bg-mocha-overlay text-mocha-caption";
 ---
 <div class="flex gap-2 flex-wrap overflow-x-auto">
     {Tags.slice(0, 4).map((e) => (
-        <p class="flex text-sm bg-mocha-overlay text-mocha-caption justify-center items-center rounded px-2 py-1 shrink-0">
+        <p class={`flex text-sm justify-center items-center rounded px-2 py-1 shrink-0 ${TagStyles}`}>
             {e}
         </p>
     ))}

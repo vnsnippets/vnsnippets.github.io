@@ -1,5 +1,5 @@
 ---
-import type { ComponentProps } from "astro/types";
+import type { ComponentProps, HTMLAttributes } from "astro/types";
 
 import HeadPartial from "Partials:/HeadPartial.astro";
 import BaseLayout from "Views:/BaseLayout.astro";
@@ -8,12 +8,13 @@ import { SiteSettings } from "../utilities";
 import NavigationLinkPartial from "Partials:/NavigationLinkPartial.astro";
 
 type Props = ComponentProps<typeof HeadPartial>
-const Properties = Astro.props;
+
+const { ...HeadProperties } = Astro.props
 
 const SocialLinkClass = (key: string) => "flex justify-center items-center p-2 leading-none rounded-md h-full bg-mocha-surface text-mocha-text text-base hover:bg-" + key;
 ---
-<BaseLayout {...Properties}>
-    <main class="container px-4">
+<BaseLayout {...HeadProperties}>
+    <main class="min-w-screen min-h-screen px-4 max-w-[1768px] flex flex-col">
         <header class="grid gap-6 py-12">
             <slot name="pre-navigation" />
 
