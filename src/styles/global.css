@@ -5,27 +5,28 @@
     --font-sans: "Nunito", Arial, Helvetica, sans-serif;
     --font-serif: 'Lustria', Georgia, 'Times New Roman', Times, serif;
 
-    /* Brand kit */
-    /* --color-brand-bg: #1D1F25;
-    --color-brand-bg-light: #333746;
-    --color-brand-bg-dark: #14161a;
-
-    --color-brand-text-light: #d7d8df;
-    --color-brand-text: #C3C6CF;
-    --color-brand-text-dark: #9A9FAE; */
     /* Brand kit - Catppuccin Mocha */
-
+    /* ===================================================== */
     /* Backgrounds */
-    --color-base-400: #252538;      /* Mantle: A slightly lighter dark for cards/elements */
-    --color-base-500: #1e1e2e;      /* Base: The main window background */
-    --color-base-600: #11111b;      /* Crust: The deepest dark for sidebars/status bars */
+    --color-base-500: #252538;      /* Base (Light) */
+    --color-base-600: #1e1e2e;      /* Base */
+    --color-base-700: #181825;      /* Mantle */
+    --color-base-900: #11111b;      /* Crust */
 
     /* Text */
-    --color-surface-400: #cdd6f4;   /* Text: High-contrast, crisp readable text */
-    --color-surface-500: #bac2de;   /* Subtext1: Muted, comfortable default text */
-    --color-surface-600: #6c7086;   /* Overlay0: Darker text for captions, borders, or disabled states */
+    --color-surface-100: #cdd6f4;   /* Text */
+    --color-surface-200: #bac2de;   /* Subtext1 */
+    --color-surface-300: #a6adc8;   /* Subtext0 */
+    --color-surface-400: #9399b2;   /* Overlay2 */
+    --color-surface-500: #7f849c;   /* Overlay1 */
+    --color-surface-600: #6c7086;   /* Overlay0 */
+    --color-surface-700: #585b70;   /* Surface2 */
+    --color-surface-800: #45475a;   /* Surface1 */
+    --color-surface-900: #313244;   /* Surface0 */
+    /* ===================================================== */
 
     /* Socials */
+    /* ===================================================== */
     --color-whatsapp: #25D366;
     --color-facebook: #1877F2;
     --color-instagram: #E1306C;
@@ -33,7 +34,8 @@
     --color-twitter: #1DA1F2;
     --color-tiktok: #FE2858;
     --color-youtube: #FF0436;
-    --color-github: #101010;
+    --color-github: #11111b;
+    /* ===================================================== */
 }
 
 @source inline("hover:bg-whatsapp hover:bg-facebook hover:bg-instagram hover:bg-linkedin hover:bg-twitter hover:bg-tiktok hover:bg-youtube hover:bg-github");
@@ -73,8 +75,8 @@
     }
 
     body {
-        background: var(--color-base-500);
-        color: var(--color-surface-400);
+        background: var(--color-base-600);
+        color: var(--color-surface-100);
         font-family: var(--font-sans);
         display: flex;
         flex-direction: column;

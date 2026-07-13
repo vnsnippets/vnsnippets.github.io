@@ -1,6 +1,7 @@
 ---
-import type { ArticleFrontmatter, CollectionTypes } from "../types";
+import type { CollectionTypes } from "../types";
 import { SiteSettings, ToShortDate } from "../utilities";
+import TagsPartialAstroComponent from "./TagsPartial.astro";
 
 type Props = CollectionTypes.Article
 const article = Astro.props;
@@ -10,33 +11,25 @@ const getArticlePath = (id: string) => `/articles/${id}`;
 
 <a
     href={getArticlePath(article.id)}
-    class="relative rounded-md hover:rounded-xl overflow-hidden border border-base-400 bg-base-400 hover:bg-base-400 transition-all duration-200 ease-in-out group"
+    class="relative rounded-md hover:rounded-xl overflow-hidden border border-surface-900 bg-base-500 hover:bg-base-600 hover:border-surface-800 transition-all duration-200 ease-in-out group"
 >
     {article.data.Cover && (
         <div class="absolute inset-0">
             <img src={article.data.Cover} alt=`Cover image for ${article.data.Title}` class="w-full h-full object-cover" />
-            <div class="absolute inset-0 bg-linear-to-b from-black/90 via-black/80 to-black/90 opacity-90 group-hover:opacity-100 transition-opacity duration-400 ease-in-out" />
+            <div class="absolute inset-0 bg-linear-to-b bg-base-900/70 group-hover:bg-base-900/85 transition-colors duration-400 ease-in-out" />
         </div>
     )}
 
     <div class="relative size-full grid grid-rows-[auto_auto_auto_1fr] gap-4 p-6">        
-        <p class="uppercase text-surface-400 font-semibold text-base">
+        <p class="uppercase text-surface-500 font-semibold text-base">
             {article.data.Series ?? SiteSettings.Articles.DefaultSeries}
         </p>
         <div class="grid gap-2">
-            <p class="text-base text-surface-400">{article.data.Title}</p>
-            <p class=`text-base text-surface-400 ${article.data.Cover ? "opacity-0 transform translate-y-4 overflow-hidden group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 ease-in" : "opacity-100"}`>{article.data.Caption}</p>
+            <p class="text-base text-surface-100 font-semibold">{article.data.Title}</p>
+            <p class=`text-base text-surface-200 ${article.data.Cover ? "opacity-0 transform translate-y-4 overflow-hidden group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 ease-in" : "opacity-100"}`>{article.data.Caption}</p>
         </div>
-        {article.data.Tags && (
-            <div class="flex gap-2 flex-wrap overflow-x-auto text-surface-400 text-sm">
-                {article.data.Tags.slice(0, 4).map((e) => (
-                    <p class="flex bg-base-400 justify-center items-center rounded-lg px-2 py-1 shrink-0">
-                        {e}
-                    </p>
-                ))}
-            </div>
-        )}
-        <div class="flex justify-between items-end gap-2 text-surface-400">
+        {article.data.Tags && (<TagsPartialAstroComponent Tags={article.data.Tags} />)}
+        <div class="flex justify-between items-end gap-2 text-surface-500">
             <p class="text-base">{ToShortDate(article.data.Published)}</p>
         </div>
     </div>
