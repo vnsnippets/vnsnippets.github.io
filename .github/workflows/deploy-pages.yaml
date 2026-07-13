@@ -25,9 +25,8 @@ jobs:
 
       - name: Install, build, and upload your site output
         uses: withastro/action@v3
-        # Optional custom settings if defaults need modifications:
-        # with:
-        #   node-version: 22
+        with:
+          node-version: 22
 
   deploy:
     needs: build
