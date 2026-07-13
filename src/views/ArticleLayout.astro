@@ -5,45 +5,50 @@ import NavigationLayout from "./NavigationLayout.astro";
 import { SiteSettings, ToShortDate } from "../utilities";
 import type { CollectionTypes } from "../types";
 import TagsPartialAstroComponent from "Partials:/TagsPartial.astro";
+import ArticlePreview from "Partials:/ArticlePreview.astro";
 
-type Props = CollectionTypes.Article;
+type Props = {
+    Current: CollectionTypes.Article
+    Previous?: CollectionTypes.Article | null
+    Next?: CollectionTypes.Article | null
+}
 
-const { data } = Astro.props;
+const { Current, Previous, Next } = Astro.props;
 
-const CoverImage = data.Cover ? {
-    Source: data.Cover,
-    Caption: `Featured image for article titled ${data.Title}`
+const CoverImage = Current.data.Cover ? {
+    Source: Current.data.Cover,
+    Caption: `Featured image for article titled ${Current.data.Title}`
 } : undefined;
 ---
 
 <NavigationLayout
-    Title={data.Title}
-    Description={data.Caption}
+    Title={Current.data.Title}
+    Description={Current.data.Caption}
     OpenGraph={{
         Type: "article",
         Image: CoverImage
     }}
-    Keywords={data.Tags}
+    Keywords={Current.data.Tags}
 >
     <article class="max-w-5xl mx-auto">
         <section class="grid gap-4 mb-8">
-            {data.Tags && <TagsPartialAstroComponent Tags={data.Tags} />}
+            {Current.data.Tags && <TagsPartialAstroComponent Tags={Current.data.Tags} />}
 
             <div class="grid gap-1 text-mocha-subtext text-base mt-4">
                 <div class="flex justify-between items-end gap-2">
                     <p>
-                        {ToShortDate(data.Published)}
+                        {ToShortDate(Current.data.Published)}
                     </p>
                 </div>
 
                 <p class="uppercase font-semibold">
-                    {data.Series ?? SiteSettings.Articles.DefaultSeries}
+                    {Current.data.Series ?? SiteSettings.Articles.DefaultSeries}
                 </p>
             </div>
 
             <div class="grid gap-2">
-                <h1 class="text-2xl text-mocha-text font-semibold">{data.Title}</h1>
-                <p class="text-lg text-mocha-caption">{data.Caption}</p>
+                <h1 class="text-2xl text-mocha-text font-semibold">{Current.data.Title}</h1>
+                <p class="text-lg text-mocha-caption">{Current.data.Caption}</p>
             </div>
 
             {CoverImage && (
@@ -57,5 +62,19 @@ const CoverImage = data.Cover ? {
             <slot />
         </section>
 
+
+        <p class="text-mocha-subtext text-left pt-8 mt-8 border-t-2 border-mocha-overlay mb-4">{SiteSettings.Articles.RelatedLabel}</p>
+        <section class="flex flex-col md:flex-row gap-4 justify-between">
+            <div class="grid gap-2 flex-1">
+                {Previous && (
+                    <ArticlePreview {...Previous} />
+                )}
+            </div>
+            <div class="grid gap-2 flex-1">
+                {Next && (
+                    <ArticlePreview {...Next} />
+                )}
+            </div>
+        </section>
     </article>
 </NavigationLayout>

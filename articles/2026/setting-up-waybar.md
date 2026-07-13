@@ -30,7 +30,7 @@ Below are some of the tools I used, but the text editor can really be anything y
 ##### Ingredients
 
 | Requirement | Details | Reference |
-| --- | --- | --- |
+| :--- | :--- | :--- |
 | Waybar | Highly customizable Wayland status bar | [https://github.com/Alexays/Waybar](https://github.com/Alexays/Waybar) |
 | Nerd Fonts | System icons (Symbols Nerd Font preferred) | [https://www.nerdfonts.com/](https://www.nerdfonts.com/) |
 | CachyOS / Arch | An active Wayland composited desktop environment | [https://cachyos.org/](https://cachyos.org/) |
@@ -40,7 +40,8 @@ You can find my rice here: [https://github.com/vnsnippets/arch-basmati-rice](htt
 
 ---
 
-#### The Blueprint (`config.jsonc`)
+#### The Blueprint
+> `config.jsonc`
 
 Waybar relies on a master JSONC (JSON with Comments) structure. Think of this as defining the overall layout of your status bar and what it will hold.
 
@@ -268,11 +269,12 @@ Similarly, by binding attributes onto generic CSS variable placeholders (`@modul
 #### Custom Layout Options: Chaining vs Islands
 
 When building bars, ricing enthusiasts often argue over structural layout schemes. Let’s do a quick comparison of the two dominant structural behaviors:
-
-| Layout Style | The Good | The Bad |
-| --- | --- | --- |
-| **Monolithic Unified Block** | Clean traditional look, zero gap calculation issues, easy alignment. | Harder to accent specific metric warnings visually. |
-| **Pill / Island Configuration** | Exceptional modularity, beautiful modern gaps, distinct element groups. | Margin configurations can get tedious quickly. |
+- Monolithic Unified Block
+  - **The Good**: Clean traditional look, zero gap calculation issues, easy alignment.
+  - **The Bad**: Harder to accent specific metric warnings visually.
+- Pill / Island Configuration
+  - **The Good**: Exceptional modularity, beautiful modern gaps, distinct element groups.
+  - **The Bad**: Margin configurations can get tedious quickly.
 
 Our configuration leverages a clean standalone island configuration where each distinct functional module gets isolated padding rules, structural border treatments, and specific border radius to create a floating pill aesthetic over a transparent compositor layer.
 

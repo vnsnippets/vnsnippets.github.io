@@ -53,10 +53,9 @@
   --color-prettylights-syntax-variable: #ffa657;
   --fgColor-attention: #d29922;
   --fgColor-danger: #f85149;
-  /* --fgColor-default: #f0f6fc; */
-  --fgColor-default: var(--color-mocha-text);
+  --fgColor-default: var(--color-mocha-caption);
   --fgColor-done: #ab7df8;
-  --fgColor-muted: #9198a1;
+  --fgColor-muted: var(--color-mocha-subtext);
   --fgColor-success: #3fb950;
   --borderColor-muted: #3d444db3;
   --color-prettylights-syntax-invalid-illegal-bg: var(--bgColor-danger-muted);
@@ -107,7 +106,7 @@
   --fgColor-accent: #0969da;
   --fgColor-attention: #9a6700;
   --fgColor-done: #8250df;
-  --fgColor-muted: #59636e;
+  --fgColor-muted: var(--color-latte-subtext);
   --fgColor-success: #1a7f37;
   --bgColor-default: #ffffff;
   --borderColor-muted: #d1d9e0b3;
@@ -257,11 +256,12 @@
   overflow: hidden;
   background: rgba(0,0,0,0);
   border-bottom: 1px solid var(--borderColor-muted);
-  height: .25em;
+  height: .25rem;
   padding: 0;
   margin: var(--base-size-24) 0;
   background-color: var(--borderColor-default);
   border: 0;
+  opacity: 20%;
 }
 
 .markdown input {
@@ -401,7 +401,7 @@
 .markdown h4,
 .markdown h5,
 .markdown h6 {
-  margin-top: var(--base-size-24);
+  margin-top: var(--base-size-40);
   margin-bottom: var(--base-size-16);
   font-weight: var(--base-text-weight-semibold, 600);
   line-height: 1.25;

@@ -5,25 +5,33 @@ import ArticleLayout from "Views:/ArticleLayout.astro";
 import { FilterDraftsOnProduction } from "../../../utilities";
 
 export async function getStaticPaths() {
-    // Filter out drafts during production builds so their URLs are never compiled
     const articles = await getCollection("Articles", FilterDraftsOnProduction);
     
-    return articles.map(entry => {
+    // Sort chronologically (oldest to newest) once before mapping
+    const sorted = articles.sort(
+        (a, b) => a.data.Published.getTime() - b.data.Published.getTime()
+    );
+
+    return sorted.map((entry, index) => {
         const pathParts = entry.id.split("/"); 
         const year = pathParts[0];
         const slug = pathParts[1].replace(/\.[^/.]+$/, ""); 
 
+        // Extract neighboring objects safely if they exist
+        const prev = index > 0 ? sorted[index - 1] : null;
+        const next = index < sorted.length - 1 ? sorted[index + 1] : null;
+
         return {
             params: { year, slug },
-            props: { entry },
+            props: { entry, prev, next },
         };
     });
 }
 
-const { entry } = Astro.props;
+const { entry, prev, next } = Astro.props;
 const { Content } = await render(entry);
 ---
 
-<ArticleLayout {...entry}>
+<ArticleLayout Current={entry} Previous={prev} Next={next}>
     <Content />
 </ArticleLayout>

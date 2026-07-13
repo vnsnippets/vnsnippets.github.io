@@ -60,7 +60,7 @@ sudo systemctl enable --now docker
 You need to update your `PATH` environment variable for your terminal to recognize some of those .NET tools.
 
 You can do so via you `~/.bashrc` or `~/.zshrc` scripts, but since I am on Hyprland, I went with my Hyprland Configurations:
-```conf
+```ini
 env = DOTNET_ROOT, /usr/bin/dotnet
 env = PATH, $PATH:/usr/bin/dotnet:/usr/bin/dotnet/tools
 ```
