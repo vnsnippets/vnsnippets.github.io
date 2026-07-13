@@ -1,0 +1,22 @@
+---
+import NavigationLayout from "Views:/NavigationLayout.astro";
+import IconAstroComponent from "Partials:/Icon.astro";
+
+import { GetPageProperties } from "../utilities";
+
+const PageProperties = GetPageProperties(Astro.url.pathname);
+---
+
+<NavigationLayout {...PageProperties.Metadata} Title={PageProperties.Metadata.Title}>
+    <div class="grid gap-2 max-w-xl mx-auto text-center mt-12" slot="pre-navigation">
+        <div class="mb-12 w-96 mx-auto">
+            <IconAstroComponent class="w-full h-full" name="island-night" />
+        </div>
+        <h1 class="text-xl text-mocha-text">{PageProperties.Metadata.Title}</h1>
+        <p class="text-base text-mocha-caption">{PageProperties.Metadata.Description}</p>
+    </div>
+
+    <div class="text-lg text-center">
+        <h1>This page is under construction, but you can visit the Blog meanwhile.</h1>
+    </div>
+</NavigationLayout>

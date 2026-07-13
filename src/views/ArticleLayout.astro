@@ -1,0 +1,80 @@
+---
+// src/layouts/ArticleLayout.astro
+import "Styles:/markdown.hugo.css"
+import NavigationLayout from "./NavigationLayout.astro";
+import { SiteSettings, ToShortDate } from "../utilities";
+import type { CollectionTypes } from "../types";
+import TagsPartialAstroComponent from "Partials:/TagsPartial.astro";
+import ArticlePreview from "Partials:/ArticlePreview.astro";
+
+type Props = {
+    Current: CollectionTypes.Article
+    Previous?: CollectionTypes.Article | null
+    Next?: CollectionTypes.Article | null
+}
+
+const { Current, Previous, Next } = Astro.props;
+
+const CoverImage = Current.data.Cover ? {
+    Source: Current.data.Cover,
+    Caption: `Featured image for article titled ${Current.data.Title}`
+} : undefined;
+---
+
+<NavigationLayout
+    Title={Current.data.Title}
+    Description={Current.data.Caption}
+    OpenGraph={{
+        Type: "article",
+        Image: CoverImage
+    }}
+    Keywords={Current.data.Tags}
+>
+    <article class="max-w-5xl mx-auto">
+        <section class="grid gap-4 mb-8">
+            {Current.data.Tags && <TagsPartialAstroComponent Tags={Current.data.Tags} />}
+
+            <div class="grid gap-1 text-mocha-subtext text-base mt-4">
+                <div class="flex justify-between items-end gap-2">
+                    <p>
+                        {ToShortDate(Current.data.Published)}
+                    </p>
+                </div>
+
+                <p class="uppercase font-semibold">
+                    {Current.data.Series ?? SiteSettings.Articles.DefaultSeries}
+                </p>
+            </div>
+
+            <div class="grid gap-2">
+                <h1 class="text-2xl text-mocha-text font-semibold">{Current.data.Title}</h1>
+                <p class="text-lg text-mocha-caption">{Current.data.Caption}</p>
+            </div>
+
+            {CoverImage && (
+                <div class="rounded-lg border border-mocha-overlay shadow-lg overflow-hidden">
+                    <img src={CoverImage.Source} alt={CoverImage.Caption} />
+                </div>
+            )}
+        </section>
+
+        <section class="markdown text-lg leading-8">
+            <slot />
+        </section>
+
+
+        <p class="text-mocha-subtext text-left pt-8 mt-8 border-t-2 border-mocha-overlay mb-4">{SiteSettings.Articles.RelatedLabel}</p>
+        <section class="flex flex-col md:flex-row gap-4 justify-between">
+            <div class="grid gap-2 flex-1">
+                {Previous && (
+                    <ArticlePreview {...Previous} />
+                )}
+            </div>
+            <div class="grid gap-2 flex-1">
+                {Next && (
+                    <ArticlePreview {...Next} />
+                )}
+            </div>
+        </section>
+    </article>
+</NavigationLayout>

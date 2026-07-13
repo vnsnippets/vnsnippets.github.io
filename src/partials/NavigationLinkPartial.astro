@@ -1,0 +1,15 @@
+---
+type Props = {
+    Hyperlink: string
+    Label: string
+}
+
+const { Hyperlink, Label } = Astro.props;
+---
+<a 
+    class="relative flex flex-col items-center pb-2 text-mocha-subtext hover:text-mocha-text font-semibold transition-all duration-200 group"
+    href={Hyperlink}
+>
+    <span class="uppercase px-1.5">{Label}</span>
+    <span class="absolute bottom-0 h-0.5 w-0 bg-mocha-text rounded-full group-hover:w-[40%] max-w-8 transition-all duration-200" />
+</a>

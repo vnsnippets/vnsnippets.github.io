@@ -1,0 +1,290 @@
+---
+Author: Vidush H. Namah
+Title: CachyOS and MangoWM
+
+Published: 2026-05-24
+Draft: true
+Caption: Guide to installing CachyOS with MangoWM, covering challenges faced and how to tackle weird CachyOS opinions
+
+Series: "Arch Linux: Cooking Rice"
+Tags: 
+- Arch Linux
+- CachyOS
+- Mango
+- Open Source
+- Tutorial
+---
+
+After a month of playing around and ricing, my Arch Linux with Hyprland setup is now production ready. It works great and I am able to do clean work on it to actually earn my living. So like any normal person, it's time to scrap it completely and go for something else.
+
+### Installing CachyOS
+Wiki explains it well - no need to repeat myself here.   
+Installer choices:
+- GRUB as Bootloader
+- Partitions:
+  - 128GiB BTRFS for OS (Mount: /)
+  - 825GiB BTRFS for Storage (Mount: /mnt/storage)
+  - Everything else (~890MiB FAT32) for Boot (Mount: /boot/efi, Flag: boot)
+
+BTRFS Risk.  
+BTRFS creates snapshots which takes space - and 128GiB could fill up fast.   
+Once booted, immediately edit /etc/snapper/configs/root to limit snapshot retention (3-5 daily instead of 10+).
+
+Desktop: No Desktop.  
+Why not `MangoWM`? Because CachyOS decided it's a good idea to provide that with DMS (Dank Material Shell) bundled. And I don't want DMS.
+
+Planned Requirements
+- Shell: ZSH
+- Editor: Micro
+- Internet: Network Manager + Built-in WPA Supplicant
+
+Package Selection
+
+CachyOS Packages
+cachyos-hello
+cachyos-kernel-manager
+cachyos-packageinstaller
+cachyos-settings
+cachyos-micro-settings -> Kept because I will use Micro
+cachyos-wallpapers
+
+CachyOS Shell Configuration
+~cachyos-fish-config~ -> Removed because I don't fish
+~cachyos-zsh-config~ -> Removed: It comes with Powerline-whatever-10K - I will install what I need myself
+
+Base Development and Common Packages
+*dnsmasq* -> Copilot says only needed if I will confire Local DNS caching
+*dnsutils* -> Debugging (dig, nslookup)
+ethtool
+~iwd~ -> Removed because I don't want Network Manager to conflict with different backends
+~modemmanager~ -> Removed: Meant for cellular network - And I don't have that (and don't plan to use that).
+networkmanager
+networkmanager-openvpn
+nss-mdns
+~usb_modeswitch~ -> Removed: Flips USB dongles from "storage" to "modem" - but I don't plan to use cellular dongles.
+~wpa_supplicant~ -> Removed because Network Manager comes bundled with WPA Supplicant, and I don't want conflicts
+wireless-regdb
+~xl2tpd~ -> Legacy Layer 2 Tunneling Protocol - I have Network Manager Open VPN
+
+Firewall
+ufw
+ufw-extras
+
+Bluetooth
+bluez
+bluez-hid2hci
+bluez-libs
+bluez-utils
+bluez-obex
+
+Package Management
+pacman-contrib
+pkgfile
+rebuild-detector
+reflector
+paru
+shelly
+
+Desktop Integration
+accountsservice
+bash-completion
+ffmpegthumbnailer
+gst-libav
+gst-plugin-pipewire
+gst-plugins-bad
+gst-plugins-ugly
+libdvdcss
+libgsf
+libopenraw
+plocate
+poppler-glib
+vlc-plugins-all
+xdg-user-dirs
+xdg-utils
+
+File System
+efitools
+nfs-utils
+~nilfs-utils~ -> Removed because I don't have NILFS2 file systems (but maybe good to keep for removable devices?)
+smartmontools
+unrar
+unzip
+
+Fonts
+awesome-terminal-fonts
+noto-fonts-emoji
+cantarell-fonts
+noto-fonts
+~ttf-bitstream-vera~ -> Will just fallback to Noto
+~ttf-dejavu~ -> Will just fallback to Noto
+ttf-liberation
+~ttf-opensans~ -> Will fallback to Noto
+ttf-meslo-nerd
+noto-fonts-cjk
+
+Audio
+alsa-firmware
+alsa-plugins
+alsa-utils
+pavucontrol
+pipewire-pulse
+wireplumber
+pipewire-alsa
+
+Hardware
+dmidecode
+~dmraid~ -> Removed: Used for discovering old legacy "Fake RAID" arrays, and I don't have a RAID array here.
+hdparm
+hwdetect
+linux-firmware
+lsscsi
+mesa-utils
+mtools
+sg3_utils
+sof-firmware
+
+Power
+~cpupower~ -> Removed: Power Profiles is good enough for me, I don't need to tweak CPU manually
+power-profiles-daemon
+upwoer
+
+Applications
+~alacritty~ -> Removed: I will use Kitty
+btop
+duf
+~fsarchiver~ -> Backup tool - Not needed - I am using BTRFS with Snapshots
+git
+~glances~ -> Monitoring on steroids - I don't need, I'm good with BTOP
+hwinfo
+meld
+~nano-syntax-highlighting~ -> Removed because I use Micro
+fastfetch
+pv
+python-defusedxml
+python-packaging
+rsync
+wget
+ripgrep
+micro
+~nano~ -> Removed: I use Micro
+~vim~ -> Removed: Screw all the VIM worshippers
+openssh
+
+Firefox And Language Packs
+firefox
+firefox-i18n-$LOCALE
+
+Stuff I need to install later
+zsh + utilities
+sddm
+kitty
+
+Because I am rebelling against the CachyOS Mango DMS package, the following (which are bundled) must be installed separately:
+
+As part of mangowmdms-shell
+mangowm (or mangowc)
+quickshell (maybe I won't do it this time?)
+dms-core (or dms-shell) -> The infamous DMS which replaces:
+- Waybar
+- Mako/Dunst
+- Fuzzel/Rofi/Wofi
+- Swaylock/Hyprlock
+- Polkit Agents
+
+grim, slurp
+nautilus
+cliphist (alternative: wl-clipboard)
+qt6ct (maybe not needed)
+nwg-look
+adw-gtk3-theme
+~cachyos-alacritty-config~ (don't need)
+gnome-keyring
+xdg-desktop-portal-gnome
+xdg-desktop-portal-gtk
+xwayland-satellite -> Pulls xorg-xwayland (need investigation)
+
+### Post-Installation
+```bash
+nmcli device wifi list
+nmcli device wifi connect "Your-SSID" --ask
+
+sudo pacman -Sy
+sudo pacman -Syyu
+
+sudo pacman -Syu sddm mangowm wl-clipboard xorg-xwayland xdg-desktop-portal-wlr xdg-desktop-portal-gtk kitty zsh zsh-history-substring-search zsh-syntax-highlighting
+
+# Ensure Mango Configurations exist
+mkdir ~/.config/mango
+
+# Move default Mango configurations to a safer location
+sudo mv /etc/mango/config.conf ~/.config/mango/config.conf
+
+# If no default file exists in /etc/mango
+mango --print-default-config > ~/.config/mango/config.conf
+
+# Check the file and take note of your terminal launch keybind
+# Most problems can be solved if you at least have a terminal
+micro ~/.config/mango/config.conf
+
+# The default most likely is Alt+Return opens Foot
+# I don't have Foot, I have kitty
+# So I updated mine to bind=Alt,Return,spawn,kitty
+
+# Ensure SDDM can detect Mango
+# We expect a mango.desktop file here
+ls /usr/share/wayland-sessions
+
+# If not, we create one
+sudo micro /usr/share/wayland-sessions/mango.desktop
+
+# [Desktop Entry]
+# Name=Mango
+# Comment=Lightweight Wayland Compositor
+# Exec=mango
+# Type=Application
+# DesktopNames=Mango
+
+# Enable and start SDDM
+sudo systemctl enable sddm
+sudo systemctl start sddm
+```
+
+Starting SDDM means we leave the beautiful black TTY screen for more graphics.
+Now the ricing can begin.
+
+### Next Steps
+Styling GRUB
+Styling SDDM
+Setting up essentials (Kitty, ZSH, etc.)
+
+I plan to use my existing configurations from GitHub, but I keep my repositories in my dedicated Storage partition. By default, it can happen that Linux says "Only ROOT can clone stuff to the partition".
+Solved by saying "No, I also have rights!"
+
+```bash
+sudo chown -R $USER:$USER /mnt/storage
+```
+Cloned arch basmati repository
+Also profit of the occasion to setup git stuff:
+git config --global user.name "Your-Name"
+git config --global user.email "Your-Email"
+ssh-keygen -t ed25519 -C "your-github-email@example.com"
+I like my files to say what they are for, so I saved it to ~/.ssh/gh_ed25519
+That means I need to setup a config to declare when should that key be used
+micro ~/.ssh/config
+Host github.com
+    IdentityFile ~/.ssh/gh_ed25519
+
+```bash
+ssh -T git@github.com
+```
+The authenticity of host 'github.com (20.87.245.0)' can't be established.
+ED25519 key fingerprint is: <something-that-I-probably-should-not-share>
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+```bash
+yes
+```
+Warning: Permanently added 'github.com' (ED25519) to the list of known hosts.
+Hi <your-github-username>! You've successfully authenticated, but GitHub does not provide shell access.
+
+And you are good to go.

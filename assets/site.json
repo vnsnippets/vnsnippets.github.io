@@ -1,0 +1,76 @@
+{
+    "SiteName": "Vidush H. Namah | Blog",
+    "TwitterHandle": "@vnsnippets",
+    "ThemeColor": "#ffffff",
+    "DefaultImage": {
+        "Source": "/assets/og-default.jpg",
+        "Caption": "Vidush H. Namah | Blog"
+    },
+    "locale": "en",
+    "Fonts": [
+        "https://fonts.googleapis.com",
+        "https://fonts.gstatic.com"
+    ],
+    "Links": [
+        {
+            "Icon": "home",
+            "Hyperlink": "/",
+            "Label": "Home"
+        },
+        {
+            "Hyperlink": "/articles",
+            "Label": "Blog"
+        }
+    ],
+    "Socials": [
+        {
+            "Icon": "github",
+            "Hyperlink": "https://github.com/vnsnippets",
+            "Label": "GitHub"
+        },
+        {
+            "Icon": "instagram",
+            "Hyperlink": "https://instagram.com/the.frame.drops",
+            "Label": "Instagram"
+        },
+        {
+            "Icon": "linkedin",
+            "Hyperlink": "https://linkedin.com/in/vnamah",
+            "Label": "LinkedIn"
+        }
+    ],
+
+    "Navigation": {
+        "Name": "Vidush H. Namah",
+        "Description": "With a blend of creativity and precision, I craft digital solutions that bridge the gap between imagination and reality. Away from my screens, photography is my escape — a way to freeze time, evoke emotions, and tell stories.",
+        "Avatar": [
+            "https://avatars.githubusercontent.com/u/16542151?v=4",
+            "Vidush H. Namah"
+        ]
+    },
+    
+    "Articles": {
+        "DefaultSeries": "Article",
+        "RelatedLabel": "Recently posted articles"
+    },
+    "Pages": {
+        "/": {
+            "Metadata": {
+                "Title": "Vidush H. Namah",
+                "Description": "With a blend of creativity and precision, I craft digital solutions that bridge the gap between imagination and reality. Away from my screens, photography is my escape — a way to freeze time, evoke emotions, and tell stories."
+            }
+        },
+        "/articles": {
+            "Metadata": {
+                "Title": "Vidush H. Namah :: Blog",
+                "Description": "With a blend of creativity and precision, I craft digital solutions that bridge the gap between imagination and reality. Away from my screens, photography is my escape — a way to freeze time, evoke emotions, and tell stories."
+            }
+        }
+    },
+    "Footer": {
+        "Report": {
+            "Label": "Report a bug",
+            "Hyperlink": "https://github.com/vnsnippets/vnsnippets.github.io/issues/new"
+        }
+    }
+}
