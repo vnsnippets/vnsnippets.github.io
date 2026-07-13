@@ -1,5 +1,5 @@
 {
-    "SiteName": "Vidush H. Namah | Blog",
+    "SiteName": "Vidush H. Namah",
     "TwitterHandle": "@vnsnippets",
     "ThemeColor": "#ffffff",
     "DefaultImage": {
@@ -72,5 +72,12 @@
             "Label": "Report a bug",
             "Hyperlink": "https://github.com/vnsnippets/vnsnippets.github.io/issues/new"
         }
+    },
+    "NotFound": {
+        "Title": "404 Page Not Found",
+        "Caption": [
+            "Looks like you got stranded.",
+            "Let's get you someplace safe!"
+        ]
     }
 }
