@@ -29,7 +29,7 @@ const CoverImage = data.Cover ? {
         <section class="grid gap-4 mb-8">
             {data.Tags && <TagsPartialAstroComponent Tags={data.Tags} />}
 
-            <div class="grid gap-1 text-surface-400 text-base mt-4">
+            <div class="grid gap-1 text-mocha-subtext text-base mt-4">
                 <div class="flex justify-between items-end gap-2">
                     <p>
                         {ToShortDate(data.Published)}
@@ -42,12 +42,12 @@ const CoverImage = data.Cover ? {
             </div>
 
             <div class="grid gap-2">
-                <h1 class="text-2xl text-surface-100 font-semibold">{data.Title}</h1>
-                <p class="text-lg text-surface-200">{data.Caption}</p>
+                <h1 class="text-2xl text-mocha-text font-semibold">{data.Title}</h1>
+                <p class="text-lg text-mocha-caption">{data.Caption}</p>
             </div>
 
             {CoverImage && (
-                <div class="rounded-lg border border-surface-900 shadow-lg overflow-hidden">
+                <div class="rounded-lg border border-mocha-overlay shadow-lg overflow-hidden">
                     <img src={CoverImage.Source} alt={CoverImage.Caption} />
                 </div>
             )}

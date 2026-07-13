@@ -9,7 +9,7 @@ import { SiteSettings } from "../utilities";
 type Props = ComponentProps<typeof HeadPartial>
 const Properties = Astro.props;
 
-const SocialLinkClass = (key: string) => "flex justify-center items-center p-2 leading-none rounded-md h-full bg-base-500 text-surface-100 text-base hover:bg-" + key;
+const SocialLinkClass = (key: string) => "flex justify-center items-center p-2 leading-none rounded-md h-full bg-mocha-surface text-mocha-text text-base hover:bg-" + key;
 ---
 <BaseLayout {...Properties}>
     <main class="container px-4 pb-12">
@@ -34,9 +34,9 @@ const SocialLinkClass = (key: string) => "flex justify-center items-center p-2 l
                     <ul class="flex gap-2 justify-center">
                         {SiteSettings.Links.map((e) => (
                             <li>
-                                <a class="relative flex flex-col items-center pb-2 text-surface-300 hover:text-surface-100 font-semibold transition-all duration-200 group" href={e.Hyperlink}>
+                                <a class="relative flex flex-col items-center pb-2 text-mocha-subtext hover:text-mocha-text font-semibold transition-all duration-200 group" href={e.Hyperlink}>
                                     <span class="uppercase px-1.5">{e.Label}</span>
-                                    <span class="absolute bottom-0 h-0.5 w-0 bg-surface-100 rounded-full group-hover:w-[40%] transition-all duration-200"></span>
+                                    <span class="absolute bottom-0 h-0.5 w-0 bg-mocha-text rounded-full group-hover:w-[40%] transition-all duration-200"></span>
                                 </a>
                             </li>
                         ))}

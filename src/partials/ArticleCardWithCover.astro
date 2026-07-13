@@ -1,0 +1,42 @@
+---
+import type { CollectionTypes } from "../types";
+import { SiteSettings, ToShortDate } from "../utilities";
+import TagsPartialAstroComponent from "./TagsPartial.astro";
+
+type Props = CollectionTypes.Article;
+const article = Astro.props;
+
+const getArticlePath = (id: string) => `/articles/${id}`;
+---
+
+<a
+    href={getArticlePath(article.id)}
+    class="relative rounded-md hover:rounded-xl overflow-hidden border border-mocha-overlay transition-all duration-200 ease-in-out group"
+>
+    <div class="absolute inset-0">
+        <img src={article.data.Cover} alt=`Cover image for ${article.data.Title}` class="w-full h-full object-cover" />
+        {/* <div class="absolute inset-0 bg-linear-to-b bg-slate-700/70 group-hover:bg-slate-700/85 transition-colors duration-400 ease-in-out" /> */}
+    </div>
+
+    <div class="relative size-full grid grid-rows-[auto_auto_auto_1fr] gap-4 p-6">        
+        <p class="uppercase max-w-fit rounded-md p-2 bg-slate-900/80 text-slate-200 font-semibold text-base">
+            {article.data.Series ?? SiteSettings.Articles.DefaultSeries}
+        </p>
+        <div class="grid gap-2">
+            <p class="text-base rounded-md p-2 bg-slate-900/80 text-slate-100">{article.data.Title}</p>
+            <p class="text-base opacity-0 rounded-md p-2 bg-slate-900/80 text-slate-200 transform translate-y-4 overflow-hidden group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 ease-in">{article.data.Caption}</p>
+        </div>
+        {article.data.Tags && (
+            <div class="flex gap-2 flex-wrap overflow-x-auto">
+                {article.data.Tags.slice(0, 4).map((e) => (
+                    <p class="flex text-sm bg-slate-900 border border-slate-700 text-slate-200 justify-center items-center rounded px-2 py-1 shrink-0">
+                        {e}
+                    </p>
+                ))}
+            </div>
+        )}
+        <div class="flex justify-between items-end gap-2 rounded-md p-2 bg-slate-900/80 text-slate-200">
+            <p class="text-base">{ToShortDate(article.data.Published)}</p>
+        </div>
+    </div>
+</a>

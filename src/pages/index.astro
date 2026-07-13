@@ -9,11 +9,11 @@ const PageProperties = GetPageProperties(Astro.url.pathname);
 
 <NavigationLayout {...PageProperties.Metadata} Title={PageProperties.Metadata.Title}>
     <div class="grid gap-2 max-w-xl mx-auto text-center mt-12" slot="pre-navigation">
-        <div class="mb-12 w-64 mx-auto">
-            <IconAstroComponent class="w-full h-full" name="night-mode" />
+        <div class="mb-12 w-96 mx-auto">
+            <IconAstroComponent class="w-full h-full" name="island-night" />
         </div>
-        <h1 class="text-xl text-surface-100">{PageProperties.Metadata.Title}</h1>
-        <p class="text-base text-surface-300">{PageProperties.Metadata.Description}</p>
+        <h1 class="text-xl text-mocha-text">{PageProperties.Metadata.Title}</h1>
+        <p class="text-base text-mocha-caption">{PageProperties.Metadata.Description}</p>
     </div>
 
     <div class="text-lg text-center">

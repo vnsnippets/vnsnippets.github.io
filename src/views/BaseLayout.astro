@@ -18,7 +18,7 @@ const DEVMODE = import.meta.env.DEV;
     <HeadPartial {...Properties}>
         <slot name="head" />
     </HeadPartial>
-    <body>
+    <body class="bg-mocha-base text-mocha-text">
         {
             DEVMODE && (
                 <div class="absolute top-4 right-4 flex flex-col items-end text-teal-700">

@@ -4,9 +4,9 @@ type Props = {
 }
 const { Tags } = Astro.props
 ---
-<div class="flex gap-2 flex-wrap overflow-x-auto text-surface-100 text-sm">
+<div class="flex gap-2 flex-wrap overflow-x-auto">
     {Tags.slice(0, 4).map((e) => (
-        <p class="flex bg-surface-900 justify-center items-center rounded px-2 py-1 shrink-0">
+        <p class="flex text-sm bg-mocha-overlay text-mocha-caption justify-center items-center rounded px-2 py-1 shrink-0">
             {e}
         </p>
     ))}

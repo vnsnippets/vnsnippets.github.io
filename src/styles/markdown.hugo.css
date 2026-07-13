@@ -54,7 +54,7 @@
   --fgColor-attention: #d29922;
   --fgColor-danger: #f85149;
   /* --fgColor-default: #f0f6fc; */
-  --fgColor-default: var(--color-surface-100);
+  --fgColor-default: var(--color-mocha-text);
   --fgColor-done: #ab7df8;
   --fgColor-muted: #9198a1;
   --fgColor-success: #3fb950;
@@ -115,7 +115,7 @@
   --color-prettylights-syntax-markup-bold: #1f2328;
   --color-prettylights-syntax-markup-italic: #1f2328;
   --color-prettylights-syntax-storage-modifier-import: #1f2328;
-  --fgColor-default: #1f2328;
+  --fgColor-default: var(--color-latte-text);
   --focus-outlineColor: var(--borderColor-accent-emphasis);
   --borderColor-neutral-muted: var(--borderColor-muted);
 }
