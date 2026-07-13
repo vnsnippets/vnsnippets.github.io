@@ -1,12 +1,14 @@
 import Site from "Assets:/site.json";
-import type { ArticleFrontmatter, PageMetadata } from "./types";
-import type { MarkdownLayoutProps } from "astro";
+import type { PageMetadata } from "./types";
 
 export const SiteSettings = Site;
 
 export const GetPageProperties = <T extends Record<string, any>>(path: string) => {
     const pages = SiteSettings.Pages as unknown as Record<string, { Metadata: PageMetadata } & T>;
-    return pages[path];
+    
+    // Normalize path: replace trailing slash unless it's the root "/"
+    const normalizedPath = path === "/" ? path : path.replace(/\/$/, "");
+    return pages[normalizedPath];
 };
 
 export const FilterDraftsOnProduction = ({ data }: { data: { Draft?: boolean } }) => {
