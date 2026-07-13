@@ -1,22 +1,21 @@
 ---
-import ArticlePreview from "Partials:/ArticlePreview.astro";
 import NavigationLayout from "Views:/NavigationLayout.astro";
+import IconAstroComponent from "Partials:/Icon.astro";
 
 import { GetPageProperties } from "../utilities";
-import type { CollectionTypes } from "../types";
-import { getCollection } from "astro:content";
-
-const DEVMODE = import.meta.env.DEV;
 
 const PageProperties = GetPageProperties(Astro.url.pathname);
-
 ---
 
 <NavigationLayout {...PageProperties.Metadata} Title={PageProperties.Metadata.Title}>
     <div class="grid gap-2 max-w-xl mx-auto text-center mt-12" slot="pre-navigation">
+        <div class="mb-12 w-64 mx-auto">
+            <IconAstroComponent class="w-full h-full" name="night-mode" />
+        </div>
         <h1 class="text-xl">{PageProperties.Metadata.Title}</h1>
-        <p class="text-base text-brand-text-dark">{PageProperties.Metadata.Description}</p>
+        <p class="text-base text-surface-400">{PageProperties.Metadata.Description}</p>
     </div>
+
     <div class="text-lg text-center">
         <h1>This page is under construction, but you can visit the Blog meanwhile.</h1>
     </div>

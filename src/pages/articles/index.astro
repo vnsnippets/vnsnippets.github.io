@@ -31,7 +31,7 @@ const articles = posts
 <NavigationLayout {...PageProperties.Metadata} Title={PageProperties.Metadata.Title}>
     <div class="grid gap-2 max-w-xl mx-auto text-center mt-12" slot="pre-navigation">
         <h1 class="text-xl">{PageProperties.Metadata.Title}</h1>
-        <p class="text-base text-brand-text-dark">{PageProperties.Metadata.Description}</p>
+        <p class="text-base text-surface-400">{PageProperties.Metadata.Description}</p>
     </div>
 
     <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
@@ -43,8 +43,8 @@ const articles = posts
     </div>
 
     {DEVMODE && articles.drafts.length > 0 && (
-        <div class="mt-12 pt-12 border-t-2 border-brand-text/10">
-            <p class="text-brand-text-dark mb-4">DRAFTS (DEVELOPMENT MODE ONLY)</p>
+        <div class="mt-12 pt-12 border-t-2 border-surface-400">
+            <p class="text-surface-400 mb-4">DRAFTS (DEVELOPMENT MODE ONLY)</p>
             <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
                 {articles.drafts.map((e: CollectionTypes.Article) => {
                     return <ArticlePreview {...e} />;

@@ -10,7 +10,7 @@ const getArticlePath = (id: string) => `/articles/${id}`;
 
 <a
     href={getArticlePath(article.id)}
-    class="relative rounded-md hover:rounded-xl overflow-hidden border border-brand-bg-light/75 bg-brand-bg-light/20 hover:bg-brand-bg-light/10 transition-all duration-200 ease-in-out group"
+    class="relative rounded-md hover:rounded-xl overflow-hidden border border-base-400 bg-base-400 hover:bg-base-400 transition-all duration-200 ease-in-out group"
 >
     {article.data.Cover && (
         <div class="absolute inset-0">
@@ -20,23 +20,23 @@ const getArticlePath = (id: string) => `/articles/${id}`;
     )}
 
     <div class="relative size-full grid grid-rows-[auto_auto_auto_1fr] gap-4 p-6">        
-        <p class="uppercase text-brand-text-dark/75 font-semibold text-base">
+        <p class="uppercase text-surface-400 font-semibold text-base">
             {article.data.Series ?? SiteSettings.Articles.DefaultSeries}
         </p>
         <div class="grid gap-2">
-            <p class="text-base text-brand-text-light">{article.data.Title}</p>
-            <p class=`text-base text-brand-text-dark ${article.data.Cover ? "opacity-0 transform translate-y-4 overflow-hidden group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 ease-in" : "opacity-100"}`>{article.data.Caption}</p>
+            <p class="text-base text-surface-400">{article.data.Title}</p>
+            <p class=`text-base text-surface-400 ${article.data.Cover ? "opacity-0 transform translate-y-4 overflow-hidden group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 ease-in" : "opacity-100"}`>{article.data.Caption}</p>
         </div>
         {article.data.Tags && (
-            <div class="flex gap-2 flex-wrap overflow-x-auto text-brand-text text-sm">
+            <div class="flex gap-2 flex-wrap overflow-x-auto text-surface-400 text-sm">
                 {article.data.Tags.slice(0, 4).map((e) => (
-                    <p class="flex bg-brand-bg-light/50 justify-center items-center rounded-lg px-2 py-1 shrink-0">
+                    <p class="flex bg-base-400 justify-center items-center rounded-lg px-2 py-1 shrink-0">
                         {e}
                     </p>
                 ))}
             </div>
         )}
-        <div class="flex justify-between items-end gap-2 text-brand-text-dark/75">
+        <div class="flex justify-between items-end gap-2 text-surface-400">
             <p class="text-base">{ToShortDate(article.data.Published)}</p>
         </div>
     </div>

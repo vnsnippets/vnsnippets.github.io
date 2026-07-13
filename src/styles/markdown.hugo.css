@@ -54,7 +54,7 @@
   --fgColor-attention: #d29922;
   --fgColor-danger: #f85149;
   /* --fgColor-default: #f0f6fc; */
-  --fgColor-default: var(--color-brand-text);
+  --fgColor-default: var(--color-surface-400);
   --fgColor-done: #ab7df8;
   --fgColor-muted: #9198a1;
   --fgColor-success: #3fb950;

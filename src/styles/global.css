@@ -6,13 +6,24 @@
     --font-serif: 'Lustria', Georgia, 'Times New Roman', Times, serif;
 
     /* Brand kit */
-    --color-brand-bg: #1D1F25;
+    /* --color-brand-bg: #1D1F25;
     --color-brand-bg-light: #333746;
     --color-brand-bg-dark: #14161a;
 
     --color-brand-text-light: #d7d8df;
     --color-brand-text: #C3C6CF;
-    --color-brand-text-dark: #9A9FAE;
+    --color-brand-text-dark: #9A9FAE; */
+    /* Brand kit - Catppuccin Mocha */
+
+    /* Backgrounds */
+    --color-base-400: #252538;      /* Mantle: A slightly lighter dark for cards/elements */
+    --color-base-500: #1e1e2e;      /* Base: The main window background */
+    --color-base-600: #11111b;      /* Crust: The deepest dark for sidebars/status bars */
+
+    /* Text */
+    --color-surface-400: #cdd6f4;   /* Text: High-contrast, crisp readable text */
+    --color-surface-500: #bac2de;   /* Subtext1: Muted, comfortable default text */
+    --color-surface-600: #6c7086;   /* Overlay0: Darker text for captions, borders, or disabled states */
 
     /* Socials */
     --color-whatsapp: #25D366;
@@ -62,8 +73,8 @@
     }
 
     body {
-        background: var(--color-brand-bg);
-        color: var(--color-brand-text);
+        background: var(--color-base-500);
+        color: var(--color-surface-400);
         font-family: var(--font-sans);
         display: flex;
         flex-direction: column;
