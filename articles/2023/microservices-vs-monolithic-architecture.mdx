@@ -32,7 +32,7 @@ On the other hand, microservice architectures are composed of **small independen
 
 > Small independent services running on their own using their own resources
 
-![Monolithic vs Microservice Architecture](https://raw.githubusercontent.com/vnsnippets/vnsnippets.github.io/refs/heads/master/assets/images/2023/mono-vs-micro.jpg)
+![Monolithic vs Microservice Architecture](https://raw.githubusercontent.com/vnsnippets/vnsnippets.github.io/refs/heads/master/images/2023/mono-vs-micro.jpg)
 
 ## Technical Representation
 In this section, we will attempt to visualize what each architecture might look like for an e-commerce platform.
@@ -41,7 +41,7 @@ In this section, we will attempt to visualize what each architecture might look 
 The entire application is developed as a single unit, and it is hosted on a single server exposing a REST API.   
 The API itself may have multiple endpoints, but any request to any of those endpoints will always come to that same server, and that same application.
 
-![Monolithic Application Example](https://raw.githubusercontent.com/vnsnippets/vnsnippets.github.io/refs/heads/master/assets/images/2023/mono-api.png)
+![Monolithic Application Example](https://raw.githubusercontent.com/vnsnippets/vnsnippets.github.io/refs/heads/master/images/2023/mono-api.png)
 
 This makes monolithic applications easier to develop and deploy in the sense that you only have to worry about a single application and a single set of resources (e.g. servers). In that sense, it would also be easier to manage.
 
@@ -56,7 +56,7 @@ On the downside,
 The application is split up into small services, each developed, hosted and managed separately.
 On top of exposing the main application features, you also have to ensure that each service is self-sufficient and can communicate with other services in certain situations.
 
-![Microservice Application Example](https://raw.githubusercontent.com/vnsnippets/vnsnippets.github.io/refs/heads/master/assets/images/2023/micro-api.png)
+![Microservice Application Example](https://raw.githubusercontent.com/vnsnippets/vnsnippets.github.io/refs/heads/master/images/2023/micro-api.png)
 
 With this distributed approach, it is now:
 - Easier to scale individual components focusing on their different needs.
