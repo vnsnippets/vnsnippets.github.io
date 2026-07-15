@@ -1,5 +1,6 @@
 {
     "SiteName": "Vidush H. Namah",
+    "Slug": "Snippets",
     "TwitterHandle": "@vnsnippets",
     "ThemeColor": "#ffffff",
     "DefaultImage": {
@@ -70,7 +71,7 @@
     },
     "Footer": {
         "Report": {
-            "Label": "Report a bug",
+            "Label": "Report an issue",
             "Hyperlink": "https://github.com/vnsnippets/vnsnippets.github.io/issues/new"
         }
     },

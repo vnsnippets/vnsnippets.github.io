@@ -1,0 +1,29 @@
+---
+// src/components/MarkdownImage.astro
+import { inferRemoteSize } from "astro:assets";
+
+const { src, alt, ...props } = Astro.props;
+
+let width: number | undefined;
+let height: number | undefined;
+
+if (typeof src === "string") {
+    try {
+        // 1. Fetch only the image header at build-time to get dimensions (zero CLS)
+        const dimensions = await inferRemoteSize(src);
+        width = dimensions.width;
+        height = dimensions.height;
+    } catch (error) {
+        console.warn(`Failed to infer remote size for: ${src}`, error);
+    }
+}
+---
+
+<img
+    src={src}
+    width={width}
+    height={height}
+    alt={alt || "Blog image"}
+    onload="this.parentElement.classList.remove('shimmer'); this.classList.add('loaded')"
+    {...props}
+/>

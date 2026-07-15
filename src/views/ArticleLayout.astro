@@ -1,11 +1,14 @@
 ---
 // src/layouts/ArticleLayout.astro
 import "Styles:/markdown.hugo.css"
-import NavigationLayout from "./NavigationLayout.astro";
+import NavigationLayout from "Views:/NavigationLayout.astro";
 import { SiteSettings, ToShortDate } from "../utilities";
 import type { CollectionTypes } from "../types";
 import TagsPartialAstroComponent from "Partials:/TagsPartial.astro";
+import MarkdownImagePartial from "Partials:/MarkdownImagePartial.astro";
 import ArticlePreview from "Partials:/ArticlePreview.astro";
+import { render } from 'astro:content';
+import ImagePartial from "Partials:/ImagePartial.astro";
 
 type Props = {
     Current: CollectionTypes.Article
@@ -19,6 +22,8 @@ const CoverImage = Current.data.Cover ? {
     Source: Current.data.Cover,
     Caption: `Featured image for article titled ${Current.data.Title}`
 } : undefined;
+
+const { Content } = await render(Current);
 ---
 
 <NavigationLayout
@@ -36,9 +41,7 @@ const CoverImage = Current.data.Cover ? {
 
             <div class="grid gap-1 text-mocha-subtext text-base mt-4">
                 <div class="flex justify-between items-end gap-2">
-                    <p>
-                        {ToShortDate(Current.data.Published)}
-                    </p>
+                    <p>{ToShortDate(Current.data.Published)}</p>
                 </div>
 
                 <p class="uppercase font-semibold">
@@ -52,28 +55,27 @@ const CoverImage = Current.data.Cover ? {
             </div>
 
             {CoverImage && (
-                <div class="rounded-lg border border-mocha-overlay shadow-lg overflow-hidden">
-                    <img src={CoverImage.Source} alt={CoverImage.Caption} />
+                <div class="rounded-md border border-mocha-overlay shadow-lg overflow-hidden img-wrap shimmer">
+                    <ImagePartial
+                        src={CoverImage.Source}
+                        alt={CoverImage.Caption}
+                    />
                 </div>
             )}
         </section>
 
         <section class="markdown text-base">
-            <slot />
+            <Content components={{ img: MarkdownImagePartial }} />
         </section>
 
 
         <p class="text-mocha-subtext text-left pt-8 mt-8 border-t-2 border-mocha-overlay mb-4">{SiteSettings.Articles.RelatedLabel}</p>
         <section class="flex flex-col md:flex-row gap-4 justify-between">
             <div class="grid gap-2 flex-1">
-                {Previous && (
-                    <ArticlePreview {...Previous} />
-                )}
+                {Previous && (<ArticlePreview {...Previous} />)}
             </div>
             <div class="grid gap-2 flex-1">
-                {Next && (
-                    <ArticlePreview {...Next} />
-                )}
+                {Next && (<ArticlePreview {...Next} />)}
             </div>
         </section>
     </article>

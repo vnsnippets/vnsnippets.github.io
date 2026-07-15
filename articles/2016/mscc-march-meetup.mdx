@@ -37,9 +37,8 @@ This is typically the first question that pops to mind when thinking of transiti
 
 This led to an interesting evvaluation about IDEs in general. We all love (but sometimes hate - let's be honest) a beast of an IDE like Visual Studio and its plethora of plugins and add-ons. But is this your first choice to write a simple Hello World application?
 
-{{< quote author="Jochen Kirstätter"  >}}
-The first choice (of IDE) for most average Joes like us is usually a simple text editor.
-{{< /quote >}}
+> The first choice (of IDE) for most average Joes like us is usually a simple text editor.   
+> *Jochen Kirstätter (2016)*
 
 Indeed, simple text editors - Sublime, Atom, even Notepad - can all be used to code using the .NET Core framework. Many of us agreed that Visual Studio Code is one of the best cross platform editors available out there.
 
@@ -55,16 +54,24 @@ During this part of the meetup, we created a new .NET Project (still on a Linux 
 
 The directions are pretty straightforward:
 1. Navigate to the required directory   
-  `> cd directory_path` 
+    ```bash
+    cd directory_path
+    ```
 
 2. Create a new project which automatically creates a JSON file specifying the basic libraries required to run the project.   
-  `> dotnet new`
+    ```bash
+    dotnet new
+    ```
 
 3. Restore the libraries required (as specified by the JSON file).
-  `> dotnet restore`
+    ```bash
+    dotnet restore
+    ```
 
 4. Run   
-  `> dotnet run`
+    ```bash
+    dotnet run
+    ```
 
 ## It's a wrap!
 Adrien and Prashant (fellow MSPs) did a quick recap of .NET Core as a **single modular and cross platform version of .NET**.
