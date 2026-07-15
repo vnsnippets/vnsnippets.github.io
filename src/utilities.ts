@@ -1,4 +1,4 @@
-import Site from "Assets:/site.json";
+import Site from "Content:/site.json";
 import type { PageMetadata } from "./types";
 
 export const SiteSettings = Site;

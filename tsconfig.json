@@ -9,11 +9,10 @@
     ],
     "compilerOptions": {
         "paths": {
-            "Components:/*": ["./src/components/*"],
             "Views:/*": ["./src/views/*"],
             "Partials:/*": ["./src/partials/*"],
-            "Styles:/*": ["./src/styles/*"],
             "Assets:/*": ["./src/assets/*"], 
+            "Content:/*": ["./content/*"], 
         }
     }
 }
