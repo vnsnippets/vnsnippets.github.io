@@ -13,7 +13,7 @@
             "Views:/*": ["./src/views/*"],
             "Partials:/*": ["./src/partials/*"],
             "Styles:/*": ["./src/styles/*"],
-            "Assets:/*": ["./assets/*"], 
+            "Assets:/*": ["./src/assets/*"], 
         }
     }
 }

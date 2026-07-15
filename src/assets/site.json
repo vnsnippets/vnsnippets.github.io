@@ -4,7 +4,7 @@
     "TwitterHandle": "@vnsnippets",
     "ThemeColor": "#ffffff",
     "DefaultImage": {
-        "Source": "/assets/og-default.jpg",
+        "Source": "/meta-banner.webp",
         "Caption": "Vidush H. Namah | Blog"
     },
     "locale": "en",

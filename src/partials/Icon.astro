@@ -8,13 +8,13 @@ interface Props extends HTMLAttributes<"svg"> {
 
 const { name, ...props } = Astro.props;
 
-const icons = import.meta.glob<{ default: string }>("/assets/vectors/*.svg", { query: "?raw", eager: true });
-const iconPath = `/assets/vectors/${name}.svg`;
+const icons = import.meta.glob<{ default: string }>("/src/assets/vectors/*.svg", { query: "?raw", eager: true });
+const iconPath = `/src/assets/vectors/${name}.svg`;
 const icon = icons[iconPath];
 const rawSvg = icon?.default;
 
 if (!rawSvg) {
-  throw new Error(`Icon "${name}" not found in /assets/vectors`);
+  throw new Error(`Icon "${name}" not found in /src/assets/vectors`);
 }
 
 // 1. Extract just the inner contents of the SVG
