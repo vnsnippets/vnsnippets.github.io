@@ -1266,3 +1266,7 @@
     
     transition: all var(--transition-duration) ease;    
 }
+
+.markdown .expressive-code {
+  margin-bottom: 1rem !important; /* Forces the margin below the frame */
+}

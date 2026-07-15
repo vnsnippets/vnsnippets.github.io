@@ -54,7 +54,8 @@ This directly correlates to the MVVM pattern.
 Create a class in the `/Models` folder.
 
 This **model** represents the data required when calculating a BMI. Depending on your application, such classes sometimes can represent your database models directly.
-{{< highlight js >}}
+```csharp
+// /Models/Human.cs
 public class Human
 {
     public string Name { get; set; }
@@ -70,11 +71,12 @@ public class Human
         BMI = weight / (height * height);
     }
 }
-{{< /highlight >}}
+```
 
 ### View
 Create a **Content Page** in the `/Views` folder.
-{{< highlight xml >}}
+```xml
+// /Views/BMIView.xaml
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XDemo.Views.BMIView">
@@ -95,14 +97,15 @@ Create a **Content Page** in the `/Views` folder.
     <Button Text="CALCULATE BMI" />
   </StackLayout>
 </ContentPage>
-{{< /highlight >}}
+```
 
 ### ViewModel
 Create a class in the `/ViewModels` folder.
 
 The **view-model** is responsible for populating the **view** with data from the **model**. It also contains the logic behind operations triggered from the **view**. Logically, every input and output field in the **view** would need a corresponding element (variable) in the **view-model**.
 
-{{< highlight js >}}
+```csharp
+// /ViewModels/BMIViewModel.cs
 public class BMIViewModel
 {
     //FOR THE WEIGHT ENTRY
@@ -143,7 +146,7 @@ public class BMIViewModel
         Message = "HELLO XAMARIN FROM MVVM!";
     }
 }
-{{< /highlight >}}
+```
 
 ### Bindings
 At the moment, the **view** and **view-model** are completely separate files in the project. The **view** and the **elements** in the view need to be informed of the existence of the **view-model** (or vice-versa) to connect the two.
@@ -153,7 +156,9 @@ First and foremost, we need a **binding context**, which essentially tells the *
 
 We will go for `xaml.cs` in this tutorial.
 
-{{< highlight js >}}
+
+```csharp
+// /Views/BMIView.xaml.cs
 public partial class BMIView : ContentPage
 {
     public BMIView()
@@ -162,14 +167,17 @@ public partial class BMIView : ContentPage
         this.BindingContext = new BMIViewModel();
     }
 }
-{{< /highlight >}}
+```
 
 #### Data Binding
 The **view** is now bound to the **view-model**, but something is still missing. Similar to the **binding context**, the **view** components (Entry Boxes, Labels etc.) also need to bind themselves to the variables in the **view-model**.
 
 Let's set up the **data-binding** in the **view**.
 
-{{< highlight xml >}}
+
+```xml
+// /Views/BMIView.xaml
+
 <!--BINDING FORMAT-->
 <!--{Binding VARIABLE_NAME_IN_VIEWMODEL}-->
 <Entry Placeholder="NAME" Text="{Binding Name}"/>
@@ -179,7 +187,7 @@ Let's set up the **data-binding** in the **view**.
 
 <Label Text="Height (M)" XAlign="Center"/>
 <Entry Placeholder="HEIGHT(M)" Text="{Binding Height}"/>
-{{< /highlight >}}
+```
 
 
 #### Command Binding
@@ -193,7 +201,9 @@ Simply put, one can set the value of an ICommand Property to be a function - hen
 This allows us to bind a function to a button, just like the other elements were bound to their counterparts in the **view-model**.
 
 Create an ICommand in the View-Model.
-{{< highlight js >}}
+
+```csharp
+// /ViewModels/BMIViewModel.cs
 public ICommand CalculateBMI
 {
     get 
@@ -217,14 +227,15 @@ public ICommand CalculateBMI
         });
     }
 }
-{{< /highlight >}}
+```
 
 > Read more on [Lambda Expressions](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/lambda-expressions) if you are unfamiliar with the code syntax above.
 
 Finally, update the view to bind the command to your button.
-{{< highlight xml >}}
+```xml
+// /Views/BMIView.xaml
 <Button Text="CALCULATE BMI" Command="{Binding CalculateBMI}"/>
-{{< /highlight >}}
+```
 
 #### Property Changes
 Looks like everything is in place - the application should run, right?   
@@ -241,7 +252,9 @@ The solution - **INotifyPropertyChanged**.
 This is a means to inform the application when something changes for it to taking necessary steps and refresh the elements on the screen.
 
 Update the **view-model** code as below.
-{{< highlight js >}}
+
+```csharp
+// /ViewModels/BMIViewModel.cs
 public class BMIViewModel : INotifyPropertyChanged 
 {
     //THIS ACTS AS A LISTENER WAITING FOR SOMETHING TO CHANGE VALUES
@@ -249,7 +262,7 @@ public class BMIViewModel : INotifyPropertyChanged
     
     ...
 }
-{{< /highlight >}}
+```
 
 The **PropertyChanged** variable acts as an agent between the **view** and the **view-model**, keeping track of what values are changing.
 * When **PropertyChanged** is null – it implies nothing has changed.
@@ -258,7 +271,9 @@ The **PropertyChanged** variable acts as an agent between the **view** and the *
 So, our next step is to ensure that we update the **PropertyChanged** variable when something changes.
 
 Create a method in the **view-model**, designed to update the **PropertyChanged** variable when it is called.
-{{< highlight js >}}
+
+```csharp
+// /ViewModels/BMIViewModel.cs
 public class BMIViewModel : INotifyPropertyChanged
 {
     ...
@@ -278,10 +293,12 @@ public class BMIViewModel : INotifyPropertyChanged
         }
     }
 }
-{{< /highlight >}}
+```
 
 Lastly, update the data variables (the ones that populate the screen) to call our method when a change happens.
-{{< highlight js >}}
+
+```csharp
+// /ViewModels/BMIViewModel.cs
 public class BMIViewModel : INotifyPropertyChanged
 {
     ...
@@ -317,7 +334,7 @@ public class BMIViewModel : INotifyPropertyChanged
         }
     }
 }
-{{< /highlight >}}
+```
 
 ## It's a wrap (or a taco)
 Give the application a spin.

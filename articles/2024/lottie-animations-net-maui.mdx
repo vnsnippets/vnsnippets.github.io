@@ -68,6 +68,7 @@ This project is a simple one, aiming to add Lottie animations to a page in a .NE
 Open your `MauiProgram.cs` file and add the `UseSkiaSharp` call as follows. This initializes SkiaSharp into your application and allows the controls/views provided by the library to be used.
 
 ```csharp
+// MauiProgram.cs
 public static class MauiProgram
 {
 	public static MauiApp CreateMauiApp()
@@ -107,6 +108,7 @@ Open the XAML file of your choosing, where you want to add the animation and add
 Your file should look as follows:
 
 ```xml
+// /Pages/MainPage.xaml
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage 
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -121,6 +123,7 @@ Your file should look as follows:
 And finally, add your animation using the `SKLottieView` control from the SkiaSharp library.
 
 ```xml
+// /Pages/MainPage.xaml
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage 
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
