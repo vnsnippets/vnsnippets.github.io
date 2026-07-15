@@ -41,9 +41,7 @@ const { Content } = await render(Current);
 
             <div class="grid gap-1 text-mocha-subtext text-base mt-4">
                 <div class="flex justify-between items-end gap-2">
-                    <p>
-                        {ToShortDate(Current.data.Published)}
-                    </p>
+                    <p>{ToShortDate(Current.data.Published)}</p>
                 </div>
 
                 <p class="uppercase font-semibold">
@@ -74,14 +72,10 @@ const { Content } = await render(Current);
         <p class="text-mocha-subtext text-left pt-8 mt-8 border-t-2 border-mocha-overlay mb-4">{SiteSettings.Articles.RelatedLabel}</p>
         <section class="flex flex-col md:flex-row gap-4 justify-between">
             <div class="grid gap-2 flex-1">
-                {Previous && (
-                    <ArticlePreview {...Previous} />
-                )}
+                {Previous && (<ArticlePreview {...Previous} />)}
             </div>
             <div class="grid gap-2 flex-1">
-                {Next && (
-                    <ArticlePreview {...Next} />
-                )}
+                {Next && (<ArticlePreview {...Next} />)}
             </div>
         </section>
     </article>
