@@ -138,6 +138,45 @@
         position: relative;
         text-wrap: pretty;
     }
+
+    .img-wrap {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--color-mocha-surface);
+    display: inline-block;
+  }
+
+    /* Shimmer effect on the wrapper */
+    .shimmer::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        transform: translateX(-100%);
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.05),
+            transparent
+        );
+        animation: shine 1.6s infinite;
+    }
+
+    /* Keep the image hidden until loaded */
+    .img-wrap > img {
+        opacity: 0;
+        transition: opacity 0.4s ease-in-out;
+        display: block;
+    }
+
+    .img-wrap > img.loaded {
+        opacity: 1;
+    }
+
+    @keyframes shine {
+        100% {
+        transform: translateX(100%);
+        }
+    }
 }
 
 /* @plugin "@tailwindcss/typography";

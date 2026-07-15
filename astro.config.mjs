@@ -2,16 +2,18 @@
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 
+import mdx from "@astrojs/mdx";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://vnsnippets.github.io",
-  vite: {
-    plugins: [tailwindcss()],
-  },
+  vite: { plugins: [tailwindcss()] },
+  integrations: [mdx()],
   markdown: {
-    shikiConfig: {
-      // Choose any built-in theme (e.g., "dracula", "nord", "css-variables")
-      theme: "catppuccin-macchiato", 
-    },
+    syntaxHighlight: 'prism',
+    shikiConfig: { theme: "catppuccin-macchiato" }
   },
+  image: {
+    domains: ["github.com", "raw.githubusercontent.com"]
+  }
 });

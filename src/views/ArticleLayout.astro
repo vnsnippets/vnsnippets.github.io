@@ -1,11 +1,14 @@
 ---
 // src/layouts/ArticleLayout.astro
 import "Styles:/markdown.hugo.css"
-import NavigationLayout from "./NavigationLayout.astro";
+import NavigationLayout from "Views:/NavigationLayout.astro";
 import { SiteSettings, ToShortDate } from "../utilities";
 import type { CollectionTypes } from "../types";
 import TagsPartialAstroComponent from "Partials:/TagsPartial.astro";
+import MarkdownImagePartial from "Partials:/MarkdownImagePartial.astro";
 import ArticlePreview from "Partials:/ArticlePreview.astro";
+import { render } from 'astro:content';
+import ImagePartial from "Partials:/ImagePartial.astro";
 
 type Props = {
     Current: CollectionTypes.Article
@@ -19,6 +22,8 @@ const CoverImage = Current.data.Cover ? {
     Source: Current.data.Cover,
     Caption: `Featured image for article titled ${Current.data.Title}`
 } : undefined;
+
+const { Content } = await render(Current);
 ---
 
 <NavigationLayout
@@ -52,14 +57,17 @@ const CoverImage = Current.data.Cover ? {
             </div>
 
             {CoverImage && (
-                <div class="rounded-lg border border-mocha-overlay shadow-lg overflow-hidden">
-                    <img src={CoverImage.Source} alt={CoverImage.Caption} />
+                <div class="rounded-md border border-mocha-overlay shadow-lg overflow-hidden img-wrap shimmer">
+                    <ImagePartial
+                        src={CoverImage.Source}
+                        alt={CoverImage.Caption}
+                    />
                 </div>
             )}
         </section>
 
         <section class="markdown text-base">
-            <slot />
+            <Content components={{ img: MarkdownImagePartial }} />
         </section>
 
 
