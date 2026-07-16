@@ -24,29 +24,41 @@ const groupedArticles = articles
         else result.published.push(e);
         return result;
     }, { drafts: [], published: [] });
+
+// Helper function to return the correct Tailwind column-span based on list position
+const getGridSpanClass = (index: number) => {
+  // Grid sequence of widths in image (out of 4 columns): 
+  // Row 1: 2-span, 1-span, 1-span (indices: 0, 1, 2)
+  // Row 2: 1-span, 1-span, 2-span (indices: 3, 4, 5)
+  const patternIndex = index % 6;
+  if (patternIndex === 0 || patternIndex === 5) {
+    return "lg:col-span-2";
+  }
+  return "lg:col-span-1";
+};
 ---
 
 <NavigationLayout {...PageProperties.Metadata} Title={PageProperties.Metadata.Title}>
-    <div class="grid gap-2 max-w-xl mx-auto text-center mt-12" slot="pre-navigation">
-        <h1 class="text-xl text-mocha-text">{PageProperties.Metadata.Title}</h1>
+    <div class="grid gap-2 max-w-xl mx-auto text-center mt-12 mb-12" slot="pre-navigation">
+        <h1 class="text-xl font-bold text-mocha-text">{PageProperties.Metadata.Title}</h1>
         <p class="text-base text-mocha-caption">{PageProperties.Metadata.Description}</p>
     </div>
 
-
-    <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
+    <!-- 4-Column Responsive Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {
-            groupedArticles.published.map((e: CollectionTypes.Article) => {
-                return <ArticlePreview {...e} />;
+            groupedArticles.published.map((e: CollectionTypes.Article, index: number) => {
+                return <ArticlePreview {...e} grid={getGridSpanClass(index)} />;
             })
         }
     </div>
 
     {DEVMODE && groupedArticles.drafts.length > 0 && (
-        <div class="mt-12 pt-12">
-            <p class="text-mocha-text mb-4">DRAFTS (DEVELOPMENT MODE ONLY)</p>
-            <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
-                {groupedArticles.drafts.map((e: CollectionTypes.Article) => {
-                    return <ArticlePreview {...e} />;
+        <div class="mt-16 pt-12 border-t border-mocha-overlay">
+            <p class="text-mocha-text font-bold mb-6 tracking-widest text-sm">DRAFTS (DEVELOPMENT MODE ONLY)</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {groupedArticles.drafts.map((e: CollectionTypes.Article, index: number) => {
+                    return <ArticlePreview {...e} grid={getGridSpanClass(index)} />;
                 })}
             </div>
         </div>
