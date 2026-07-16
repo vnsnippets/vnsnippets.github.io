@@ -4,39 +4,44 @@ import { SiteSettings, ToShortDate } from "../utilities";
 import TagsPartialAstroComponent from "./TagsPartial.astro";
 import ImagePartial from "./ImagePartial.astro";
 
-type Props = CollectionTypes.Article;
-const { id, data } = Astro.props;
+type Props = CollectionTypes.Article & { grid?: string; };
+
+const { id, data, grid = "" } = Astro.props;
 
 const getArticlePath = (id: string) => `/articles/${id}`;
 
 const DEFAULT_CAPTION_STYLE = "relative opacity-100 text-mocha-caption";
-const COVER_CAPTION_STYLE = "relative text-mocha-caption opacity-0 translate-y-5 group-hover:opacity-100 group-hover:translate-y-0 transform transition-all duration-250 ease-in-out"
+const COVER_CAPTION_STYLE = "relative text-mocha-caption opacity-0 translate-y-5 group-hover:opacity-100 group-hover:translate-y-0 transform transition-all duration-250 ease-in-out";
 ---
 <a
     href={getArticlePath(id)}
-    class="relative shadow-lg rounded-md hover:rounded-xl overflow-hidden border border-mocha-overlay bg-mocha-surface hover:bg-mocha-mantle active:scale-98 transition-all duration-250 ease-in-out group"
+    class={`relative flex flex-col justify-between overflow-hidden rounded-2xl shadow-lg border border-mocha-overlay bg-mocha-surface hover:bg-mocha-mantle transition-all duration-300 ease-in-out group ${grid}`}
 >
     {data.Cover && (
-        <div class="absolute w-full h-full overflow-hidden rounded img-wrap shimmer">
+        <div class="absolute inset-0 w-full h-full overflow-hidden shimmer z-0">
             <ImagePartial 
                 src={data.Cover} 
                 alt={`Cover image for ${data.Title}`} 
-                class="w-full h-full object-cover"
+                class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
             />
-            <div class="absolute inset-0 bg-mocha-crust/80 group-hover:bg-mocha-crust/90 transition-colors duration-250 ease-in-out" />
+            <div class="absolute inset-0 bg-mocha-crust/75 group-hover:bg-mocha-crust/80 transition-colors duration-300" />
         </div>
     )}
 
     <div class={`relative size-full flex flex-col gap-2 text-base ${data.Cover ? "p-6" : "p-6"}`}>
-        <div class="grid gap-2">
-            <p class="relative uppercase text-mocha-subtext font-semibold">{data.Series ?? SiteSettings.Articles.DefaultSeries}</p>
-            <p class="relative text-base text-mocha-text font-semibold">{data.Title}</p>
+        <div>
+            <p class="uppercase text-base font-bold tracking-wider group-hover:tracking-normal text-mocha-subtext mb-2 transition-all duration-250">
+                {data.Series ?? SiteSettings.Articles.DefaultSeries}
+            </p>
+            <h2 class="text text-lg font-bold text-mocha-text leading-tight group-hover:text-white transition-colors duration-200">
+                {data.Title}
+            </h2>
         </div>
 
         <p class={data.Cover ? COVER_CAPTION_STYLE : DEFAULT_CAPTION_STYLE}>{data.Caption}</p>
 
         <div class="relative flex flex-col flex-1 justify-end gap-4 mt-2">
-            <TagsPartialAstroComponent Tags={data.Tags} />
+            <TagsPartialAstroComponent Tags={data.Tags.slice(0,2)} />
             <div class="flex justify-between items-end gap-2 text-mocha-subtext">
                 <p>{ToShortDate(data.Published)}</p>
             </div>

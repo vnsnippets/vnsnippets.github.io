@@ -27,13 +27,15 @@ const { Content } = await render(Current);
 ---
 
 <NavigationLayout
-    Title={Current.data.Title}
-    Description={Current.data.Caption}
-    OpenGraph={{
-        Type: "article",
-        Image: CoverImage
+    headprops={{
+        Title: Current.data.Title,
+        Description: Current.data.Caption,
+        OpenGraph: {
+            Type: "article",
+            Image: CoverImage
+        },
+        Keywords: Current.data.Tags
     }}
-    Keywords={Current.data.Tags}
 >
     <article class="max-w-5xl mx-auto">
         <section class="grid gap-4 mb-8">
@@ -43,7 +45,6 @@ const { Content } = await render(Current);
                 <div class="flex justify-between items-end gap-2">
                     <p>{ToShortDate(Current.data.Published)}</p>
                 </div>
-
                 <p class="uppercase font-semibold">
                     {Current.data.Series ?? SiteSettings.Articles.DefaultSeries}
                 </p>
