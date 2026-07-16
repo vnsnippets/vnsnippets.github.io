@@ -25,12 +25,8 @@ const groupedArticles = articles
         return result;
     }, { drafts: [], published: [] });
 
-// Helper function to return the correct Tailwind column-span based on list position
 const getGridSpanClass = (index: number) => {
-  // Grid sequence of widths in image (out of 4 columns): 
-  // Row 1: 2-span, 1-span, 1-span (indices: 0, 1, 2)
-  // Row 2: 1-span, 1-span, 2-span (indices: 3, 4, 5)
-  const patternIndex = index % 6;
+  const patternIndex = index % 10;
   if (patternIndex === 0 || patternIndex === 5) {
     return "lg:col-span-2";
   }
