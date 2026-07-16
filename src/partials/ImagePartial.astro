@@ -24,6 +24,7 @@ if (typeof src === "string") {
     width={width}
     height={height}
     alt={alt || "Blog image"}
+    loading="lazy"
     onload="this.parentElement.classList.remove('shimmer'); this.classList.add('loaded')"
     {...props}
 />
