@@ -1,31 +1,18 @@
 ---
+import { getCollection } from "astro:content";
+
 import ArticlePreview from "Partials:/ArticlePreview.astro";
 import NavigationLayout from "Views:/NavigationLayout.astro";
 
 import { FilterDraftsOnProduction, GetPageProperties } from "../../utilities";
 import type { CollectionTypes } from "../../types";
-import { getCollection } from "astro:content";
-
-const DEVMODE = import.meta.env.DEV;
 
 const PageProperties = GetPageProperties(Astro.url.pathname);
 
-type ReducedListType = {
-    drafts: CollectionTypes.Article[]
-    published: CollectionTypes.Article[]
-}
+const articles = (await getCollection("Articles", FilterDraftsOnProduction))
+    .sort((a, b) => b.data.Published.getTime() - a.data.Published.getTime());
 
-const articles = await getCollection("Articles", FilterDraftsOnProduction);
-
-const groupedArticles = articles
-    .sort((a, b) => b.data.Published.getTime() - a.data.Published.getTime())
-    .reduce<ReducedListType>((result, e) => {
-        if (e.data.Draft) result.drafts.push(e);
-        else result.published.push(e);
-        return result;
-    }, { drafts: [], published: [] });
-
-const getGridSpanClass = (index: number) => {
+const calculategridclass = (index: number) => {
   const patternIndex = index % 10;
   if (patternIndex === 0 || patternIndex === 5) {
     return "lg:col-span-2";
@@ -34,29 +21,15 @@ const getGridSpanClass = (index: number) => {
 };
 ---
 
-<NavigationLayout {...PageProperties.Metadata} Title={PageProperties.Metadata.Title}>
+<NavigationLayout headprops={{...PageProperties.Metadata, Title: PageProperties.Metadata.Title}} styles="container">
     <div class="grid gap-2 max-w-xl mx-auto text-center mt-12 mb-12" slot="pre-navigation">
         <h1 class="text-xl font-bold text-mocha-text">{PageProperties.Metadata.Title}</h1>
         <p class="text-base text-mocha-caption">{PageProperties.Metadata.Description}</p>
     </div>
 
-    <!-- 4-Column Responsive Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {
-            groupedArticles.published.map((e: CollectionTypes.Article, index: number) => {
-                return <ArticlePreview {...e} grid={getGridSpanClass(index)} />;
-            })
-        }
+    <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-6">
+        {articles.map((e: CollectionTypes.Article, index: number) => {
+            return <ArticlePreview {...e} grid={calculategridclass(index)} />;
+        })}
     </div>
-
-    {DEVMODE && groupedArticles.drafts.length > 0 && (
-        <div class="mt-16 pt-12 border-t border-mocha-overlay">
-            <p class="text-mocha-text font-bold mb-6 tracking-widest text-sm">DRAFTS (DEVELOPMENT MODE ONLY)</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {groupedArticles.drafts.map((e: CollectionTypes.Article, index: number) => {
-                    return <ArticlePreview {...e} grid={getGridSpanClass(index)} />;
-                })}
-            </div>
-        </div>
-    )}
 </NavigationLayout>
