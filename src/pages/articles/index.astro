@@ -1,16 +1,13 @@
 ---
-import { getCollection } from "astro:content";
-
 import ArticlePreview from "Partials:/ArticlePreview.astro";
 import NavigationView from "Views:/NavigationView.astro";
 
-import { FilterDraftsOnProduction, GetPageProperties } from "../../utilities";
+import { GetProductionArticles, GetPageProperties } from "../../utilities";
 import type { CollectionTypes } from "../../types";
 
 const { Metadata: pagemetadata, ...otherprops} = GetPageProperties(Astro.url.pathname);
 
-const articles = (await getCollection("Articles", FilterDraftsOnProduction))
-    .sort((a, b) => b.data.Published.getTime() - a.data.Published.getTime());
+const articles = (await GetProductionArticles()).sort((a, b) => b.data.Published.getTime() - a.data.Published.getTime());
 
 // const isbig = (index: number) => {
 //   const patternIndex = index % 10;

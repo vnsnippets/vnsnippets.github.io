@@ -1,12 +1,12 @@
 ---
-import { getCollection } from "astro:content";
+import IconPartial from "Partials:/IconPartial.astro";
 import type { CollectionTypes } from "../../../types";
-import { FilterDraftsOnProduction, SiteSettings, Slugify } from "../../../utilities";
+import { GetProductionArticles, SiteSettings, Slugify } from "../../../utilities";
 import ArticlePreview from "Partials:/ArticlePreview.astro";
 import NavigationView from "Views:/NavigationView.astro";
 
 export async function getStaticPaths() {
-    const articles = await getCollection("Articles", FilterDraftsOnProduction);
+    const articles = await GetProductionArticles();
 
     const uniqueSlugs = [
         ...new Set(
@@ -31,30 +31,13 @@ export async function getStaticPaths() {
             params: { series: slug },
             props: {
                 series: originalSeries,
-                articles: seriesArticles,
+                articles: seriesArticles.sort((a, b) => b.data.Published.getTime() - a.data.Published.getTime())
             },
         };
     });
 }
 
 const { series, articles } = Astro.props;
-
-// 2. Separate published articles and drafts (just like your main listing page)
-type ReducedListType = {
-    drafts: CollectionTypes.Article[];
-    published: CollectionTypes.Article[];
-};
-
-const groupedArticles = articles
-    .sort((a, b) => b.data.Published.getTime() - a.data.Published.getTime())
-    .reduce<ReducedListType>(
-        (result, e) => {
-            if (e.data.Draft) result.drafts.push(e);
-            else result.published.push(e);
-            return result;
-        },
-        { drafts: [], published: [] },
-    );
 ---
 
 <NavigationView Title={`${SiteSettings.Articles.SeriesPageTitle} : ${series}`} Hidden={true} containerstyles="container">
@@ -65,8 +48,6 @@ const groupedArticles = articles
     </div>
 
     <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-4">
-        {groupedArticles.published.map((e: CollectionTypes.Article) => {
-                return <ArticlePreview {...e} />;
-        })}
+        {articles.map((e: CollectionTypes.Article) => <ArticlePreview {...e} />)}
     </div>
 </NavigationView>

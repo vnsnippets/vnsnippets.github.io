@@ -1,5 +1,6 @@
 import Site from "Content:/site.json";
-import type { PageMetadata } from "./types";
+import type { CollectionTypes, PageMetadata } from "./types";
+import { getCollection } from "astro:content";
 
 export const SiteSettings = Site;
 
@@ -12,6 +13,10 @@ export const GetPageProperties = <T extends Record<string, any>>(path: string) =
 export const FilterDraftsOnProduction = ({ data }: { data: { Draft?: boolean } }) => {
     return import.meta.env.PROD ? data.Draft !== true : true;
 };
+
+export const GetProductionArticles = async (filter: boolean = false) : Promise<CollectionTypes.Article[]> => {
+    return await getCollection("Articles", (filter) ? FilterDraftsOnProduction : undefined)
+}
 
 export const ToShortDate = (e: Date) => {
     return e.toISOString().split("T")[0]

@@ -1,18 +1,22 @@
 ---
-import type { ComponentProps, HTMLAttributes } from "astro/types";
+// src/layouts/NavigationView.astro
+import type { ComponentProps } from "astro/types";
 
 import HeadPartial from "Partials:/HeadPartial.astro";
 import BaseHTMLView from "Views:/BaseHTMLView.astro";
 import IconPartial from "Partials:/IconPartial.astro";
-import { SiteSettings } from "../utilities";
+import { GetProductionArticles, SiteSettings } from "../utilities";
 import NavigationLinkPartial from "Partials:/NavigationLinkPartial.astro";
 
 type Props = ComponentProps<typeof HeadPartial> & {
     containerstyles?: string
 }
 
+const currentPath = Astro.url.pathname;
 const { containerstyles, ...headprops } = Astro.props
 const SocialNavItemClass = (key: string) => "flex justify-center items-center p-2 leading-none rounded h-full text-mocha-text text-base hover:bg-" + key;
+
+const uniqueSeries = [...new Set((await GetProductionArticles()).map((article) => article.data.Series).filter(Boolean))];
 ---
 <BaseHTMLView {...headprops}>
     <main class={`relative min-h-screen px-4 flex w-full flex-col ${containerstyles}`}>
@@ -20,17 +24,22 @@ const SocialNavItemClass = (key: string) => "flex justify-center items-center p-
             <div id="sitenav" class="flex justify-center p-1 rounded-md overflow-hidden border border-mocha-overlay bg-mocha-surface transition-all duration-300 ease-in-out">
                 {SiteSettings.Links.length > 0 && (  
                     <ul class="flex items-center justify-center gap-4 px-3">
-                        {SiteSettings.Links.map((e) => (
-                            <li>
-                                <a 
-                                    class="uppercase text-sm text-mocha-subtext hover:text-mocha-text font-semibold transition-all duration-250" 
-                                    href={e.Hyperlink}
-                                    title={e.Label}
-                                >
-                                    {e.Label}
-                                </a>
-                            </li>
-                        ))}
+                        {SiteSettings.Links.map((e) => {
+                            const isActive = currentPath === e.Hyperlink || (e.Hyperlink !== '/' && currentPath.startsWith(e.Hyperlink));
+                            return (
+                                <li>
+                                    <a 
+                                        class={`uppercase text-sm font-semibold transition-all duration-250 
+                                            ${isActive ? "text-mocha-text font-bold decoration-mocha-text" : "text-mocha-subtext hover:text-mocha-text"}`} 
+                                        href={e.Hyperlink}
+                                        title={e.Label}
+                                        aria-current={isActive ? "page" : undefined} 
+                                    >
+                                        {e.Label}
+                                    </a>
+                                </li>
+                            );
+                        })}
                     </ul>
                 )}
                 {SiteSettings.Socials.length > 0 && (

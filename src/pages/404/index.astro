@@ -4,22 +4,22 @@ import IconPartial from "Partials:/IconPartial.astro";
 import { SiteSettings } from "../../utilities";
 ---
 
-<NavigationView 
-    headprops={{
-        Title: `${SiteSettings.SiteName} :: 404`,
-        Description: "Page could not be found.",
-        Hidden: true
-    }}
->
-    <div class="grid gap-2 max-w-xl mx-auto text-center mt-4 lg:mt-12" slot="pre-navigation">
-        <div class="mb-8 lg:mb-12 max-w-96 px-6 md:px-12 mx-auto">
-            <IconPartial class="w-full h-full" name="island-night" />
-        </div>
-        <h1 class="text-xl text-mocha-text">{SiteSettings.NotFound.Title}</h1>
-        <div class="flex flex-col items-center leading-none">
+<NavigationView Title={`${SiteSettings.SiteName} :: 404`} Hidden={true}>
+    <div class="flex flex-col items-center gap-2 max-w-xl mx-auto text-center mt-4 lg:mt-12">
+        <h1 class="text-6xl text-mocha-text">404</h1>
+        <p class="text-lg text-mocha-text">{SiteSettings.NotFound.Title}</p>
+        <p class="text-base text-center text-mocha-caption leading-none">
+
             {SiteSettings.NotFound.Caption.map((e) => (
-                <p class="text-base text-mocha-subtext">{e}</p>
+                <span>{e}</span>
             ))}
-        </div>
+        </p>
+
+        <a 
+            class="rounded-md bg-mocha-overlay/50 hover:bg-mocha-overlay text-mocha-text text-base leading-none py-3 px-4 uppercase mt-4"
+            href="/"
+        >
+            {SiteSettings.NotFound.HomeActionLabel}
+        </a> 
     </div>
 </NavigationView>

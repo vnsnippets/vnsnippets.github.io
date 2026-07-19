@@ -6,11 +6,8 @@ import HeadPartial from "Partials:/HeadPartial.astro";
 import "Assets:/global.css";
 import { SiteSettings } from "../utilities";
 
-// Automatically inherit all property types from your BaseHead component!
 type Props = ComponentProps<typeof HeadPartial>;
 const Properties = Astro.props;
-
-const DEVMODE = import.meta.env.DEV;
 ---
 
 <!doctype html>
@@ -19,13 +16,6 @@ const DEVMODE = import.meta.env.DEV;
         <slot name="head" />
     </HeadPartial>
     <body class="bg-mocha-base text-mocha-text">
-        {
-            DEVMODE && (
-                <div class="absolute top-4 right-4 flex flex-col items-end text-teal-700">
-                    <p class="text-sm text-right">{Astro.url.pathname}</p>
-                </div>
-            )
-        }
         <slot />
         <slot name="foot" />
     </body>

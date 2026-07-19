@@ -72,10 +72,10 @@
         }
     },
     "NotFound": {
-        "Title": "404 Page Not Found",
+        "Title": "Page Not Found",
         "Caption": [
-            "Looks like you got stranded.",
-            "Let's get you someplace safe!"
-        ]
+            "Looks like you got stranded."
+        ],
+        "HomeActionLabel": "Go back home"
     }
 }

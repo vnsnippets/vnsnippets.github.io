@@ -1,11 +1,11 @@
 ---
 // src/pages/articles/[year]/[slug].astro
-import { getCollection, render } from "astro:content";
+import { render } from "astro:content";
 import ArticleSingleView from "Views:/ArticleSingleView.astro";
-import { FilterDraftsOnProduction } from "../../../utilities";
+import { GetProductionArticles } from "../../../utilities";
 
 export async function getStaticPaths() {
-    const articles = await getCollection("Articles", FilterDraftsOnProduction);
+    const articles = await GetProductionArticles();
     
     // Sort chronologically (oldest to newest) once before mapping
     const sorted = articles.sort(
