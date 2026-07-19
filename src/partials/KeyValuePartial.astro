@@ -1,0 +1,12 @@
+---
+type Props = {
+    label: string
+    value: string
+}
+
+const { label, value } = Astro.props;
+---
+<p class="grid gap-1">
+    <span class="uppercase font-bold text-mocha-caption">{label}</span>
+    <span class="text-mocha-subtext">{value}</span>
+</p>

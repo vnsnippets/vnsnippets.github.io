@@ -2,14 +2,13 @@
 // src/layouts/ArticleLayout.astro
 import "Assets:/markdown.css"
 import NavigationLayout from "Views:/NavigationLayout.astro";
-import { SiteSettings, ToShortDate } from "../utilities";
-import type { CollectionTypes, AuthorMetadata } from "../types";
-import TagsPartialAstroComponent from "Partials:/TagsPartial.astro";
-import MarkdownImagePartial from "Partials:/MarkdownImagePartial.astro";
+import { SiteSettings, ToDescriptiveDate } from "../utilities";
+import type { CollectionTypes } from "../types";
+import TagsPartial from "Partials:/TagsPartial.astro";
 import ArticlePreview from "Partials:/ArticlePreview.astro";
 import { render } from 'astro:content';
 import ImagePartial from "Partials:/ImagePartial.astro";
-import IconPartial from "Partials:/IconPartial.astro";
+import KeyValuePartial from "Partials:/KeyValuePartial.astro";
 
 type Props = {
     Current: CollectionTypes.Article
@@ -24,11 +23,7 @@ const CoverImage = Current.data.Cover ? {
     Caption: `${Current.data.Title}`
 } : undefined;
 
-const { Content, ...contentprops } = await render(Current);
-
-const Author = (SiteSettings.Authors as Record<string, AuthorMetadata>)[Current.data.Author]
-
-const SocialLinkClass = (key: string) => "flex justify-center items-center p-2 leading-none rounded-md h-full text-mocha-text text-base hover:bg-" + key;
+const { Content } = await render(Current);
 ---
 
 <NavigationLayout
@@ -45,31 +40,42 @@ const SocialLinkClass = (key: string) => "flex justify-center items-center p-2 l
 >
     <article>
         <div class="grid gap-4 justify-center text-base text-center mb-12">
-            <p class="uppercase font-semibold text-mocha-subtext">{Current.data.Series ?? SiteSettings.Articles.DefaultSeries}</p>
-            <h1 class="text-4xl text-mocha-text font-semibold">{Current.data.Title}</h1>
-            {Current.data.Tags && <TagsPartialAstroComponent Tags={Current.data.Tags.slice(0,5)} />}
+            <div class="flex justify-center">
+                <p class="px-2 py-1 mx-auto uppercase font-semibold text-mocha-subtext rounded-md bg-mocha-overlay/60 mb-4">{Current.data.Series ?? SiteSettings.Articles.DefaultSeries}</p>
+            </div>
 
-            <p class="text-mocha-subtext mt-4">Published: {ToShortDate(Current.data.Published)}</p>
+            <h1 class="text-4xl text-mocha-text font-semibold">{Current.data.Title}</h1>
             <p class="text-base text-mocha-caption max-w-2xl">{Current.data.Caption}</p>
+
+            <div class="flex flex-wrap justify-evenly mt-8">
+                <KeyValuePartial label={SiteSettings.Articles.Labels.PublishedDate} value={ToDescriptiveDate(Current.data.Published)} />
+                <KeyValuePartial label={SiteSettings.Articles.Labels.Author} value={Current.data.Author} />
+            </div>
         </div>
 
-        <div class="text-base border-mocha-surface">
+        <div class="text-base">
             {CoverImage && (
                 <div class="rounded-md border border-mocha-overlay shadow-lg overflow-hidden img-wrap shimmer mb-6">
                     <ImagePartial
+                        imgonly={true}
                         src={CoverImage.Source}
                         alt={CoverImage.Caption}
                     />
                     <p class="text-mocha-subtext p-4 text-center">{CoverImage.Caption}</p>
                 </div>
             )}
+
+            <div class="max-w-max mb-6">
+                {Current.data.Tags && <TagsPartial tags={Current.data.Tags} />}
+            </div>
+
             <div class="markdown text-base">
-                <Content components={{ img: MarkdownImagePartial }} />
+                <Content components={{ img: ImagePartial }} />
             </div>
         </div>
 
         <div>
-            <p class="text-mocha-subtext text-left mt-20 mb-4">{SiteSettings.Articles.RelatedLabel}</p>
+            <p class="text-mocha-subtext text-left mt-20 mb-4">{SiteSettings.Articles.Labels.RelatedArticles}</p>
             <div class="flex flex-col md:flex-row gap-4 justify-between">
                 <div class="grid gap-2 flex-1">
                     {Previous && (<ArticlePreview {...Previous} />)}

@@ -51,8 +51,12 @@
     },
     
     "Articles": {
+        "Labels": {
+            "RelatedArticles": "Recently posted articles",
+            "PublishedDate": "Date",
+            "Author": "Author"
+        },
         "DefaultSeries": "Article",
-        "RelatedLabel": "Recently posted articles",
         "TagPageTitle": "Articles"
     },
     "Pages": {

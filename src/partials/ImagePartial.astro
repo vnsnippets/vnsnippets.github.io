@@ -1,8 +1,13 @@
 ---
 // src/components/MarkdownImage.astro
+import type { HTMLAttributes } from "astro/types";
 import { inferRemoteSize } from "astro:assets";
 
-const { src, alt, ...props } = Astro.props;
+type Props = HTMLAttributes<"img"> & {
+    imgonly?: boolean
+}
+
+const { imgonly, src, alt, class: inlineclass, ...props } = Astro.props;
 
 let width: number | undefined;
 let height: number | undefined;
@@ -19,12 +24,29 @@ if (typeof src === "string") {
 }
 ---
 
-<img
-    src={src}
-    width={width}
-    height={height}
-    alt={alt || "Blog image"}
-    loading="lazy"
-    onload="this.parentElement.classList.remove('shimmer'); this.classList.add('loaded')"
-    {...props}
-/>
+{imgonly ? (
+    <img
+        src={src}
+        width={width}
+        height={height}
+        alt={alt || "Blog image"}
+        loading="lazy"
+        onload="this.parentElement.classList.remove('shimmer'); this.classList.add('loaded')"
+        class={inlineclass}
+        {...props}
+    />
+) : (
+    <div class="w-full rounded-md border border-mocha-overlay shadow-lg overflow-hidden img-wrap shimmer">
+        <img
+            src={src}
+            width={width}
+            height={height}
+            alt={alt || "Blog image"}
+            loading="lazy"
+            onload="this.parentElement.classList.remove('shimmer'); this.classList.add('loaded')"
+            class={`w-full ${inlineclass}`}
+            {...props}
+        />
+        {alt && <p class="text-mocha-subtext p-4 text-center m-0!">{alt}</p>}
+    </div>
+)}

@@ -1,13 +1,14 @@
 ---
-type Props = {
-    Tags: string[], Styles?: string
+import type { HTMLAttributes } from 'astro/types';
+
+type Props = HTMLAttributes<"p"> & {
+    tags: string[]
 }
-const { Tags, Styles } = Astro.props
-const TagStyles = Styles ?? "bg-mocha-overlay/60 text-mocha-caption";
+const { tags, ...props } = Astro.props
 ---
 <div class="flex gap-2 justify-center flex-wrap overflow-x-auto">
-    {Tags.map((e) => (
-        <p class={`flex text-sm justify-center items-center rounded px-2 py-1 shrink-0 ${TagStyles}`}>
+    {tags.map((e) => (
+        <p class={`flex justify-center items-center rounded px-2 py-1 shrink-0 ${props.class ?? "bg-mocha-overlay/60 text-mocha-caption"}`}>
             {e}
         </p>
     ))}
