@@ -32,7 +32,7 @@ const articles = (await getCollection("Articles", FilterDraftsOnProduction))
 <NavigationLayout {...pagemetadata} containerstyles="container">
     <div class="grid gap-4 max-w-xl mx-auto text-center mb-12">
         <h1 class="text-xl font-bold text-mocha-text">{pagemetadata.Title}</h1>
-        <p class="text-base text-mocha-caption">{pagemetadata.Description}</p>
+        <p class="text-base text-mocha-subtext">{pagemetadata.Description}</p>
     </div>
 
     <!-- <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -41,7 +41,7 @@ const articles = (await getCollection("Articles", FilterDraftsOnProduction))
         })}
     </div> -->
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {articles.map((e: CollectionTypes.Article, index: number) => {
             return <ArticlePreview {...e} gridspan="col-span-1" />;
         })}
