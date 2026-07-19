@@ -85,25 +85,5 @@
             "Looks like you got stranded.",
             "Let's get you someplace safe!"
         ]
-    },
-    "Authors": {
-        "Vidush H. Namah": {
-            "Photo": "https://avatars.githubusercontent.com/u/16542151?v=4",
-            "Caption": "The goal is not to master technology, but to challenge my limits, grow and innovate through technology.",
-            "Socials": {
-                "GitHub": {
-                    "Icon": "github",
-                    "Hyperlink": "https://github.com/vnsnippets"
-                },
-                "Instagram": {
-                    "Icon": "instagram",
-                    "Hyperlink": "https://instagram.com/the.frame.drops"
-                },
-                "LinkedIn": {
-                    "Icon": "linkedin",
-                    "Hyperlink": "https://linkedin.com/in/vnamah"
-                }
-            }
-        }
     }
 }

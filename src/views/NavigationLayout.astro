@@ -7,17 +7,16 @@ import IconPartial from "Partials:/IconPartial.astro";
 import { SiteSettings } from "../utilities";
 import NavigationLinkPartial from "Partials:/NavigationLinkPartial.astro";
 
-type Props = {
-    headprops: ComponentProps<typeof HeadPartial>
-    styles?: string
+type Props = ComponentProps<typeof HeadPartial> & {
+    containerstyles?: string
 }
 
-const { headprops, styles } = Astro.props
+const { containerstyles, ...headprops } = Astro.props
 
 const SocialLinkClass = (key: string) => "flex justify-center items-center p-2 leading-none rounded-md h-full bg-mocha-surface text-mocha-text text-base hover:bg-" + key;
 ---
 <BaseLayout {...headprops}>
-    <main class={`min-h-screen px-4 flex w-full flex-col ${styles}`}>
+    <main class={`min-h-screen px-4 flex w-full flex-col ${containerstyles}`}>
         <header class="grid gap-6 py-4 lg:py-12">
             <slot name="pre-navigation" />
 

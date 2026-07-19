@@ -26,17 +26,12 @@ const CoverImage = Current.data.Cover ? {
 const { Content } = await render(Current);
 ---
 
-<NavigationLayout
-    headprops={{
-        Title: Current.data.Title,
-        Description: Current.data.Caption,
-        OpenGraph: {
-            Type: "article",
-            Image: CoverImage
-        },
-        Keywords: Current.data.Tags
-    }}
-    styles="max-w-6xl"
+<NavigationLayout 
+    Title={Current.data.Title} 
+    Description={Current.data.Caption} 
+    OpenGraph={{ Type: "article", Image: CoverImage }} 
+    Keywords={Current.data.Tags}
+    containerstyles="max-w-6xl"
 >
     <article>
         <div class="grid gap-4 justify-center text-base text-center mb-12">

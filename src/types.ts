@@ -20,12 +20,6 @@ export type PageMetadata = {
     Keywords?: string[];
 }
 
-export type AuthorMetadata = {
-    Photo?: string;
-    Caption?: string;
-    Socials?: Record<string, NavigationItem>
-}
-
 export type NavigationItem = {
     Hyperlink: string;
     Label?: string;
