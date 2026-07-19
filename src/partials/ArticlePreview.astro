@@ -1,7 +1,6 @@
 ---
 import type { CollectionTypes } from "../types";
 import { SiteSettings, ToShortDate } from "../utilities";
-import TagsPartial from "./TagsPartial.astro";
 import ImagePartial from "./ImagePartial.astro";
 
 type Props = CollectionTypes.Article & { grid?: string; };
@@ -32,20 +31,17 @@ const COVER_CAPTION_STYLE = "relative text-mocha-caption opacity-0 translate-y-5
     <div class={`relative size-full flex flex-col gap-2 text-base ${data.Cover ? "p-6" : "p-6"}`}>
         <div>
             <p class="uppercase text-base font-bold tracking-wider group-hover:tracking-normal text-mocha-subtext mb-2 transition-all duration-250">
-                {data.Series ?? SiteSettings.Articles.DefaultSeries}
+                {data.Series ?? SiteSettings.Articles.SeriesDefaultValue}
             </p>
-            <h2 class="text text-lg font-bold text-mocha-text leading-tight group-hover:text-white transition-colors duration-200">
+            <h2 class="text text-lg font-bold text-mocha-text group-hover:text-white transition-colors duration-200">
                 {data.Title}
             </h2>
         </div>
 
         <p class={data.Cover ? COVER_CAPTION_STYLE : DEFAULT_CAPTION_STYLE}>{data.Caption}</p>
 
-        <div class="relative flex flex-col flex-1 justify-end gap-4 mt-2 max-w-max">
-            <TagsPartial tags={data.Tags.slice(0,2)} />
-            <div class="flex justify-between items-end gap-2 text-mocha-subtext">
-                <p>{ToShortDate(data.Published)}</p>
-            </div>
+        <div class="flex flex-1 justify-between items-end gap-2 text-mocha-subtext">
+            <p>{ToShortDate(data.Published)}</p>
         </div>
     </div>
 </a>

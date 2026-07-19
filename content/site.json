@@ -43,21 +43,16 @@
 
     "Navigation": {
         "Name": "Vidush H. Namah",
-        "Description": "With a blend of creativity and precision, I craft digital solutions that bridge the gap between imagination and reality. Away from my screens, photography is my escape — a way to freeze time, evoke emotions, and tell stories.",
-        "Avatar": [
-            "https://avatars.githubusercontent.com/u/16542151?v=4",
-            "Vidush H. Namah"
-        ]
+        "Description": "With a blend of creativity and precision, I craft digital solutions that bridge the gap between imagination and reality. Away from my screens, photography is my escape — a way to freeze time, evoke emotions, and tell stories."
     },
     
     "Articles": {
-        "Labels": {
-            "RelatedArticles": "Recently posted articles",
-            "PublishedDate": "Date",
-            "Author": "Author"
-        },
-        "DefaultSeries": "Article",
-        "TagPageTitle": "Articles"
+        "RelatedArticlesTitle": "Recently posted articles",
+        "PublishedDateTitle": "Date",
+        "AuthorTitle": "Author",
+        "SeriesPageTitle": "Series",
+        "SeriesDefaultValue": "Article",
+        "SeriesPagePath": "/articles/series"
     },
     "Pages": {
         "/": {
