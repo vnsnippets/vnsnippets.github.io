@@ -12,12 +12,12 @@ const { Metadata: pagemetadata, ...otherprops} = GetPageProperties(Astro.url.pat
 const articles = (await getCollection("Articles", FilterDraftsOnProduction))
     .sort((a, b) => b.data.Published.getTime() - a.data.Published.getTime());
 
-const calculategridclass = (index: number) => {
+const isbig = (index: number) => {
   const patternIndex = index % 10;
   if (patternIndex === 0 || patternIndex === 5) {
-    return "lg:col-span-2";
+    return true;
   }
-  return "lg:col-span-1";
+  return false;
 };
 ---
 
@@ -29,7 +29,7 @@ const calculategridclass = (index: number) => {
 
     <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-6">
         {articles.map((e: CollectionTypes.Article, index: number) => {
-            return <ArticlePreview {...e} grid={calculategridclass(index)} />;
+            return <ArticlePreview {...e} big={isbig(index)} />;
         })}
     </div>
 </NavigationLayout>
