@@ -26,3 +26,19 @@ export const ToDescriptiveDate = (e: Date) => {
 }
 
 export const Slugify = (e: string) => e.trim().toLowerCase().replace(/\s+/g, "-");
+
+export const GetReadingTime = (content: string, wordsPerMinute = 250) : number => {
+    if (!content) return 0;
+
+    const cleanText = content
+        .replace(/```[\s\S]*?```/g, '') // Remove multi-line code blocks
+        .replace(/`[^`]*`/g, '')        // Remove inline code tags
+        .replace(/[#*_~[\]()]/g, '')    // Remove markdown symbols (#, *, _, etc.)
+        .replace(/\s+/g, ' ')           // Normalize multiple spaces/newlines into a single space
+        .trim();
+
+    const wordCount = cleanText.split(/\s+/).filter(Boolean).length;
+    const minutes = Math.ceil(wordCount / wordsPerMinute); // Round up to the nearest minute
+
+    return minutes;
+}

@@ -58,13 +58,13 @@ const groupedArticles = articles
 ---
 
 <NavigationLayout Title={`${SiteSettings.Articles.SeriesPageTitle} : ${series}`} Hidden={true} containerstyles="container">
-    <div class="grid gap-2 max-w-xl mx-auto text-center mt-12" slot="pre-navigation" >
+    <div class="grid gap-2 max-w-xl mx-auto text-center mb-12" >
         <h1 class="text-xl text-mocha-text">
             {`${SiteSettings.Articles.SeriesPageTitle} :: ${series}`}
         </h1>
     </div>
 
-    <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
+    <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-4">
         {groupedArticles.published.map((e: CollectionTypes.Article) => {
                 return <ArticlePreview {...e} />;
         })}

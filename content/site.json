@@ -50,6 +50,7 @@
         "RelatedArticlesTitle": "Recently posted articles",
         "PublishedDateTitle": "Date",
         "AuthorTitle": "Author",
+        "ReadTimeTitle": "Read",
         "SeriesPageTitle": "Series",
         "SeriesDefaultValue": "Article",
         "SeriesPagePath": "/articles/series"

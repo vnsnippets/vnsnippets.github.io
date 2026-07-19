@@ -1,12 +1,14 @@
 ---
-type Props = {
+import type { HTMLAttributes } from 'astro/types';
+
+type Props = HTMLAttributes<"p"> & {
     label: string
     value: string
 }
 
-const { label, value } = Astro.props;
+const { label, value, class: containerclass, ...props } = Astro.props;
 ---
-<p class="grid gap-1">
+<p class={`grid gap-1 ${containerclass}`}>
     <span class="uppercase font-bold text-mocha-caption">{label}</span>
     <span class="text-mocha-subtext">{value}</span>
 </p>
