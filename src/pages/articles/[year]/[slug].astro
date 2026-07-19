@@ -1,7 +1,7 @@
 ---
 // src/pages/articles/[year]/[slug].astro
 import { getCollection, render } from "astro:content";
-import ArticleLayout from "Views:/ArticleLayout.astro";
+import ArticleSingleView from "Views:/ArticleSingleView.astro";
 import { FilterDraftsOnProduction } from "../../../utilities";
 
 export async function getStaticPaths() {
@@ -32,6 +32,6 @@ const { entry, prev, next } = Astro.props;
 const { Content } = await render(entry);
 ---
 
-<ArticleLayout Current={entry} Previous={prev} Next={next}>
+<ArticleSingleView Current={entry} Previous={prev} Next={next}>
     <Content />
-</ArticleLayout>
+</ArticleSingleView>

@@ -1,10 +1,10 @@
 ---
-import NavigationLayout from "Views:/NavigationLayout.astro";
+import NavigationView from "Views:/NavigationView.astro";
 import IconPartial from "Partials:/IconPartial.astro";
 import { SiteSettings } from "../../utilities";
 ---
 
-<NavigationLayout 
+<NavigationView 
     headprops={{
         Title: `${SiteSettings.SiteName} :: 404`,
         Description: "Page could not be found.",
@@ -22,4 +22,4 @@ import { SiteSettings } from "../../utilities";
             ))}
         </div>
     </div>
-</NavigationLayout>
+</NavigationView>

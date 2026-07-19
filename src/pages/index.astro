@@ -1,5 +1,5 @@
 ---
-import NavigationLayout from "Views:/NavigationLayout.astro";
+import NavigationView from "Views:/NavigationView.astro";
 import IconPartial from "Partials:/IconPartial.astro";
 
 import { GetPageProperties } from "../utilities";
@@ -7,12 +7,9 @@ import { GetPageProperties } from "../utilities";
 const { Metadata: pagemetadata, ...otherprops } = GetPageProperties(Astro.url.pathname);
 ---
 
-<NavigationLayout {...pagemetadata} containerstyles="max-w-6xl">
-    <div class="grid gap-2 max-w-xl mx-auto text-center mt-4 lg:mt-12" slot="pre-navigation">
-        <!-- <div class="mb-8 lg:mb-12 max-w-48 px-6 mx-auto">
-            <IconPartial class="w-full h-full" name="island-night" />
-        </div> -->
-        <h1 class="text-xl text-mocha-text">{pagemetadata.Title}</h1>
+<NavigationView {...pagemetadata} containerstyles="max-w-6xl">
+    <div class="grid gap-4 max-w-xl mx-auto text-center mb-12">
+        <h1 class="text-xl font-bold text-mocha-text">{pagemetadata.Title}</h1>
         <p class="text-base text-mocha-subtext">{pagemetadata.Description}</p>
     </div>
-</NavigationLayout>
+</NavigationView>

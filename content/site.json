@@ -7,11 +7,7 @@
         "Source": "/meta-banner.webp",
         "Caption": "Vidush H. Namah | Blog"
     },
-    "locale": "en",
-    "Fonts": [
-        "https://fonts.googleapis.com",
-        "https://fonts.gstatic.com"
-    ],
+    "Language": "EN",
     "Links": [
         {
             "Icon": "home",

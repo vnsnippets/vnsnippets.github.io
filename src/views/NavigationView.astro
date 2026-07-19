@@ -1,0 +1,59 @@
+---
+import type { ComponentProps, HTMLAttributes } from "astro/types";
+
+import HeadPartial from "Partials:/HeadPartial.astro";
+import BaseHTMLView from "Views:/BaseHTMLView.astro";
+import IconPartial from "Partials:/IconPartial.astro";
+import { SiteSettings } from "../utilities";
+import NavigationLinkPartial from "Partials:/NavigationLinkPartial.astro";
+
+type Props = ComponentProps<typeof HeadPartial> & {
+    containerstyles?: string
+}
+
+const { containerstyles, ...headprops } = Astro.props
+const SocialNavItemClass = (key: string) => "flex justify-center items-center p-2 leading-none rounded h-full text-mocha-text text-base hover:bg-" + key;
+---
+<BaseHTMLView {...headprops}>
+    <main class={`relative min-h-screen px-4 flex w-full flex-col ${containerstyles}`}>
+        <nav class="fixed top-4 inset-x-0 flex justify-center z-10">
+            <div id="sitenav" class="flex justify-center p-1 rounded-md overflow-hidden border border-mocha-overlay bg-mocha-surface transition-all duration-300 ease-in-out">
+                {SiteSettings.Links.length > 0 && (  
+                    <ul class="flex items-center justify-center gap-4 px-3">
+                        {SiteSettings.Links.map((e) => (
+                            <li>
+                                <a 
+                                    class="uppercase text-sm text-mocha-subtext hover:text-mocha-text font-semibold transition-all duration-250" 
+                                    href={e.Hyperlink}
+                                    title={e.Label}
+                                >
+                                    {e.Label}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                )}
+                {SiteSettings.Socials.length > 0 && (
+                    <ul class="flex items-center justify-center gap-1">
+                        {SiteSettings.Socials.map((e) => (
+                            <li>
+                                <a
+                                    class={SocialNavItemClass(e.Icon)}
+                                    href={e.Hyperlink} target="_blank" aria-label={`Opens link to ${e.Label}`}
+                                >
+                                    {e.Icon ? (<IconPartial class="size-5" name={e.Icon} />) : (<span class="uppercase px-1.5">{e.Label}</span>)}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                )}
+            </div>
+        </nav>
+        <div class="flex-1 w-full shrink pt-32">
+            <slot />
+        </div>
+        <footer class="py-10 flex justify-center gap-2">
+            <NavigationLinkPartial Hyperlink={SiteSettings.Footer.Report.Hyperlink} Label={SiteSettings.Footer.Report.Label} />
+        </footer>
+    </main>
+</BaseHTMLView>

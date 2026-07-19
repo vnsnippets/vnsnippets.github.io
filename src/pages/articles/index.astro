@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 
 import ArticlePreview from "Partials:/ArticlePreview.astro";
-import NavigationLayout from "Views:/NavigationLayout.astro";
+import NavigationView from "Views:/NavigationView.astro";
 
 import { FilterDraftsOnProduction, GetPageProperties } from "../../utilities";
 import type { CollectionTypes } from "../../types";
@@ -29,7 +29,7 @@ const articles = (await getCollection("Articles", FilterDraftsOnProduction))
 // }
 ---
 
-<NavigationLayout {...pagemetadata} containerstyles="container">
+<NavigationView {...pagemetadata} containerstyles="container">
     <div class="grid gap-4 max-w-xl mx-auto text-center mb-12">
         <h1 class="text-xl font-bold text-mocha-text">{pagemetadata.Title}</h1>
         <p class="text-base text-mocha-subtext">{pagemetadata.Description}</p>
@@ -46,4 +46,4 @@ const articles = (await getCollection("Articles", FilterDraftsOnProduction))
             return <ArticlePreview {...e} gridspan="col-span-1" />;
         })}
     </div>
-</NavigationLayout>
+</NavigationView>

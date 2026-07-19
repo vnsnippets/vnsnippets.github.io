@@ -1,5 +1,5 @@
 ---
-// src/layouts/BaseLayout.astro
+// src/layouts/BaseHTMLView.astro
 import type { ComponentProps } from "astro/types";
 import HeadPartial from "Partials:/HeadPartial.astro";
 
@@ -14,7 +14,7 @@ const DEVMODE = import.meta.env.DEV;
 ---
 
 <!doctype html>
-<html lang={SiteSettings.locale || "en"}>
+<html lang={SiteSettings.Language.toLowerCase() || "en"}>
     <HeadPartial {...Properties}>
         <slot name="head" />
     </HeadPartial>
@@ -27,5 +27,6 @@ const DEVMODE = import.meta.env.DEV;
             )
         }
         <slot />
+        <slot name="foot" />
     </body>
 </html>

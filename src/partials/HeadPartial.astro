@@ -7,6 +7,11 @@ const Properties = Astro.props;
 
 const robotsContent = Properties.Hidden ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
 const IconVersion = Date.now();
+
+const fonts = [
+    "https://fonts.googleapis.com",
+    "https://fonts.gstatic.com"
+]
 ---
 
 <head>
@@ -24,7 +29,7 @@ const IconVersion = Date.now();
         <meta name="robots" content={robotsContent} />
     )}
 
-    {SiteSettings.Fonts.map((url) => (
+    {fonts.map((url) => (
         <link rel="preconnect" href={url} crossorigin={url.includes("gstatic") ? "" : undefined} />
     ))}
 
@@ -37,7 +42,7 @@ const IconVersion = Date.now();
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content={Properties.OpenGraph?.Image?.Caption ?? SiteSettings.DefaultImage.Caption} />
-    <meta property="og:locale" content={SiteSettings.locale} />
+    <meta property="og:locale" content={SiteSettings.Language.toLowerCase()} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={Properties.Title} />
