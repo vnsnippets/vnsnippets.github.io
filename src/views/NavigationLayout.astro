@@ -3,7 +3,7 @@ import type { ComponentProps, HTMLAttributes } from "astro/types";
 
 import HeadPartial from "Partials:/HeadPartial.astro";
 import BaseLayout from "Views:/BaseLayout.astro";
-import Icon from "Partials:/Icon.astro";
+import IconPartial from "Partials:/IconPartial.astro";
 import { SiteSettings } from "../utilities";
 import NavigationLinkPartial from "Partials:/NavigationLinkPartial.astro";
 
@@ -27,7 +27,7 @@ const SocialLinkClass = (key: string) => "flex justify-center items-center p-2 l
                         {SiteSettings.Socials.map((e) => (
                             <li>
                                 <a class={SocialLinkClass(e.Icon)} href={e.Hyperlink} target="_blank" aria-label={`Opens link to ${e.Label}`}>
-                                    {e.Icon ? (<Icon class="size-6" name={e.Icon} />) : (<span class="uppercase px-1.5">{e.Label}</span>)}
+                                    {e.Icon ? (<IconPartial class="size-6" name={e.Icon} />) : (<span class="uppercase px-1.5">{e.Label}</span>)}
                                 </a>
                             </li>
                         ))}

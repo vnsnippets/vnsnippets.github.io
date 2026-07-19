@@ -5,7 +5,7 @@ type Props = {
 const { Tags, Styles } = Astro.props
 const TagStyles = Styles ?? "bg-mocha-overlay/60 text-mocha-caption";
 ---
-<div class="flex gap-2 flex-wrap overflow-x-auto">
+<div class="flex gap-2 justify-center flex-wrap overflow-x-auto">
     {Tags.map((e) => (
         <p class={`flex text-sm justify-center items-center rounded px-2 py-1 shrink-0 ${TagStyles}`}>
             {e}

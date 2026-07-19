@@ -3,12 +3,13 @@
 import "Assets:/markdown.css"
 import NavigationLayout from "Views:/NavigationLayout.astro";
 import { SiteSettings, ToShortDate } from "../utilities";
-import type { CollectionTypes } from "../types";
+import type { CollectionTypes, AuthorMetadata } from "../types";
 import TagsPartialAstroComponent from "Partials:/TagsPartial.astro";
 import MarkdownImagePartial from "Partials:/MarkdownImagePartial.astro";
 import ArticlePreview from "Partials:/ArticlePreview.astro";
 import { render } from 'astro:content';
 import ImagePartial from "Partials:/ImagePartial.astro";
+import IconPartial from "Partials:/IconPartial.astro";
 
 type Props = {
     Current: CollectionTypes.Article
@@ -20,10 +21,14 @@ const { Current, Previous, Next } = Astro.props;
 
 const CoverImage = Current.data.Cover ? {
     Source: Current.data.Cover,
-    Caption: `Featured image for article titled ${Current.data.Title}`
+    Caption: `${Current.data.Title}`
 } : undefined;
 
-const { Content } = await render(Current);
+const { Content, ...contentprops } = await render(Current);
+
+const Author = (SiteSettings.Authors as Record<string, AuthorMetadata>)[Current.data.Author]
+
+const SocialLinkClass = (key: string) => "flex justify-center items-center p-2 leading-none rounded-md h-full text-mocha-text text-base hover:bg-" + key;
 ---
 
 <NavigationLayout
@@ -36,48 +41,43 @@ const { Content } = await render(Current);
         },
         Keywords: Current.data.Tags
     }}
+    styles="max-w-6xl"
 >
-    <article class="max-w-5xl mx-auto">
-        <section class="grid gap-4 mb-8">
-            {Current.data.Tags && <TagsPartialAstroComponent Tags={Current.data.Tags} />}
+    <article>
+        <div class="grid gap-4 justify-center text-base text-center mb-12">
+            <p class="uppercase font-semibold text-mocha-subtext">{Current.data.Series ?? SiteSettings.Articles.DefaultSeries}</p>
+            <h1 class="text-4xl text-mocha-text font-semibold">{Current.data.Title}</h1>
+            {Current.data.Tags && <TagsPartialAstroComponent Tags={Current.data.Tags.slice(0,5)} />}
 
-            <div class="grid gap-1 text-mocha-subtext text-base mt-4">
-                <div class="flex justify-between items-end gap-2">
-                    <p>{ToShortDate(Current.data.Published)}</p>
-                </div>
-                <p class="uppercase font-semibold">
-                    {Current.data.Series ?? SiteSettings.Articles.DefaultSeries}
-                </p>
-            </div>
+            <p class="text-mocha-subtext mt-4">Published: {ToShortDate(Current.data.Published)}</p>
+            <p class="text-base text-mocha-caption max-w-2xl">{Current.data.Caption}</p>
+        </div>
 
-            <div class="grid gap-2">
-                <h1 class="text-lg text-mocha-text font-semibold">{Current.data.Title}</h1>
-                <p class="text-base text-mocha-caption">{Current.data.Caption}</p>
-            </div>
-
+        <div class="text-base border-mocha-surface">
             {CoverImage && (
-                <div class="rounded-md border border-mocha-overlay shadow-lg overflow-hidden img-wrap shimmer">
+                <div class="rounded-md border border-mocha-overlay shadow-lg overflow-hidden img-wrap shimmer mb-6">
                     <ImagePartial
                         src={CoverImage.Source}
                         alt={CoverImage.Caption}
                     />
+                    <p class="text-mocha-subtext p-4 text-center">{CoverImage.Caption}</p>
                 </div>
             )}
-        </section>
-
-        <section class="markdown text-base">
-            <Content components={{ img: MarkdownImagePartial }} />
-        </section>
-
-
-        <p class="text-mocha-subtext text-left pt-8 mt-8 border-t-2 border-mocha-overlay mb-4">{SiteSettings.Articles.RelatedLabel}</p>
-        <section class="flex flex-col md:flex-row gap-4 justify-between">
-            <div class="grid gap-2 flex-1">
-                {Previous && (<ArticlePreview {...Previous} />)}
+            <div class="markdown text-base">
+                <Content components={{ img: MarkdownImagePartial }} />
             </div>
-            <div class="grid gap-2 flex-1">
-                {Next && (<ArticlePreview {...Next} />)}
+        </div>
+
+        <div>
+            <p class="text-mocha-subtext text-left mt-20 mb-4">{SiteSettings.Articles.RelatedLabel}</p>
+            <div class="flex flex-col md:flex-row gap-4 justify-between">
+                <div class="grid gap-2 flex-1">
+                    {Previous && (<ArticlePreview {...Previous} />)}
+                </div>
+                <div class="grid gap-2 flex-1">
+                    {Next && (<ArticlePreview {...Next} />)}
+                </div>
             </div>
-        </section>
+        </div>
     </article>
 </NavigationLayout>
