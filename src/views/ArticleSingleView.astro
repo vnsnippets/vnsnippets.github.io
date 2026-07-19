@@ -2,7 +2,7 @@
 // src/layouts/ArticleSingleView.astro
 import "Assets:/markdown.css"
 import NavigationView from "Views:/NavigationView.astro";
-import { GetReadingTime, SiteSettings, Slugify, ToDescriptiveDate } from "../utilities";
+import { GetReadingTime, GetSeriesLink, SiteSettings, ToDescriptiveDate } from "../utilities";
 import type { CollectionTypes } from "../types";
 import ArticlePreview from "Partials:/ArticlePreview.astro";
 import { render } from 'astro:content';
@@ -36,7 +36,7 @@ const { Content } = await render(Current);
     <article>
         <div class="grid gap-4 justify-center text-base text-center mb-12">
             {Current.data.Series && (
-                <BadgePartial class="mb-2" label={Current.data.Series} url={`${SiteSettings.Articles.SeriesPagePath}/${Slugify(Current.data.Series)}`} />
+                <BadgePartial class="mb-2" label={Current.data.Series} url={GetSeriesLink(Current.data.Series)} />
             )}
 
             <h1 class="text-4xl text-mocha-text font-semibold">{Current.data.Title}</h1>

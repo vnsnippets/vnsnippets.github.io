@@ -10,7 +10,6 @@
     "Language": "EN",
     "Links": [
         {
-            "Icon": "home",
             "Hyperlink": "/",
             "Label": "Home"
         },
@@ -49,6 +48,7 @@
         "ReadTimeTitle": "Read",
         "SeriesPageTitle": "Series",
         "SeriesDefaultValue": "Article",
+        "DefaultPath": "/articles",
         "SeriesPagePath": "/articles/series"
     },
     "Pages": {

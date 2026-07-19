@@ -5,7 +5,7 @@ import type { ComponentProps } from "astro/types";
 import HeadPartial from "Partials:/HeadPartial.astro";
 import BaseHTMLView from "Views:/BaseHTMLView.astro";
 import IconPartial from "Partials:/IconPartial.astro";
-import { GetProductionArticles, SiteSettings } from "../utilities";
+import { SiteSettings } from "../utilities";
 import NavigationLinkPartial from "Partials:/NavigationLinkPartial.astro";
 
 type Props = ComponentProps<typeof HeadPartial> & {
@@ -15,8 +15,6 @@ type Props = ComponentProps<typeof HeadPartial> & {
 const currentPath = Astro.url.pathname;
 const { containerstyles, ...headprops } = Astro.props
 const SocialNavItemClass = (key: string) => "flex justify-center items-center p-2 leading-none rounded h-full text-mocha-text text-base hover:bg-" + key;
-
-const uniqueSeries = [...new Set((await GetProductionArticles()).map((article) => article.data.Series).filter(Boolean))];
 ---
 <BaseHTMLView {...headprops}>
     <main class={`relative min-h-screen px-4 flex w-full flex-col ${containerstyles}`}>
@@ -25,16 +23,11 @@ const uniqueSeries = [...new Set((await GetProductionArticles()).map((article) =
                 {SiteSettings.Links.length > 0 && (  
                     <ul class="flex items-center justify-center gap-4 px-3">
                         {SiteSettings.Links.map((e) => {
-                            const isActive = currentPath === e.Hyperlink || (e.Hyperlink !== '/' && currentPath.startsWith(e.Hyperlink));
+                            const isactive = currentPath === e.Hyperlink || (e.Hyperlink !== '/' && currentPath.startsWith(e.Hyperlink));
+                            const itemclass = `uppercase text-sm font-semibold transition-all duration-250 ${isactive ? "text-mocha-text font-bold decoration-mocha-text" : "text-mocha-subtext hover:text-mocha-text"}`
                             return (
                                 <li>
-                                    <a 
-                                        class={`uppercase text-sm font-semibold transition-all duration-250 
-                                            ${isActive ? "text-mocha-text font-bold decoration-mocha-text" : "text-mocha-subtext hover:text-mocha-text"}`} 
-                                        href={e.Hyperlink}
-                                        title={e.Label}
-                                        aria-current={isActive ? "page" : undefined} 
-                                    >
+                                    <a class={itemclass} href={e.Hyperlink} title={e.Label} aria-current={isactive ? "page" : undefined}>
                                         {e.Label}
                                     </a>
                                 </li>

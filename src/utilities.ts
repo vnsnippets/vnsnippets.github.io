@@ -18,6 +18,19 @@ export const GetProductionArticles = async (filter: boolean = false) : Promise<C
     return await getCollection("Articles", (filter) ? FilterDraftsOnProduction : undefined)
 }
 
+export const GetArticleSeries = async (): Promise<string[]> => {
+    return [
+        ...new Set(
+            (await GetProductionArticles())
+                .map((article) => article.data.Series)
+                .filter((series): series is string => !!series)
+        )
+    ];
+} 
+
+export const GetArticleLink = (id: string) => `${SiteSettings.Articles.DefaultPath}/${Slugify(id)}`;
+export const GetSeriesLink = (id: string) => `${SiteSettings.Articles.SeriesPagePath}/${Slugify(id)}`;
+
 export const ToShortDate = (e: Date) => {
     return e.toISOString().split("T")[0]
 }

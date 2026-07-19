@@ -1,19 +1,17 @@
 ---
 import type { CollectionTypes } from "../types";
-import { GetReadingTime, SiteSettings, ToShortDate } from "../utilities";
+import { GetReadingTime, GetArticleLink, SiteSettings, ToShortDate } from "../utilities";
 import ImagePartial from "./ImagePartial.astro";
 
 type Props = CollectionTypes.Article & { gridspan?: string; };
 
 const { id, data, body, gridspan = false } = Astro.props;
 
-const getArticlePath = (id: string) => `/articles/${id}`;
-
 const DEFAULT_CAPTION_STYLE = "relative text-mocha-subtext group-hover:text-mocha-caption transition-all duration-250 ease-in-out";
 const COVER_CAPTION_STYLE = `${DEFAULT_CAPTION_STYLE} opacity-0 translate-y-5 group-hover:opacity-100 group-hover:translate-y-0 transform`;
 ---
 <a
-    href={getArticlePath(id)}
+    href={GetArticleLink(id)}
     class={`relative flex flex-col justify-between overflow-hidden rounded-md shadow-lg border border-mocha-overlay bg-mocha-surface hover:bg-mocha-mantle transition-all duration-250 ease-in-out group ${gridspan}`}
 >
     {data.Cover && (
