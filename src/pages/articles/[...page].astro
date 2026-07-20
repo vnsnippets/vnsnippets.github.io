@@ -1,0 +1,72 @@
+---
+import type { GetStaticPaths } from "astro";
+import ArticlePreview from "Partials:/ArticlePreview.astro";
+import NavigationView from "Views:/NavigationView.astro";
+
+import { GetProductionArticles, GetPageProperties, SiteSettings } from "../../utilities";
+import type { CollectionTypes } from "../../types";
+import IconPartial from "Partials:/IconPartial.astro";
+
+export const getStaticPaths = (async ({ paginate }) => {
+    const articles = (await GetProductionArticles()).sort(
+        (a, b) => b.data.Published.getTime() - a.data.Published.getTime()
+    );
+
+    return paginate(articles, { pageSize: 12 });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+const { Metadata: pagemetadata } = GetPageProperties(SiteSettings.Articles.DefaultPath);
+
+// Helper function for the 10-item grid pattern
+const getGridSpanClass = (index: number) => {
+  const patternIndex = index % 10;
+  if (patternIndex === 0 || patternIndex === 5) {
+    return "lg:col-span-2";
+  }
+  return "lg:col-span-1";
+};
+---
+
+<NavigationView {...pagemetadata} container={true}>
+    <div class="grid gap-4 max-w-xl mx-auto text-center mb-12">
+        <h1 class="text-xl font-bold text-ink-default">{pagemetadata.Title}</h1>
+        <p class="text-base text-ink-soft">{pagemetadata.Description}</p>
+    </div>
+
+    <!-- Render only the 12 articles for the active page -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {page.data.map((e: CollectionTypes.Article, index: number) => {
+            return <ArticlePreview {...e} gridspan={getGridSpanClass(index)} />;
+        })}
+    </div>
+
+    <!-- Pagination Controls -->
+    {page.lastPage > 1 && (
+        <nav class="flex justify-center items-center gap-4 mt-4">
+            {page.url.prev ? (
+                <a href={page.url.prev} class="p-2 text-ink-subtext hover:text-ink-default transition-colors">
+                    <IconPartial name="chevron-down" class="rotate-90 size-4" />
+                </a>
+            ) : (
+                <span class="p-2 opacity-40 cursor-not-allowed">
+                    <IconPartial name="chevron-down" class="rotate-90 size-4" />
+                </span>
+            )}
+
+            <span class="text-sm font-medium text-ink-soft">
+                Page {page.currentPage} of {page.lastPage}
+            </span>
+
+            {page.url.next ? (
+                <a href={page.url.next} class="p-2 text-ink-subtext hover:text-ink-default transition-colors">
+                    <IconPartial name="chevron-down" class="-rotate-90 size-4" />
+                </a>
+            ) : (
+                <span class="p-2 opacity-40 cursor-not-allowed">
+                    <IconPartial name="chevron-down" class="-rotate-90 size-4" />
+                </span>
+            )}
+        </nav>
+    )}
+</NavigationView>
