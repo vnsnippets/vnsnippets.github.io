@@ -1,46 +1,30 @@
 ---
 import type { CollectionTypes } from "../types";
 import { GetReadingTime, GetArticleLink, SiteSettings, ToShortDate } from "../utilities";
-import ImagePartial from "./ImagePartial.astro";
 
 type Props = CollectionTypes.Article & { gridspan?: string; };
 
 const { id, data, body, gridspan = false } = Astro.props;
-
-const DEFAULT_CAPTION_STYLE = "relative text-mocha-subtext group-hover:text-mocha-caption transition-all duration-250 ease-in-out";
-const COVER_CAPTION_STYLE = `${DEFAULT_CAPTION_STYLE} opacity-0 translate-y-5 group-hover:opacity-100 group-hover:translate-y-0 transform`;
 ---
 <a
     href={GetArticleLink(id)}
-    class={`relative flex flex-col justify-between overflow-hidden rounded-md shadow-lg border border-mocha-overlay bg-mocha-surface hover:bg-mocha-mantle transition-all duration-250 ease-in-out group ${gridspan}`}
+    class={`relative flex flex-col justify-between overflow-hidden rounded-md shadow-lg border border-paint-surface bg-paint-mantle hover:bg-paint-crust transition-all duration-250 ease-in-out group ${gridspan}`}
 >
-    {data.Cover && (
-        <div class="absolute inset-0 w-full h-full overflow-hidden shimmer">
-            <ImagePartial 
-                imgonly={true}
-                src={data.Cover} 
-                alt={`Cover image for ${data.Title}`} 
-                class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-            />
-            <div class="absolute inset-0 bg-mocha-crust/70 group-hover:bg-mocha-crust/80 transition-colors duration-250" />
-        </div>
-    )}
-
-    <div class={`relative size-full flex flex-col gap-2 text-base ${data.Cover ? "p-6" : "p-6"}`}>
+    <article class="relative size-full flex flex-col gap-2 text-base p-6">
         <div>
-            <p class="uppercase text-base font-bold tracking-wider group-hover:tracking-normal text-mocha-subtext mb-2 transition-all duration-250">
+            <p class="uppercase text-sm font-bold tracking-wider group-hover:tracking-normal text-ink-muted mb-2 transition-all duration-250">
                 {data.Series ?? SiteSettings.Articles.SeriesDefaultValue}
             </p>
-            <h2 class="text text-lg font-bold text-mocha-text group-hover:text-white transition-colors duration-200">
+            <h2 class="text text-lg font-bold text-ink-accent transition-colors duration-200">
                 {data.Title}
             </h2>
         </div>
 
-        <p class={data.Cover ? COVER_CAPTION_STYLE : DEFAULT_CAPTION_STYLE}>{data.Caption}</p>
+        <p class="relative text-ink-soft group-hover:text-ink-default transition-all duration-250 ease-in-out">{data.Caption}</p>
 
-        <div class="flex flex-1 justify-between items-end gap-2 text-mocha-subtext">
-            <p>{ToShortDate(data.Published)}</p>
+        <div class="mt-4 flex flex-1 justify-between items-end gap-2 text-ink-muted">
+            <time datetime={data.Published.toISOString()}>{ToShortDate(data.Published)}</time>
             <p class="uppercase">{GetReadingTime(body ?? "")} min</p>
         </div>
-    </div>
+    </article>
 </a>

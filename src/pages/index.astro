@@ -5,9 +5,9 @@ import { GetPageProperties } from "../utilities";
 const { Metadata: pagemetadata } = GetPageProperties(Astro.url.pathname);
 ---
 
-<NavigationView {...pagemetadata}>
+<NavigationView {...pagemetadata} container={true}>
     <div class="grid gap-4 max-w-xl mx-auto text-center mb-12">
-        <h1 class="text-xl font-bold text-mocha-text">{pagemetadata.Title}</h1>
-        <p class="text-base text-mocha-subtext">{pagemetadata.Description}</p>
+        <h1 class="text-xl font-bold text-ink-default">{pagemetadata.Title}</h1>
+        <p class="text-base text-ink-soft">{pagemetadata.Description}</p>
     </div>
 </NavigationView>

@@ -53,9 +53,9 @@
   --color-prettylights-syntax-variable: #ffa657;
   --fgColor-attention: #d29922;
   --fgColor-danger: #f85149;
-  --fgColor-default: var(--color-mocha-caption);
+  --fgColor-default: var(--color-ink-default);
   --fgColor-done: #ab7df8;
-  --fgColor-muted: var(--color-mocha-subtext);
+  --fgColor-muted: var(--color-ink-subtext);
   --fgColor-success: #3fb950;
   --borderColor-muted: #3d444db3;
   --color-prettylights-syntax-invalid-illegal-bg: var(--bgColor-danger-muted);
@@ -106,7 +106,7 @@
   --fgColor-accent: #0969da;
   --fgColor-attention: #9a6700;
   --fgColor-done: #8250df;
-  --fgColor-muted: var(--color-latte-subtext);
+  /* --fgColor-muted: var(--color-latte-subtext); */
   --fgColor-success: #1a7f37;
   --bgColor-default: #ffffff;
   --borderColor-muted: #d1d9e0b3;
@@ -114,7 +114,7 @@
   --color-prettylights-syntax-markup-bold: #1f2328;
   --color-prettylights-syntax-markup-italic: #1f2328;
   --color-prettylights-syntax-storage-modifier-import: #1f2328;
-  --fgColor-default: var(--color-latte-text);
+  /* --fgColor-default: var(--color-latte-text); */
   --focus-outlineColor: var(--borderColor-accent-emphasis);
   --borderColor-neutral-muted: var(--borderColor-muted);
 }
