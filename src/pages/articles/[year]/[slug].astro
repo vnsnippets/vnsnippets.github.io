@@ -1,8 +1,13 @@
 ---
 // src/pages/articles/[year]/[slug].astro
 import { render } from "astro:content";
-import ArticleSingleView from "Views:/ArticleSingleView.astro";
-import { GetProductionArticles } from "../../../utilities";
+import NavigationView from "Views:/NavigationView.astro";
+import BadgePartial from "Partials:/BadgePartial.astro";
+import KeyValuePartial from "Partials:/KeyValuePartial.astro";
+import ImagePartial from "Partials:/ImagePartial.astro";
+import ArticlePreview from "Partials:/ArticlePreview.astro";
+import ProsePartial from "Partials:/ProsePartial.astro";
+import { GetProductionArticles, GetSeriesLink, ToDescriptiveDate, GetReadingTime, SiteSettings } from "../../../utilities";
 
 export async function getStaticPaths() {
     const articles = await GetProductionArticles();
@@ -12,8 +17,8 @@ export async function getStaticPaths() {
         (a, b) => a.data.Published.getTime() - b.data.Published.getTime()
     );
 
-    return sorted.map((entry, index) => {
-        const pathParts = entry.id.split("/"); 
+    return sorted.map((current, index) => {
+        const pathParts = current.id.split("/"); 
         const year = pathParts[0];
         const slug = pathParts[1].replace(/\.[^/.]+$/, ""); 
 
@@ -23,15 +28,71 @@ export async function getStaticPaths() {
 
         return {
             params: { year, slug },
-            props: { entry, prev, next },
+            props: { current, prev, next },
         };
     });
 }
 
-const { entry, prev, next } = Astro.props;
-const { Content } = await render(entry);
+const { current, prev, next } = Astro.props;
+const { Content } = await render(current);
+
+
+const coverimg = current.data.Cover ? {
+    Source: current.data.Cover,
+    Caption: `${current.data.Title}`
+} : undefined;
 ---
 
-<ArticleSingleView Current={entry} Previous={prev} Next={next}>
-    <Content />
-</ArticleSingleView>
+<NavigationView 
+    Title={current.data.Title} 
+    Description={current.data.Caption} 
+    OpenGraph={{ Type: "article", Image: coverimg }} 
+    Keywords={current.data.Tags}
+    container={true}
+>
+    <article class="max-w-5xl mx-auto">
+        <div class="grid gap-4 justify-center text-base text-center mb-12">
+            {current.data.Series && (
+                <BadgePartial class="mb-2" label={current.data.Series} url={GetSeriesLink(current.data.Series)} />
+            )}
+
+            <h1 class="text-4xl text-mocha-text font-semibold">{current.data.Title}</h1>
+            <p class="text-base text-mocha-caption max-w-2xl">{current.data.Caption}</p>
+
+            <div class="grid grid-cols-3 mt-8">
+                <KeyValuePartial label={SiteSettings.Articles.PublishedDateTitle} value={ToDescriptiveDate(current.data.Published)} />
+                <KeyValuePartial label={SiteSettings.Articles.AuthorTitle} value={current.data.Author} />
+                <KeyValuePartial label={SiteSettings.Articles.ReadTimeTitle} value={`${GetReadingTime(current.body ?? "")} min`} />
+            </div>
+        </div>
+
+        <div class="text-base">
+            {coverimg && (
+                <div class="rounded-md border border-mocha-overlay shadow-lg overflow-hidden img-wrap shimmer mb-6">
+                    <ImagePartial
+                        imgonly={true}
+                        src={coverimg.Source}
+                        alt={coverimg.Caption}
+                    />
+                    <p class="text-mocha-subtext p-4 text-center">{coverimg.Caption}</p>
+                </div>
+            )}
+
+            <ProsePartial>
+                <Content components={{ img: ImagePartial }} />
+            </ProsePartial>
+        </div>
+
+        <div>
+            <p class="text-mocha-subtext text-left mt-20 mb-4">{SiteSettings.Articles.RelatedArticlesTitle}</p>
+            <div class="flex flex-col md:flex-row gap-4 justify-between">
+                <div class="grid gap-2 flex-1">
+                    {prev && (<ArticlePreview {...prev} />)}
+                </div>
+                <div class="grid gap-2 flex-1">
+                    {next && (<ArticlePreview {...next} />)}
+                </div>
+            </div>
+        </div>
+    </article>
+</NavigationView>

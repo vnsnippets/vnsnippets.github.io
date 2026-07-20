@@ -9,15 +9,16 @@ import { SiteSettings } from "../utilities";
 import NavigationLinkPartial from "Partials:/NavigationLinkPartial.astro";
 
 type Props = ComponentProps<typeof HeadPartial> & {
-    containerstyles?: string
+    container?: boolean
 }
 
 const currentPath = Astro.url.pathname;
-const { containerstyles, ...headprops } = Astro.props
-const SocialNavItemClass = (key: string) => "flex justify-center items-center p-2 leading-none rounded h-full text-mocha-text text-base hover:bg-" + key;
+const { container, ...headprops } = Astro.props
+const sociallinkclass = (key: string) => "flex justify-center items-center p-2 leading-none rounded h-full text-mocha-text text-base hover:bg-" + key;
+const mainclass = "relative min-h-screen px-4 flex w-full flex-col" + (container ? " container" : "");
 ---
 <BaseHTMLView {...headprops}>
-    <main class={`relative min-h-screen px-4 flex w-full flex-col ${containerstyles}`}>
+    <main class={mainclass}>
         <nav class="fixed top-4 inset-x-0 flex justify-center z-10">
             <div id="sitenav" class="flex justify-center p-1 rounded-md overflow-hidden border border-mocha-overlay bg-mocha-surface transition-all duration-300 ease-in-out">
                 {SiteSettings.Links.length > 0 && (  
@@ -40,7 +41,7 @@ const SocialNavItemClass = (key: string) => "flex justify-center items-center p-
                         {SiteSettings.Socials.map((e) => (
                             <li>
                                 <a
-                                    class={SocialNavItemClass(e.Icon)}
+                                    class={sociallinkclass(e.Icon)}
                                     href={e.Hyperlink} target="_blank" aria-label={`Opens link to ${e.Label}`}
                                 >
                                     {e.Icon ? (<IconPartial class="size-5" name={e.Icon} />) : (<span class="uppercase px-1.5">{e.Label}</span>)}
@@ -51,7 +52,7 @@ const SocialNavItemClass = (key: string) => "flex justify-center items-center p-
                 )}
             </div>
         </nav>
-        <div class="flex-1 w-full shrink pt-32">
+        <div class="flex-1 flex flex-col gap-4 w-full shrink pt-32">
             <slot />
         </div>
         <footer class="py-10 flex justify-center gap-2">

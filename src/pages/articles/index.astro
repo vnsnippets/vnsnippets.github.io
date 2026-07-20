@@ -5,38 +5,16 @@ import NavigationView from "Views:/NavigationView.astro";
 import { GetProductionArticles, GetPageProperties } from "../../utilities";
 import type { CollectionTypes } from "../../types";
 
-const { Metadata: pagemetadata, ...otherprops} = GetPageProperties(Astro.url.pathname);
+const { Metadata: pagemetadata } = GetPageProperties(Astro.url.pathname);
 
 const articles = (await GetProductionArticles()).sort((a, b) => b.data.Published.getTime() - a.data.Published.getTime());
-
-// const isbig = (index: number) => {
-//   const patternIndex = index % 10;
-//   if (patternIndex === 0 || patternIndex === 5) {
-//     return true;
-//   }
-//   return false;
-// };
-
-// const previewgridspan = (n: number) => {
-//     const result : string[] = []
-//     const xlpatternindex = n % 10
-//     result.push((xlpatternindex === 0 || xlpatternindex === 5) ? "xl:col-span-2" : "xl:col-span-1");
-
-//     return result.join(" ");
-// }
 ---
 
-<NavigationView {...pagemetadata} containerstyles="container">
+<NavigationView {...pagemetadata} container={true}>
     <div class="grid gap-4 max-w-xl mx-auto text-center mb-12">
         <h1 class="text-xl font-bold text-mocha-text">{pagemetadata.Title}</h1>
         <p class="text-base text-mocha-subtext">{pagemetadata.Description}</p>
     </div>
-
-    <!-- <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {articles.map((e: CollectionTypes.Article, index: number) => {
-            return <ArticlePreview {...e} gridspan={previewgridspan(index)} />;
-        })}
-    </div> -->
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {articles.map((e: CollectionTypes.Article, index: number) => {

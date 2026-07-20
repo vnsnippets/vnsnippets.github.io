@@ -1,13 +1,11 @@
 ---
 import NavigationView from "Views:/NavigationView.astro";
-import IconPartial from "Partials:/IconPartial.astro";
-
 import { GetPageProperties } from "../utilities";
 
-const { Metadata: pagemetadata, ...otherprops } = GetPageProperties(Astro.url.pathname);
+const { Metadata: pagemetadata } = GetPageProperties(Astro.url.pathname);
 ---
 
-<NavigationView {...pagemetadata} containerstyles="max-w-6xl">
+<NavigationView {...pagemetadata}>
     <div class="grid gap-4 max-w-xl mx-auto text-center mb-12">
         <h1 class="text-xl font-bold text-mocha-text">{pagemetadata.Title}</h1>
         <p class="text-base text-mocha-subtext">{pagemetadata.Description}</p>
