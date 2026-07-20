@@ -22,7 +22,7 @@ const { id, data, body, gridspan = false } = Astro.props;
 
         <p class="relative text-ink-soft group-hover:text-ink-default transition-all duration-250 ease-in-out">{data.Caption}</p>
 
-        <div class="flex flex-1 justify-between items-end gap-2 text-ink-muted">
+        <div class="mt-4 flex flex-1 justify-between items-end gap-2 text-ink-muted">
             <time datetime={data.Published.toISOString()}>{ToShortDate(data.Published)}</time>
             <p class="uppercase">{GetReadingTime(body ?? "")} min</p>
         </div>
