@@ -7,16 +7,16 @@
     --font-sans: "Nunito", Arial, Helvetica, sans-serif;
     --font-serif: 'Lustria', Georgia, 'Times New Roman', Times, serif;
 
+    --color-paint-crust: var(--catppuccin-color-crust);
+    --color-paint-mantle: var(--catppuccin-color-mantle);
+    --color-paint-base: var(--catppuccin-color-base);
+    --color-paint-surface: var(--catppuccin-color-surface);
 
-    --color-ctp-crust: var(--catppuccin-color-crust);
-    --color-ctp-mantle: var(--catppuccin-color-mantle);
-    --color-ctp-base: var(--catppuccin-color-base);
-    --color-ctp-surface: var(--catppuccin-color-surface);
-    --color-ctp-muted: var(--catppuccin-color-muted);
-    --color-ctp-subtext: var(--catppuccin-color-subtext);
-    --color-ctp-soft: var(--catppuccin-color-soft);
-    --color-ctp-text: var(--catppuccin-color-text);
-    --color-ctp-accent: var(--catppuccin-color-blue);
+    --color-ink-muted: var(--catppuccin-color-muted);
+    --color-ink-subtext: var(--catppuccin-color-subtext);
+    --color-ink-soft: var(--catppuccin-color-soft);
+    --color-ink-default: var(--catppuccin-color-text);
+    --color-ink-accent: var(--catppuccin-color-peach);
 
     --catppuccin-color-crust: #11111b;
     --catppuccin-color-mantle: #181825;
@@ -26,7 +26,8 @@
     --catppuccin-color-subtext: #a6adc8;
     --catppuccin-color-soft: #bac2de;
     --catppuccin-color-text: #cdd6f4;
-    --catppuccin-color-blue: #fab387;
+    --catppuccin-color-blue: #89b4fa;
+    --catppuccin-color-peach: #fab387;
     
     /* Socials */
     --color-whatsapp: #25D366;

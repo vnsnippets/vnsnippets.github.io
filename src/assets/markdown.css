@@ -53,9 +53,9 @@
   --color-prettylights-syntax-variable: #ffa657;
   --fgColor-attention: #d29922;
   --fgColor-danger: #f85149;
-  --fgColor-default: var(--color-ctp-text);
+  --fgColor-default: var(--color-ink-default);
   --fgColor-done: #ab7df8;
-  --fgColor-muted: var(--color-ctp-subtext);
+  --fgColor-muted: var(--color-ink-subtext);
   --fgColor-success: #3fb950;
   --borderColor-muted: #3d444db3;
   --color-prettylights-syntax-invalid-illegal-bg: var(--bgColor-danger-muted);

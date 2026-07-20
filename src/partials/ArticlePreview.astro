@@ -8,23 +8,23 @@ const { id, data, body, gridspan = false } = Astro.props;
 ---
 <a
     href={GetArticleLink(id)}
-    class={`relative flex flex-col justify-between overflow-hidden rounded-md shadow-lg border border-ctp-surface bg-ctp-mantle hover:bg-ctp-crust transition-all duration-250 ease-in-out group ${gridspan}`}
+    class={`relative flex flex-col justify-between overflow-hidden rounded-md shadow-lg border border-paint-surface bg-paint-mantle hover:bg-paint-crust transition-all duration-250 ease-in-out group ${gridspan}`}
 >
-    <div class="relative size-full flex flex-col gap-2 text-base p-6">
+    <article class="relative size-full flex flex-col gap-2 text-base p-6">
         <div>
-            <p class="uppercase text-sm font-bold tracking-wider group-hover:tracking-normal text-ctp-muted mb-2 transition-all duration-250">
+            <p class="uppercase text-sm font-bold tracking-wider group-hover:tracking-normal text-ink-muted mb-2 transition-all duration-250">
                 {data.Series ?? SiteSettings.Articles.SeriesDefaultValue}
             </p>
-            <h2 class="text text-lg font-bold text-ctp-accent transition-colors duration-200">
+            <h2 class="text text-lg font-bold text-ink-accent transition-colors duration-200">
                 {data.Title}
             </h2>
         </div>
 
-        <p class="relative text-ctp-soft group-hover:text-ctp-text transition-all duration-250 ease-in-out">{data.Caption}</p>
+        <p class="relative text-ink-soft group-hover:text-ink-default transition-all duration-250 ease-in-out">{data.Caption}</p>
 
-        <div class="flex flex-1 justify-between items-end gap-2 text-ctp-muted">
+        <div class="flex flex-1 justify-between items-end gap-2 text-ink-muted">
             <time datetime={data.Published.toISOString()}>{ToShortDate(data.Published)}</time>
             <p class="uppercase">{GetReadingTime(body ?? "")} min</p>
         </div>
-    </div>
+    </article>
 </a>

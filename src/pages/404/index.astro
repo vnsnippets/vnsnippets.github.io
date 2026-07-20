@@ -5,9 +5,9 @@ import { SiteSettings } from "../../utilities";
 
 <NavigationView Title={`${SiteSettings.SiteName} :: 404`} Hidden={true} container={true}>
     <div class="flex flex-col items-center gap-2 max-w-xl mx-auto text-center mt-4 lg:mt-12">
-        <h1 class="text-6xl text-ctp-text">404</h1>
-        <p class="text-lg text-ctp-text">{SiteSettings.NotFound.Title}</p>
-        <p class="text-base text-center text-ctp-subtext leading-none">
+        <h1 class="text-6xl text-ink-default">404</h1>
+        <p class="text-lg text-ink-default">{SiteSettings.NotFound.Title}</p>
+        <p class="text-base text-center text-ink-subtext leading-none">
 
             {SiteSettings.NotFound.Caption.map((e) => (
                 <span>{e}</span>
@@ -15,7 +15,7 @@ import { SiteSettings } from "../../utilities";
         </p>
 
         <a 
-            class="rounded-md border border-ctp-surface hover:bg-ctp-surface text-ctp-text text-base leading-none py-3 px-4 uppercase mt-4"
+            class="rounded-md border border-paint-surface hover:bg-paint-surface text-ink-default text-base leading-none py-3 px-4 uppercase mt-4"
             href="/"
         >
             {SiteSettings.NotFound.HomeActionLabel}

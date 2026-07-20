@@ -15,18 +15,18 @@ type Props = ComponentProps<typeof HeadPartial> & {
 
 const currentPath = Astro.url.pathname;
 const { container, ...headprops } = Astro.props
-const sociallinkclass = (key: string) => "flex justify-center items-center p-2 leading-none rounded h-full text-ctp-text text-base hover:bg-" + key;
+const sociallinkclass = (key: string) => "flex justify-center items-center p-2 leading-none rounded h-full text-ink-default text-base hover:bg-" + key;
 const mainclass = "relative min-h-screen px-4 flex flex-col" + (container ? " container mx-auto" : "w-full");
 ---
 <BaseHTMLView {...headprops}>
     <main class={mainclass}>
         <nav class="fixed top-4 inset-x-0 flex justify-center z-10">
-            <div id="sitenav" class="flex justify-center p-1 rounded-md overflow-hidden border border-ctp-surface bg-ctp-base transition-all duration-300 ease-in-out">
+            <div id="sitenav" class="flex justify-center p-1 rounded-md overflow-hidden border border-paint-surface bg-paint-base transition-all duration-300 ease-in-out">
                 {SiteSettings.Links.length > 0 && (  
                     <ul class="flex items-center justify-center gap-4 px-3">
                         {SiteSettings.Links.map((e) => {
                             const isactive = currentPath === e.Hyperlink || (e.Hyperlink !== '/' && currentPath.startsWith(e.Hyperlink));
-                            const itemclass = `uppercase text-sm font-semibold transition-all duration-250 ${isactive ? "text-ctp-text font-bold decoration-ctp-text" : "text-ctp-subtext hover:text-ctp-text"}`
+                            const itemclass = `uppercase text-sm font-semibold transition-all duration-250 ${isactive ? "text-ink-default font-bold decoration-ink-default" : "text-ink-subtext hover:text-ink-default"}`
                             return (
                                 <li>
                                     <a class={itemclass} href={e.Hyperlink} title={e.Label} aria-current={isactive ? "page" : undefined}>

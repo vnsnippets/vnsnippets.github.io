@@ -56,8 +56,8 @@ const coverimg = current.data.Cover ? {
                 <BadgePartial class="mb-2" label={current.data.Series} url={GetSeriesLink(current.data.Series)} />
             )}
 
-            <h1 class="text-4xl text-ctp-text font-semibold">{current.data.Title}</h1>
-            <p class="text-base text-ctp-soft max-w-2xl">{current.data.Caption}</p>
+            <h1 class="text-4xl text-ink-default font-semibold">{current.data.Title}</h1>
+            <p class="text-base text-ink-soft max-w-2xl">{current.data.Caption}</p>
 
             <div class="grid grid-cols-3 mt-8">
                 <KeyValuePartial label={SiteSettings.Articles.PublishedDateTitle} time={current.data.Published} />
@@ -66,15 +66,15 @@ const coverimg = current.data.Cover ? {
             </div>
         </div>
 
-        <div class="text-base pt-12 border-t-4 border-ctp-base">
+        <div class="text-base pt-12 border-t-4 border-paint-base">
             {coverimg && (
-                <div class="rounded-md border border-ctp-surface bg-ctp-mantle shadow-lg overflow-hidden img-wrap shimmer mb-6">
+                <div class="rounded-md border border-paint-surface bg-paint-mantle shadow-lg overflow-hidden img-wrap shimmer mb-6">
                     <ImagePartial
                         imgonly={true}
                         src={coverimg.Source}
                         alt={coverimg.Caption}
                     />
-                    <p class="text-ctp-subtext p-4 text-center">{coverimg.Caption}</p>
+                    <p class="text-ink-subtext p-4 text-center">{coverimg.Caption}</p>
                 </div>
             )}
             
@@ -84,7 +84,7 @@ const coverimg = current.data.Cover ? {
         </div>
 
         <div>
-            <p class="text-ctp-subtext text-left mt-20 mb-4">{SiteSettings.Articles.RelatedArticlesTitle}</p>
+            <p class="text-ink-subtext text-left mt-20 mb-4">{SiteSettings.Articles.RelatedArticlesTitle}</p>
             <div class="flex flex-col md:flex-row gap-4 justify-between">
                 <div class="grid gap-2 flex-1">
                     {prev && (<ArticlePreview {...prev} />)}
