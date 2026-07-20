@@ -59,7 +59,7 @@ const coverimg = current.data.Cover ? {
             <h1 class="text-4xl text-ink-default font-semibold">{current.data.Title}</h1>
             <p class="text-base text-ink-soft max-w-2xl">{current.data.Caption}</p>
 
-            <div class="grid grid-cols-3 mt-8">
+            <div class="grid grid-cols-3 mt-4 lg:mt-8">
                 <KeyValuePartial label={SiteSettings.Articles.PublishedDateTitle} time={current.data.Published} />
                 <KeyValuePartial label={SiteSettings.Articles.AuthorTitle} value={current.data.Author} />
                 <KeyValuePartial label={SiteSettings.Articles.ReadTimeTitle} value={`${GetReadingTime(current.body ?? "")} min`} />

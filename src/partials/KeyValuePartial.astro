@@ -10,7 +10,7 @@ type Props = HTMLAttributes<"p"> & {
 
 const { label, value, time, class: containerclass, ...props } = Astro.props;
 ---
-<p class={`grid gap-1 ${containerclass}`}>
+<p class={`grid gap-1 text-xs sm:text-sm md:text-md ${containerclass}`}>
     <span class="uppercase font-bold text-ink-soft">{label}</span>
     {time
         ? (<time class="text-ink-muted" datetime={time.toISOString()}>{ToDescriptiveDate(time)}</time>)
