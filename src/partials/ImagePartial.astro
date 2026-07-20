@@ -36,7 +36,7 @@ if (typeof src === "string") {
         {...props}
     />
 ) : (
-    <div class="w-full rounded-md border border-mocha-overlay shadow-lg overflow-hidden img-wrap shimmer">
+    <div class="w-full rounded-md border border-ctp-surface bg-ctp-mantle shadow-lg overflow-hidden img-wrap shimmer">
         <img
             src={src}
             width={width}
@@ -47,6 +47,6 @@ if (typeof src === "string") {
             class={`w-full ${inlineclass}`}
             {...props}
         />
-        {alt && <p class="text-mocha-subtext p-4 text-center m-0!">{alt}</p>}
+        {alt && <p class="text-ctp-subtext p-4 text-center m-0!">{alt}</p>}
     </div>
 )}

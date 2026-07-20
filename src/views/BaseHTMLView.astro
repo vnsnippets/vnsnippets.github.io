@@ -11,11 +11,11 @@ const Properties = Astro.props;
 ---
 
 <!doctype html>
-<html lang={SiteSettings.Language.toLowerCase() || "en"}>
+<html lang={SiteSettings.Language.toLowerCase() || "en"} data-theme="mocha">
     <HeadPartial {...Properties}>
         <slot name="head" />
     </HeadPartial>
-    <body class="bg-mocha-base text-mocha-text">
+    <body class="bg-ctp-crust text-ctp-text">
         <slot />
         <slot name="foot" />
     </body>

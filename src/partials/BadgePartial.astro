@@ -6,7 +6,7 @@ type Props = HTMLAttributes<"a"> & {
     url?: string
 }
 const { label, url, ...props } = Astro.props
-const containerclass = `flex justify-center items-center rounded px-2 py-1 shrink-0 bg-mocha-overlay/60 hover:bg-mocha-overlay text-mocha-caption ${props.class}`;
+const containerclass = `flex justify-center items-center rounded px-2 py-1 shrink-0 border border-ctp-surface hover:bg-ctp-mantle text-ctp-text tracking-wide hover:tracking-normal shadow ${props.class}`;
 ---
 <div class="flex gap-2 justify-center flex-wrap overflow-x-auto">
     <a class={containerclass} href={url}>{label}</a>

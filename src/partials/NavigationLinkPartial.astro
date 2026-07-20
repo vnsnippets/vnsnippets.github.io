@@ -7,9 +7,9 @@ type Props = {
 const { Hyperlink, Label } = Astro.props;
 ---
 <a 
-    class="relative flex flex-col items-center pb-2 text-mocha-subtext hover:text-mocha-text font-semibold transition-all duration-250 group"
+    class="relative flex flex-col items-center pb-2 text-ctp-subtext hover:text-ctp-text font-semibold transition-all duration-250 group"
     href={Hyperlink}
 >
     <span class="uppercase px-1.5">{Label}</span>
-    <span class="absolute bottom-0 h-0.5 w-0 bg-mocha-text rounded-full group-hover:w-[40%] max-w-8 transition-all duration-250" />
+    <span class="absolute bottom-0 h-0.5 w-0 bg-ctp-text rounded-full group-hover:w-[40%] max-w-8 transition-all duration-250" />
 </a>

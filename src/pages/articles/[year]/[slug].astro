@@ -50,41 +50,41 @@ const coverimg = current.data.Cover ? {
     Keywords={current.data.Tags}
     container={true}
 >
-    <article class="max-w-5xl mx-auto">
+    <article class="w-full max-w-5xl mx-auto">
         <div class="grid gap-4 justify-center text-base text-center mb-12">
             {current.data.Series && (
                 <BadgePartial class="mb-2" label={current.data.Series} url={GetSeriesLink(current.data.Series)} />
             )}
 
-            <h1 class="text-4xl text-mocha-text font-semibold">{current.data.Title}</h1>
-            <p class="text-base text-mocha-caption max-w-2xl">{current.data.Caption}</p>
+            <h1 class="text-4xl text-ctp-text font-semibold">{current.data.Title}</h1>
+            <p class="text-base text-ctp-soft max-w-2xl">{current.data.Caption}</p>
 
             <div class="grid grid-cols-3 mt-8">
-                <KeyValuePartial label={SiteSettings.Articles.PublishedDateTitle} value={ToDescriptiveDate(current.data.Published)} />
+                <KeyValuePartial label={SiteSettings.Articles.PublishedDateTitle} time={current.data.Published} />
                 <KeyValuePartial label={SiteSettings.Articles.AuthorTitle} value={current.data.Author} />
                 <KeyValuePartial label={SiteSettings.Articles.ReadTimeTitle} value={`${GetReadingTime(current.body ?? "")} min`} />
             </div>
         </div>
 
-        <div class="text-base">
+        <div class="text-base pt-12 border-t-4 border-ctp-base">
             {coverimg && (
-                <div class="rounded-md border border-mocha-overlay shadow-lg overflow-hidden img-wrap shimmer mb-6">
+                <div class="rounded-md border border-ctp-surface bg-ctp-mantle shadow-lg overflow-hidden img-wrap shimmer mb-6">
                     <ImagePartial
                         imgonly={true}
                         src={coverimg.Source}
                         alt={coverimg.Caption}
                     />
-                    <p class="text-mocha-subtext p-4 text-center">{coverimg.Caption}</p>
+                    <p class="text-ctp-subtext p-4 text-center">{coverimg.Caption}</p>
                 </div>
             )}
-
+            
             <ProsePartial>
                 <Content components={{ img: ImagePartial }} />
             </ProsePartial>
         </div>
 
         <div>
-            <p class="text-mocha-subtext text-left mt-20 mb-4">{SiteSettings.Articles.RelatedArticlesTitle}</p>
+            <p class="text-ctp-subtext text-left mt-20 mb-4">{SiteSettings.Articles.RelatedArticlesTitle}</p>
             <div class="flex flex-col md:flex-row gap-4 justify-between">
                 <div class="grid gap-2 flex-1">
                     {prev && (<ArticlePreview {...prev} />)}

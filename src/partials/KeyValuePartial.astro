@@ -1,14 +1,19 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
+import { ToDescriptiveDate } from '../utilities';
 
 type Props = HTMLAttributes<"p"> & {
     label: string
-    value: string
+    value?: string
+    time?: Date
 }
 
-const { label, value, class: containerclass, ...props } = Astro.props;
+const { label, value, time, class: containerclass, ...props } = Astro.props;
 ---
 <p class={`grid gap-1 ${containerclass}`}>
-    <span class="uppercase font-bold text-mocha-caption">{label}</span>
-    <span class="text-mocha-subtext">{value}</span>
+    <span class="uppercase font-bold text-ctp-soft">{label}</span>
+    {time
+        ? (<time class="text-ctp-muted" datetime={time.toISOString()}>{ToDescriptiveDate(time)}</time>)
+        : (<span class="text-ctp-muted">{value}</span>)
+    }
 </p>
